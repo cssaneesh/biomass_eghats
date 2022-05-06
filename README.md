@@ -13,8 +13,6 @@ xx data sents associated with this project are found on xxxx DOI listed above.
 
 **Data xx**
 
-**Data xx**
-
 
 ### R Scripts
 
