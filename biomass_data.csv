@@ -1,0 +1,513 @@
+Site,Treatment,Transect,Sci_name,Palatability,Weight,Scientific_name,Family,Life_form,General_terms,x,y,Functional_type,Functional_groups
+APA1,bgrnf,APA1bgrnf,Acalypha alnifolia,No,4,Acalypha scabrosa Sw.,Euphorbiaceae,Herb,Milkweeds,13.84898235,78.4284124,Annual undershrub,Forb
+APC1,bgrnf,APC1bgrnf,Acalypha alnifolia,No,20,Acalypha scabrosa Sw.,Euphorbiaceae,Herb,Milkweeds,13.84873331,78.42895372,Annual undershrub,Forb
+APA17,bgrnf,APA17bgrnf,Hybanthus enneaspermus,Yes,5,Afrohybanthus enneaspermus (L.) Flicker,Violaceae,Herb,Violet family,14.1183527,78.3349066,Perennial herb,Forb
+APC10,bgrnf,APC10bgrnf,Hybanthus enneaspermus,Yes,5,Afrohybanthus enneaspermus (L.) Flicker,Violaceae,Herb,Violet family,13.8647888,78.3988028,Perennial herb,Forb
+APC3,bgrnf,APC3bgrnf,Ageratum conyzoides,No,170,Ageratum conyzoides L.,Asteraceae,Herb,Asters,13.82903847,78.41240476,Annual herb,Forb
+APA12,bgrnf,APA12bgrnf,Alysicarpus monilifer,Yes,8,Alysicarpus monilifer (L.) DC.,Fabaceae,Herb,Legumes,14.0406286,78.3174365,Annual herb,Forb
+APA21,bgrnf,APA21bgrnf,Alysicarpus monilifer,Yes,17,Alysicarpus monilifer (L.) DC.,Fabaceae,Herb,Legumes,14.0087733,78.3203361,Annual herb,Forb
+APC12,bgpnf,APC12bgpnf,Alysicarpus monilifer,Yes,12,Alysicarpus monilifer (L.) DC.,Fabaceae,Herb,Legumes,13.89265608,78.41413564,Annual herb,Forb
+APC2,bgrnf,APC2bgrnf,Alysicarpus monilifer,Yes,54,Alysicarpus monilifer (L.) DC.,Fabaceae,Herb,Legumes,13.89582345,78.47713731,Annual herb,Forb
+APC4,bgrnf,APC4bgrnf,Alysicarpus monilifer,Yes,23,Alysicarpus monilifer (L.) DC.,Fabaceae,Herb,Legumes,13.8435626,78.4210518,Annual herb,Forb
+APC5,bgpnf,APC5bgpnf,Alysicarpus monilifer,Yes,20,Alysicarpus monilifer (L.) DC.,Fabaceae,Herb,Legumes,13.81476646,78.41896685,Annual herb,Forb
+APA10,bgrnf,APA10bgrnf,Andrographis echioides,Yes,41,Andrographis echioides (L.) Nees,Acanthaceae,Herb,Acanthus family,14.01957255,78.38249092,Annual herb,Forb
+APA16,bgrnf,APA16bgrnf,Andrographis echioides,Yes,17,Andrographis echioides (L.) Nees,Acanthaceae,Herb,Acanthus family,14.1162124,78.340371,Annual herb,Forb
+APA17,bgpnf,APA17bgpnf,Andrographis echioides,Yes,16,Andrographis echioides (L.) Nees,Acanthaceae,Herb,Acanthus family,14.1182461,78.3338937,Annual herb,Forb
+APA19,bgrnf,APA19bgrnf,Andrographis echioides,Yes,10,Andrographis echioides (L.) Nees,Acanthaceae,Herb,Acanthus family,14.05936089,78.34454953,Annual herb,Forb
+APA20,bgrnf,APA20bgrnf,Andrographis echioides,Yes,16,Andrographis echioides (L.) Nees,Acanthaceae,Herb,Acanthus family,14.07855213,78.32909996,Annual herb,Forb
+APA7,bgrnf,APA7bgrnf,Andrographis echioides,Yes,11,Andrographis echioides (L.) Nees,Acanthaceae,Herb,Acanthus family,14.02257643,78.38102775,Annual herb,Forb
+APA8,bgrnf,APA8bgrnf,Andrographis echioides,Yes,13,Andrographis echioides (L.) Nees,Acanthaceae,Herb,Acanthus family,14.02132073,78.3810486,Annual herb,Forb
+APC10,bgrnf,APC10bgrnf,Andrographis echioides,Yes,8,Andrographis echioides (L.) Nees,Acanthaceae,Herb,Acanthus family,13.8647888,78.3988028,Annual herb,Forb
+APA17,bgrnf,APA17bgrnf,Apluda mutica,Yes,36,Apluda mutica L.,Poaceae,Herb,Grass,14.1183527,78.3349066,Perennial graminoid,Graminoid
+APA19,bgrnf,APA19bgrnf,Apluda mutica,Yes,106,Apluda mutica L.,Poaceae,Herb,Grass,14.05936089,78.34454953,Perennial graminoid,Graminoid
+APA20,ab,APA20ab,Apluda mutica,Yes,26,Apluda mutica L.,Poaceae,Herb,Grass,14.07351935,78.32029247,Perennial graminoid,Graminoid
+APA21,bgrnf,APA21bgrnf,Apluda mutica,Yes,100,Apluda mutica L.,Poaceae,Herb,Grass,14.0087733,78.3203361,Perennial graminoid,Graminoid
+APA6,ab,APA6ab,Apluda mutica,Yes,160,Apluda mutica L.,Poaceae,Herb,Grass,14.0322524,78.37958529,Perennial graminoid,Graminoid
+APA6,bgrnf,APA6bgrnf,Apluda mutica,Yes,85,Apluda mutica L.,Poaceae,Herb,Grass,14.03027697,78.38398113,Perennial graminoid,Graminoid
+APC12,bgrnf,APC12bgrnf,Apluda mutica,Yes,850,Apluda mutica L.,Poaceae,Herb,Grass,13.8937946,78.4132926,Perennial graminoid,Graminoid
+APC3,bgrnf,APC3bgrnf,Apluda mutica,Yes,360,Apluda mutica L.,Poaceae,Herb,Grass,13.82903847,78.41240476,Perennial graminoid,Graminoid
+APC8,ab,APC8ab,Apluda mutica,Yes,32,Apluda mutica L.,Poaceae,Herb,Grass,13.87320667,78.52529305,Perennial graminoid,Graminoid
+APC8,bgrnf,APC8bgrnf,Apluda mutica,Yes,112,Apluda mutica L.,Poaceae,Herb,Grass,13.8733068,78.52803175,Perennial graminoid,Graminoid
+APC4,bgrnf,APC4bgrnf,Apocopis mangalorensis,Yes,20,Apocopis mangalorensis (Hochst. ex Steud.) Henrard,Poaceae,Herb,Grass,13.8435626,78.4210518,Annual graminoid,Graminoid
+APA8,bgrnf,APA8bgrnf,Aristida adscensionis,Yes,18,Aristida adscensionis L.,Poaceae,Herb,Grass,14.02132073,78.3810486,Annual graminoid,Graminoid
+APA17,bgrnf,APA17bgrnf,Aristida funiculata,Yes,198,Aristida funiculata Trin. & Rupr.,Poaceae,Herb,Grass,14.1183527,78.3349066,Annual graminoid,Graminoid
+APA10,bgpnf,APA10bgpnf,Aristida hystrix,Yes,21,Aristida hystrix L.f.,Poaceae,Herb,Grass,14.01931795,78.38124299,Perennial graminoid,Graminoid
+APA6,bgrnf,APA6bgrnf,Aristida hystrix,Yes,70,Aristida hystrix L.f.,Poaceae,Herb,Grass,14.03027697,78.38398113,Perennial graminoid,Graminoid
+APC11,bgrnf,APC11bgrnf,Aristida redacta,Yes,56,Aristida redacta Stapf,Poaceae,Herb,Grass,13.8387583,78.4107094,Annual/perennial graminoid ,Graminoid
+APC1,bgrnf,APC1bgrnf,Aristida redacta,Yes,285,Aristida redacta Stapf,Poaceae,Herb,Grass,13.84873331,78.42895372,Annual/perennial graminoid ,Graminoid
+APA5,bgrnf,APA5bgrnf,Aristida setacea,Yes,32,Aristida setacea Retz.,Poaceae,Herb,Grass,14.0633389,78.35483416,Annual/perennial graminoid ,Graminoid
+APC4,ab,APC4ab,Aristida setacea,Yes,18,Aristida setacea Retz.,Poaceae,Herb,Grass,13.8421781,78.4288606,Annual/perennial graminoid ,Graminoid
+APC8,ab,APC8ab,Aristida setacea,Yes,110,Aristida setacea Retz.,Poaceae,Herb,Grass,13.87320667,78.52529305,Annual/perennial graminoid ,Graminoid
+APA12,ab,APA12ab,Arundinella nervosa,Yes,280,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,14.0411993,78.3177903,Annual graminoid,Graminoid
+APA12,bgrnf,APA12bgrnf,Arundinella nervosa,Yes,12,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,14.0406286,78.3174365,Annual graminoid,Graminoid
+APA15,bgpnf,APA15bgpnf,Arundinella nervosa,Yes,150,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,14.07274083,78.36364415,Annual graminoid,Graminoid
+APA17,bgpnf,APA17bgpnf,Arundinella nervosa,Yes,135,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,14.1182461,78.3338937,Annual graminoid,Graminoid
+APA18,bgpnf,APA18bgpnf,Arundinella nervosa,Yes,134,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,14.05877728,78.33773986,Annual graminoid,Graminoid
+APA18,bgrnf,APA18bgrnf,Arundinella nervosa,Yes,430,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,14.05540854,78.34276519,Annual graminoid,Graminoid
+APA19,bgrnf,APA19bgrnf,Arundinella nervosa,Yes,45,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,14.05936089,78.34454953,Annual graminoid,Graminoid
+APA21,bgpnf,APA21bgpnf,Arundinella nervosa,Yes,145,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,14.0091949,78.3198229,Annual graminoid,Graminoid
+APA21,bgrnf,APA21bgrnf,Arundinella nervosa,Yes,320,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,14.0087733,78.3203361,Annual graminoid,Graminoid
+APA5,bgrnf,APA5bgrnf,Arundinella nervosa,Yes,285,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,14.0633389,78.35483416,Annual graminoid,Graminoid
+APC10,ab,APC10ab,Arundinella nervosa,Yes,290,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.86199189,78.43342618,Annual graminoid,Graminoid
+APC12,ab,APC12ab,Arundinella nervosa,Yes,28,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.8698363,78.4179308,Annual graminoid,Graminoid
+APC12,bgpnf,APC12bgpnf,Arundinella nervosa,Yes,105,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.89265608,78.41413564,Annual graminoid,Graminoid
+APC12,bgrnf,APC12bgrnf,Arundinella nervosa,Yes,1660,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.8937946,78.4132926,Annual graminoid,Graminoid
+APC1,ab,APC1ab,Arundinella nervosa,Yes,13,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.85288068,78.44261171,Annual graminoid,Graminoid
+APC1,bgrnf,APC1bgrnf,Arundinella nervosa,Yes,86,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.84873331,78.42895372,Annual graminoid,Graminoid
+APC2,bgpnf,APC2bgpnf,Arundinella nervosa,Yes,59,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.85048708,78.44295442,Annual graminoid,Graminoid
+APC2,bgrnf,APC2bgrnf,Arundinella nervosa,Yes,254,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.89582345,78.47713731,Annual graminoid,Graminoid
+APC4,ab,APC4ab,Arundinella nervosa,Yes,19,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.8421781,78.4288606,Annual graminoid,Graminoid
+APC4,bgrnf,APC4bgrnf,Arundinella nervosa,Yes,40,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.8435626,78.4210518,Annual graminoid,Graminoid
+APC5,bgpnf,APC5bgpnf,Arundinella nervosa,Yes,130,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.81476646,78.41896685,Annual graminoid,Graminoid
+APC6,ab,APC6ab,Arundinella nervosa,Yes,33,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.94070434,78.49388343,Annual graminoid,Graminoid
+APC7,bgpnf,APC7bgpnf,Arundinella nervosa,Yes,170,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.94232155,78.50763286,Annual graminoid,Graminoid
+APC7,bgrnf,APC7bgrnf,Arundinella nervosa,Yes,797,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.93962978,78.49521943,Annual graminoid,Graminoid
+APC8,ab,APC8ab,Arundinella nervosa,Yes,65,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.87320667,78.52529305,Annual graminoid,Graminoid
+APC8,bgrnf,APC8bgrnf,Arundinella nervosa,Yes,767,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.8733068,78.52803175,Annual graminoid,Graminoid
+APC9,bgrnf,APC9bgrnf,Arundinella nervosa,Yes,950,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Poaceae,Herb,Grass,13.87330434,78.52919306,Annual graminoid,Graminoid
+APC4,ab,APC4ab,Boerhavia diffusa,No,13,Boerhavia diffusa L.,Nyctaginaceae,Herb,Red spiderling,13.8421781,78.4288606,Perennial herb,Forb
+APC1,bgrnf,APC1bgrnf,Bothriochloa pertusa,Yes,9,Bothriochloa pertusa (L.) A.Camus,Poaceae,Herb,Grass,13.84873331,78.42895372,Perennial graminoid,Graminoid
+APC2,bgrnf,APC2bgrnf,Bulbostylis barbata,Yes,21,Bulbostylis barbata (Rottb.) C.B.Clarke,Cyperaceae,Herb,Sedge,13.89582345,78.47713731,Annual herb,Graminoid
+APA18,bgpnf,APA18bgpnf,Cajanus scarabaeoides,Yes,11,Cajanus scarabaeoides (L.) Thouars,Fabaceae,Climber,Legumes,14.05877728,78.33773986,Annual/perennial herb,Forb
+APA20,bgrnf,APA20bgrnf,Cajanus scarabaeoides,Yes,8,Cajanus scarabaeoides (L.) Thouars,Fabaceae,Climber,Legumes,14.07855213,78.32909996,Annual/perennial herb,Forb
+APC8,bgrnf,APC8bgrnf,Cajanus scarabaeoides,Yes,76,Cajanus scarabaeoides (L.) Thouars,Fabaceae,Climber,Legumes,13.8733068,78.52803175,Annual/perennial herb,Forb
+APC12,bgrnf,APC12bgrnf,Celosia argentea,Yes,22,Celosia argentea L.,Amaranthaceae,Herb,Amaranth family,13.8937946,78.4132926,Annual herb,Forb
+APC5,bgpnf,APC5bgpnf,Chamaecrista absus,Yes,6,Chamaecrista absus (L.) H.S.Irwin & Barneby,Fabaceae,Herb,Legumes,13.81476646,78.41896685,Annual herb,Forb
+APC1,ab,APC1ab,Chamaecrista pumila,Yes,11,Chamaecrista pumila (Lam.) V.Singh,Fabaceae,Herb,Legumes,13.85288068,78.44261171,Annual/perennial herb,Forb
+APC5,bgpnf,APC5bgpnf,Chamaecrista pumila,Yes,6,Chamaecrista pumila (Lam.) V.Singh,Fabaceae,Herb,Legumes,13.81476646,78.41896685,Annual/perennial herb,Forb
+APA10,bgpnf,APA10bgpnf,Chrysopogon fulvus,Yes,30,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.01931795,78.38124299,Perennial graminoid,Graminoid
+APA10,bgrnf,APA10bgrnf,Chrysopogon fulvus,Yes,22,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.01957255,78.38249092,Perennial graminoid,Graminoid
+APA12,bgrnf,APA12bgrnf,Chrysopogon fulvus,Yes,217,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.0406286,78.3174365,Perennial graminoid,Graminoid
+APA16,bgrnf,APA16bgrnf,Chrysopogon fulvus,Yes,180,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.1162124,78.340371,Perennial graminoid,Graminoid
+APA19,bgrnf,APA19bgrnf,Chrysopogon fulvus,Yes,715,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.05936089,78.34454953,Perennial graminoid,Graminoid
+APA1,bgrnf,APA1bgrnf,Chrysopogon fulvus,Yes,209,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.84898235,78.4284124,Perennial graminoid,Graminoid
+APA20,ab,APA20ab,Chrysopogon fulvus,Yes,78,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.07351935,78.32029247,Perennial graminoid,Graminoid
+APA21,bgpnf,APA21bgpnf,Chrysopogon fulvus,Yes,18,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.0091949,78.3198229,Perennial graminoid,Graminoid
+APA21,bgrnf,APA21bgrnf,Chrysopogon fulvus,Yes,16,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.0087733,78.3203361,Perennial graminoid,Graminoid
+APA5,bgrnf,APA5bgrnf,Chrysopogon fulvus,Yes,110,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.0633389,78.35483416,Perennial graminoid,Graminoid
+APA6,bgrnf,APA6bgrnf,Chrysopogon fulvus,Yes,120,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.03027697,78.38398113,Perennial graminoid,Graminoid
+APA7,ab,APA7ab,Chrysopogon fulvus,Yes,145,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.02755862,78.37557542,Perennial graminoid,Graminoid
+APA7,bgpnf,APA7bgpnf,Chrysopogon fulvus,Yes,40,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.02114351,78.38002126,Perennial graminoid,Graminoid
+APA7,bgrnf,APA7bgrnf,Chrysopogon fulvus,Yes,639,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.02257643,78.38102775,Perennial graminoid,Graminoid
+APA8,bgrnf,APA8bgrnf,Chrysopogon fulvus,Yes,299,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,14.02132073,78.3810486,Perennial graminoid,Graminoid
+APC10,bgrnf,APC10bgrnf,Chrysopogon fulvus,Yes,39,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.8647888,78.3988028,Perennial graminoid,Graminoid
+APC11,ab,APC11ab,Chrysopogon fulvus,Yes,64,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.8371911,78.4106671,Perennial graminoid,Graminoid
+APC11,bgrnf,APC11bgrnf,Chrysopogon fulvus,Yes,92,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.8387583,78.4107094,Perennial graminoid,Graminoid
+APC13,bgrnf,APC13bgrnf,Chrysopogon fulvus,Yes,35,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.90526646,78.50195839,Perennial graminoid,Graminoid
+APC1,ab,APC1ab,Chrysopogon fulvus,Yes,96,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.85288068,78.44261171,Perennial graminoid,Graminoid
+APC1,bgrnf,APC1bgrnf,Chrysopogon fulvus,Yes,927,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.84873331,78.42895372,Perennial graminoid,Graminoid
+APC2,bgpnf,APC2bgpnf,Chrysopogon fulvus,Yes,180,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.85048708,78.44295442,Perennial graminoid,Graminoid
+APC2,bgrnf,APC2bgrnf,Chrysopogon fulvus,Yes,42,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.89582345,78.47713731,Perennial graminoid,Graminoid
+APC3,ab,APC3ab,Chrysopogon fulvus,Yes,14,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.8280097,78.4130915,Perennial graminoid,Graminoid
+APC3,bgrnf,APC3bgrnf,Chrysopogon fulvus,Yes,48,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.82903847,78.41240476,Perennial graminoid,Graminoid
+APC4,bgpnf,APC4bgpnf,Chrysopogon fulvus,Yes,366,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.84584791,78.44843727,Perennial graminoid,Graminoid
+APC4,bgrnf,APC4bgrnf,Chrysopogon fulvus,Yes,37,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.8435626,78.4210518,Perennial graminoid,Graminoid
+APC5,bgpnf,APC5bgpnf,Chrysopogon fulvus,Yes,24,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.81476646,78.41896685,Perennial graminoid,Graminoid
+APC5,bgrnf,APC5bgrnf,Chrysopogon fulvus,Yes,35,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.80497605,78.41399812,Perennial graminoid,Graminoid
+APC6,ab,APC6ab,Chrysopogon fulvus,Yes,6,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.94070434,78.49388343,Perennial graminoid,Graminoid
+APC6,bgrnf,APC6bgrnf,Chrysopogon fulvus,Yes,185,Chrysopogon fulvus (Spreng.) Chiov.,Poaceae,Herb,Grass,13.94001826,78.49399366,Perennial graminoid,Graminoid
+APA18,bgrnf,APA18bgrnf,Crotalaria pusilla,Yes,5,Crotalaria evolvuloides Wight,Fabaceae,Herb,Legumes,14.05540854,78.34276519,Perennial herb,Forb
+APC12,ab,APC12ab,Crotalaria pusilla,Yes,9,Crotalaria evolvuloides Wight,Fabaceae,Herb,Legumes,13.8698363,78.4179308,Perennial herb,Forb
+APC1,ab,APC1ab,Crotalaria pusilla,Yes,10,Crotalaria evolvuloides Wight,Fabaceae,Herb,Legumes,13.85288068,78.44261171,Perennial herb,Forb
+APC2,bgpnf,APC2bgpnf,Crotalaria pusilla,Yes,12,Crotalaria evolvuloides Wight,Fabaceae,Herb,Legumes,13.85048708,78.44295442,Perennial herb,Forb
+APC4,ab,APC4ab,Crotalaria pusilla,Yes,12,Crotalaria evolvuloides Wight,Fabaceae,Herb,Legumes,13.8421781,78.4288606,Perennial herb,Forb
+APC4,bgrnf,APC4bgrnf,Crotalaria pusilla,Yes,6,Crotalaria evolvuloides Wight,Fabaceae,Herb,Legumes,13.8435626,78.4210518,Perennial herb,Forb
+APA10,bgpnf,APA10bgpnf,Crotalaria hebecarpa,Yes,30,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,14.01931795,78.38124299,Annual herb,Forb
+APA10,bgrnf,APA10bgrnf,Crotalaria hebecarpa,Yes,17,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,14.01957255,78.38249092,Annual herb,Forb
+APA12,ab,APA12ab,Crotalaria hebecarpa,Yes,16,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,14.0411993,78.3177903,Annual herb,Forb
+APA17,bgpnf,APA17bgpnf,Crotalaria hebecarpa,Yes,50,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,14.1182461,78.3338937,Annual herb,Forb
+APA17,bgrnf,APA17bgrnf,Crotalaria hebecarpa,Yes,26,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,14.1183527,78.3349066,Annual herb,Forb
+APA19,bgrnf,APA19bgrnf,Crotalaria hebecarpa,Yes,44,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,14.05936089,78.34454953,Annual herb,Forb
+APA20,ab,APA20ab,Crotalaria hebecarpa,Yes,130,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,14.07351935,78.32029247,Annual herb,Forb
+APA21,bgpnf,APA21bgpnf,Crotalaria hebecarpa,Yes,20,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,14.0091949,78.3198229,Annual herb,Forb
+APA21,bgrnf,APA21bgrnf,Crotalaria hebecarpa,Yes,15,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,14.0087733,78.3203361,Annual herb,Forb
+APA6,ab,APA6ab,Crotalaria hebecarpa,Yes,40,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,14.0322524,78.37958529,Annual herb,Forb
+APC10,ab,APC10ab,Crotalaria hebecarpa,Yes,12,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.86199189,78.43342618,Annual herb,Forb
+APC11,bgrnf,APC11bgrnf,Crotalaria hebecarpa,Yes,87,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.8387583,78.4107094,Annual herb,Forb
+APC12,bgpnf,APC12bgpnf,Crotalaria hebecarpa,Yes,95,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.89265608,78.41413564,Annual herb,Forb
+APC13,bgpnf,APC13bgpnf,Crotalaria hebecarpa,Yes,74,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.90649864,78.50191729,Annual herb,Forb
+APC13,bgrnf,APC13bgrnf,Crotalaria hebecarpa,Yes,86,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.90526646,78.50195839,Annual herb,Forb
+APC14,bgrnf,APC14bgrnf,Crotalaria hebecarpa,Yes,21,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.90507205,78.50428427,Annual herb,Forb
+APC1,bgrnf,APC1bgrnf,Crotalaria hebecarpa,Yes,286,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.84873331,78.42895372,Annual herb,Forb
+APC2,bgrnf,APC2bgrnf,Crotalaria hebecarpa,Yes,18,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.89582345,78.47713731,Annual herb,Forb
+APC3,bgrnf,APC3bgrnf,Crotalaria hebecarpa,Yes,24,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.82903847,78.41240476,Annual herb,Forb
+APC4,bgpnf,APC4bgpnf,Crotalaria hebecarpa,Yes,28,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.84584791,78.44843727,Annual herb,Forb
+APC5,bgpnf,APC5bgpnf,Crotalaria hebecarpa,Yes,6,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.81476646,78.41896685,Annual herb,Forb
+APC5,bgrnf,APC5bgrnf,Crotalaria hebecarpa,Yes,9,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.80497605,78.41399812,Annual herb,Forb
+APC6,ab,APC6ab,Crotalaria hebecarpa,Yes,59,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.94070434,78.49388343,Annual herb,Forb
+APC6,bgrnf,APC6bgrnf,Crotalaria hebecarpa,Yes,230,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.94001826,78.49399366,Annual herb,Forb
+APC7,bgrnf,APC7bgrnf,Crotalaria hebecarpa,Yes,11,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.93962978,78.49521943,Annual herb,Forb
+APC8,ab,APC8ab,Crotalaria hebecarpa,Yes,146,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.87320667,78.52529305,Annual herb,Forb
+APC9,bgrnf,APC9bgrnf,Crotalaria hebecarpa,Yes,69,Crotalaria hebecarpa (DC.) Rudd,Fabaceae,Herb,Legumes,13.87330434,78.52919306,Annual herb,Forb
+APA18,bgpnf,APA18bgpnf,Cyanotis tuberosa,No,106,Cyanotis tuberosa (Roxb.) Schult. & Schult.f.,Commelinaceae,Herb,Bengal dayflower,14.05877728,78.33773986,Perennial herb,Forb
+APA19,bgrnf,APA19bgrnf,Cyanotis tuberosa,No,31,Cyanotis tuberosa (Roxb.) Schult. & Schult.f.,Commelinaceae,Herb,Bengal dayflower,14.05936089,78.34454953,Perennial herb,Forb
+APA1,ab,APA1ab,Cyanotis tuberosa,No,12,Cyanotis tuberosa (Roxb.) Schult. & Schult.f.,Commelinaceae,Herb,Bengal dayflower,14.06974742,78.3350166,Perennial herb,Forb
+APA20,bgrnf,APA20bgrnf,Cyanotis tuberosa,No,8,Cyanotis tuberosa (Roxb.) Schult. & Schult.f.,Commelinaceae,Herb,Bengal dayflower,14.07855213,78.32909996,Perennial herb,Forb
+APA10,bgrnf,APA10bgrnf,Cyanthillium albicans,Yes,9,Cyanthillium albicans (DC.) H.Rob.,Asteraceae,Herb,Asters,14.01957255,78.38249092,Annual herb,Forb
+APA7,bgrnf,APA7bgrnf,Cyanthillium albicans,Yes,10,Cyanthillium albicans (DC.) H.Rob.,Asteraceae,Herb,Asters,14.02257643,78.38102775,Annual herb,Forb
+APC1,bgrnf,APC1bgrnf,Cyanthillium albicans,Yes,16,Cyanthillium albicans (DC.) H.Rob.,Asteraceae,Herb,Asters,13.84873331,78.42895372,Annual herb,Forb
+APA20,bgrnf,APA20bgrnf,Cyanthillium cinereum,Yes,16,Cyanthillium cinereum (L.) H.Rob.,Asteraceae,Herb,Asters,14.07855213,78.32909996,Annual/perennial herb,Forb
+APA7,bgrnf,APA7bgrnf,Cymbopogon martini,Yes,9,Cymbopogon martini (Roxb.) W.Watson,Poaceae,Herb,Grass,14.02257643,78.38102775,Perennial graminoid,Graminoid
+APA8,bgrnf,APA8bgrnf,Cymbopogon martini,Yes,7,Cymbopogon martini (Roxb.) W.Watson,Poaceae,Herb,Grass,14.02132073,78.3810486,Perennial graminoid,Graminoid
+APA10,bgpnf,APA10bgpnf,Cymbopogon sp.,Cymbopogon sp.,2750,Cymbopogon sp.,Poaceae,Herb,Grass,14.01931795,78.38124299,Perennial graminoid,Cymbopogon
+APA10,bgrnf,APA10bgrnf,Cymbopogon sp.,Cymbopogon sp.,120,Cymbopogon sp.,Poaceae,Herb,Grass,14.01957255,78.38249092,Perennial graminoid,Cymbopogon
+APA12,ab,APA12ab,Cymbopogon sp.,Cymbopogon sp.,1485,Cymbopogon sp.,Poaceae,Herb,Grass,14.0411993,78.3177903,Perennial graminoid,Cymbopogon
+APA15,bgpnf,APA15bgpnf,Cymbopogon sp.,Cymbopogon sp.,950,Cymbopogon sp.,Poaceae,Herb,Grass,14.07274083,78.36364415,Perennial graminoid,Cymbopogon
+APA17,bgpnf,APA17bgpnf,Cymbopogon sp.,Cymbopogon sp.,2625,Cymbopogon sp.,Poaceae,Herb,Grass,14.1182461,78.3338937,Perennial graminoid,Cymbopogon
+APA18,bgpnf,APA18bgpnf,Cymbopogon sp.,Cymbopogon sp.,762,Cymbopogon sp.,Poaceae,Herb,Grass,14.05877728,78.33773986,Perennial graminoid,Cymbopogon
+APA18,bgrnf,APA18bgrnf,Cymbopogon sp.,Cymbopogon sp.,13,Cymbopogon sp.,Poaceae,Herb,Grass,14.05540854,78.34276519,Perennial graminoid,Cymbopogon
+APA19,ab,APA19ab,Cymbopogon sp.,Cymbopogon sp.,524,Cymbopogon sp.,Poaceae,Herb,Grass,14.06168327,78.34201433,Perennial graminoid,Cymbopogon
+APA19,bgrnf,APA19bgrnf,Cymbopogon sp.,Cymbopogon sp.,316,Cymbopogon sp.,Poaceae,Herb,Grass,14.05936089,78.34454953,Perennial graminoid,Cymbopogon
+APA20,ab,APA20ab,Cymbopogon sp.,Cymbopogon sp.,1091,Cymbopogon sp.,Poaceae,Herb,Grass,14.07351935,78.32029247,Perennial graminoid,Cymbopogon
+APA20,bgrnf,APA20bgrnf,Cymbopogon sp.,Cymbopogon sp.,219,Cymbopogon sp.,Poaceae,Herb,Grass,14.07855213,78.32909996,Perennial graminoid,Cymbopogon
+APA21,bgpnf,APA21bgpnf,Cymbopogon sp.,Cymbopogon sp.,1122,Cymbopogon sp.,Poaceae,Herb,Grass,14.0091949,78.3198229,Perennial graminoid,Cymbopogon
+APA7,bgpnf,APA7bgpnf,Cymbopogon sp.,Cymbopogon sp.,613,Cymbopogon sp.,Poaceae,Herb,Grass,14.02114351,78.38002126,Perennial graminoid,Cymbopogon
+APA7,bgrnf,APA7bgrnf,Cymbopogon sp.,Cymbopogon sp.,41,Cymbopogon sp.,Poaceae,Herb,Grass,14.02257643,78.38102775,Perennial graminoid,Cymbopogon
+APA8,bgrnf,APA8bgrnf,Cymbopogon sp.,Cymbopogon sp.,266,Cymbopogon sp.,Poaceae,Herb,Grass,14.02132073,78.3810486,Perennial graminoid,Cymbopogon
+APC10,ab,APC10ab,Cymbopogon sp.,Cymbopogon sp.,510,Cymbopogon sp.,Poaceae,Herb,Grass,13.86199189,78.43342618,Perennial graminoid,Cymbopogon
+APC10,bgrnf,APC10bgrnf,Cymbopogon sp.,Cymbopogon sp.,115,Cymbopogon sp.,Poaceae,Herb,Grass,13.8647888,78.3988028,Perennial graminoid,Cymbopogon
+APC11,ab,APC11ab,Cymbopogon sp.,Cymbopogon sp.,1827,Cymbopogon sp.,Poaceae,Herb,Grass,13.8371911,78.4106671,Perennial graminoid,Cymbopogon
+APC11,bgrnf,APC11bgrnf,Cymbopogon sp.,Cymbopogon sp.,45,Cymbopogon sp.,Poaceae,Herb,Grass,13.8387583,78.4107094,Perennial graminoid,Cymbopogon
+APC12,ab,APC12ab,Cymbopogon sp.,Cymbopogon sp.,735,Cymbopogon sp.,Poaceae,Herb,Grass,13.8698363,78.4179308,Perennial graminoid,Cymbopogon
+APC12,bgpnf,APC12bgpnf,Cymbopogon sp.,Cymbopogon sp.,2090,Cymbopogon sp.,Poaceae,Herb,Grass,13.89265608,78.41413564,Perennial graminoid,Cymbopogon
+APC13,bgpnf,APC13bgpnf,Cymbopogon sp.,Cymbopogon sp.,86,Cymbopogon sp.,Poaceae,Herb,Grass,13.90649864,78.50191729,Perennial graminoid,Cymbopogon
+APC13,bgrnf,APC13bgrnf,Cymbopogon sp.,Cymbopogon sp.,74,Cymbopogon sp.,Poaceae,Herb,Grass,13.90526646,78.50195839,Perennial graminoid,Cymbopogon
+APC1,ab,APC1ab,Cymbopogon sp.,Cymbopogon sp.,1635,Cymbopogon sp.,Poaceae,Herb,Grass,13.85288068,78.44261171,Perennial graminoid,Cymbopogon
+APC2,bgpnf,APC2bgpnf,Cymbopogon sp.,Cymbopogon sp.,1965,Cymbopogon sp.,Poaceae,Herb,Grass,13.85048708,78.44295442,Perennial graminoid,Cymbopogon
+APC3,ab,APC3ab,Cymbopogon sp.,Cymbopogon sp.,1161,Cymbopogon sp.,Poaceae,Herb,Grass,13.8280097,78.4130915,Perennial graminoid,Cymbopogon
+APC3,bgrnf,APC3bgrnf,Cymbopogon sp.,Cymbopogon sp.,353,Cymbopogon sp.,Poaceae,Herb,Grass,13.82903847,78.41240476,Perennial graminoid,Cymbopogon
+APC4,ab,APC4ab,Cymbopogon sp.,Cymbopogon sp.,1020,Cymbopogon sp.,Poaceae,Herb,Grass,13.8421781,78.4288606,Perennial graminoid,Cymbopogon
+APC4,bgpnf,APC4bgpnf,Cymbopogon sp.,Cymbopogon sp.,1508,Cymbopogon sp.,Poaceae,Herb,Grass,13.84584791,78.44843727,Perennial graminoid,Cymbopogon
+APC4,bgrnf,APC4bgrnf,Cymbopogon sp.,Cymbopogon sp.,40,Cymbopogon sp.,Poaceae,Herb,Grass,13.8435626,78.4210518,Perennial graminoid,Cymbopogon
+APC5,bgpnf,APC5bgpnf,Cymbopogon sp.,Cymbopogon sp.,1884,Cymbopogon sp.,Poaceae,Herb,Grass,13.81476646,78.41896685,Perennial graminoid,Cymbopogon
+APC8,ab,APC8ab,Cymbopogon sp.,Cymbopogon sp.,3172,Cymbopogon sp.,Poaceae,Herb,Grass,13.87320667,78.52529305,Perennial graminoid,Cymbopogon
+APC8,bgrnf,APC8bgrnf,Cymbopogon sp.,Cymbopogon sp.,340,Cymbopogon sp.,Poaceae,Herb,Grass,13.8733068,78.52803175,Perennial graminoid,Cymbopogon
+APC9,bgrnf,APC9bgrnf,Cymbopogon sp.,Cymbopogon sp.,227,Cymbopogon sp.,Poaceae,Herb,Grass,13.87330434,78.52919306,Perennial graminoid,Cymbopogon
+APA10,bgrnf,APA10bgrnf,Eragrostiella bifaria,Yes,11,Eragrostiella bifaria (Vahl) Bor,Poaceae,Herb,Grass,14.01957255,78.38249092,Perennial graminoid,Graminoid
+APA8,bgrnf,APA8bgrnf,Eragrostiella bifaria,Yes,7,Eragrostiella bifaria (Vahl) Bor,Poaceae,Herb,Grass,14.02132073,78.3810486,Perennial graminoid,Graminoid
+APC10,ab,APC10ab,Eragrostiella bifaria,Yes,18,Eragrostiella bifaria (Vahl) Bor,Poaceae,Herb,Grass,13.86199189,78.43342618,Perennial graminoid,Graminoid
+APC5,bgpnf,APC5bgpnf,Eragrostiella bifaria,Yes,11,Eragrostiella bifaria (Vahl) Bor,Poaceae,Herb,Grass,13.81476646,78.41896685,Perennial graminoid,Graminoid
+APC1,ab,APC1ab,Eragrostis tenella,Yes,26,Eragrostis tenella (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.85288068,78.44261171,Annual graminoid,Graminoid
+APA7,bgrnf,APA7bgrnf,Euphorbia deccanensis,Yes,9,Euphorbia deccanensis V.S.Raju,Euphorbiaceae,Herb,Milkweeds,14.02257643,78.38102775,Annual herb,Forb
+APC10,ab,APC10ab,Euphorbia deccanensis,Yes,5,Euphorbia deccanensis V.S.Raju,Euphorbiaceae,Herb,Milkweeds,13.86199189,78.43342618,Annual herb,Forb
+APC12,ab,APC12ab,Euphorbia deccanensis,Yes,8,Euphorbia deccanensis V.S.Raju,Euphorbiaceae,Herb,Milkweeds,13.8698363,78.4179308,Annual herb,Forb
+APC2,bgpnf,APC2bgpnf,Euphorbia deccanensis,Yes,15,Euphorbia deccanensis V.S.Raju,Euphorbiaceae,Herb,Milkweeds,13.85048708,78.44295442,Annual herb,Forb
+APC4,bgpnf,APC4bgpnf,Euphorbia deccanensis,Yes,14,Euphorbia deccanensis V.S.Raju,Euphorbiaceae,Herb,Milkweeds,13.84584791,78.44843727,Annual herb,Forb
+APC5,bgpnf,APC5bgpnf,Euphorbia deccanensis,Yes,6,Euphorbia deccanensis V.S.Raju,Euphorbiaceae,Herb,Milkweeds,13.81476646,78.41896685,Annual herb,Forb
+APA17,bgpnf,APA17bgpnf,Euphorbia rosea,Yes,5,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,14.1182461,78.3338937,Annual herb,Forb
+APA17,bgrnf,APA17bgrnf,Euphorbia rosea,Yes,35,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,14.1183527,78.3349066,Annual herb,Forb
+APA18,bgpnf,APA18bgpnf,Euphorbia rosea,Yes,8,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,14.05877728,78.33773986,Annual herb,Forb
+APA19,ab,APA19ab,Euphorbia rosea,Yes,6,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,14.06168327,78.34201433,Annual herb,Forb
+APA7,bgpnf,APA7bgpnf,Euphorbia rosea,Yes,8,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,14.02114351,78.38002126,Annual herb,Forb
+APA7,bgrnf,APA7bgrnf,Euphorbia rosea,Yes,19,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,14.02257643,78.38102775,Annual herb,Forb
+APA8,bgrnf,APA8bgrnf,Euphorbia rosea,Yes,7,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,14.02132073,78.3810486,Annual herb,Forb
+APC10,ab,APC10ab,Euphorbia rosea,Yes,9,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,13.86199189,78.43342618,Annual herb,Forb
+APC10,bgrnf,APC10bgrnf,Euphorbia rosea,Yes,8,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,13.8647888,78.3988028,Annual herb,Forb
+APC11,ab,APC11ab,Euphorbia rosea,Yes,10,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,13.8371911,78.4106671,Annual herb,Forb
+APC11,bgrnf,APC11bgrnf,Euphorbia rosea,Yes,8,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,13.8387583,78.4107094,Annual herb,Forb
+APC1,ab,APC1ab,Euphorbia rosea,Yes,7,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,13.85288068,78.44261171,Annual herb,Forb
+APC1,bgrnf,APC1bgrnf,Euphorbia rosea,Yes,9,Euphorbia rosea Retz.,Euphorbiaceae,Herb,Milkweeds,13.84873331,78.42895372,Annual herb,Forb
+APA10,bgpnf,APA10bgpnf,Evolvulus alsinoides,Yes,11,Evolvulus alsinoides (L.) L.,Convolvulaceae,Herb,Morning glory family,14.01931795,78.38124299,Perennial herb,Forb
+APA12,bgrnf,APA12bgrnf,Evolvulus alsinoides,Yes,20,Evolvulus alsinoides (L.) L.,Convolvulaceae,Herb,Morning glory family,14.0406286,78.3174365,Perennial herb,Forb
+APA1,bgrnf,APA1bgrnf,Evolvulus alsinoides,Yes,5,Evolvulus alsinoides (L.) L.,Convolvulaceae,Herb,Morning glory family,13.84898235,78.4284124,Perennial herb,Forb
+APA21,bgrnf,APA21bgrnf,Evolvulus alsinoides,Yes,10,Evolvulus alsinoides (L.) L.,Convolvulaceae,Herb,Morning glory family,14.0087733,78.3203361,Perennial herb,Forb
+APA10,bgpnf,APA10bgpnf,Heteropogon contortus,Yes,201,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.01931795,78.38124299,Perennial graminoid,Graminoid
+APA10,bgrnf,APA10bgrnf,Heteropogon contortus,Yes,620,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.01957255,78.38249092,Perennial graminoid,Graminoid
+APA12,ab,APA12ab,Heteropogon contortus,Yes,44,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.0411993,78.3177903,Perennial graminoid,Graminoid
+APA12,bgrnf,APA12bgrnf,Heteropogon contortus,Yes,255,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.0406286,78.3174365,Perennial graminoid,Graminoid
+APA15,bgpnf,APA15bgpnf,Heteropogon contortus,Yes,210,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.07274083,78.36364415,Perennial graminoid,Graminoid
+APA16,bgrnf,APA16bgrnf,Heteropogon contortus,Yes,553,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.1162124,78.340371,Perennial graminoid,Graminoid
+APA17,bgpnf,APA17bgpnf,Heteropogon contortus,Yes,30,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.1182461,78.3338937,Perennial graminoid,Graminoid
+APA18,bgpnf,APA18bgpnf,Heteropogon contortus,Yes,158,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.05877728,78.33773986,Perennial graminoid,Graminoid
+APA18,bgrnf,APA18bgrnf,Heteropogon contortus,Yes,37,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.05540854,78.34276519,Perennial graminoid,Graminoid
+APA19,bgrnf,APA19bgrnf,Heteropogon contortus,Yes,339,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.05936089,78.34454953,Perennial graminoid,Graminoid
+APA1,bgrnf,APA1bgrnf,Heteropogon contortus,Yes,67,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.84898235,78.4284124,Perennial graminoid,Graminoid
+APA21,bgpnf,APA21bgpnf,Heteropogon contortus,Yes,195,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.0091949,78.3198229,Perennial graminoid,Graminoid
+APA21,bgrnf,APA21bgrnf,Heteropogon contortus,Yes,340,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.0087733,78.3203361,Perennial graminoid,Graminoid
+APA5,bgrnf,APA5bgrnf,Heteropogon contortus,Yes,240,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.0633389,78.35483416,Perennial graminoid,Graminoid
+APA6,ab,APA6ab,Heteropogon contortus,Yes,120,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.0322524,78.37958529,Perennial graminoid,Graminoid
+APA6,bgrnf,APA6bgrnf,Heteropogon contortus,Yes,120,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.03027697,78.38398113,Perennial graminoid,Graminoid
+APA7,ab,APA7ab,Heteropogon contortus,Yes,150,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.02755862,78.37557542,Perennial graminoid,Graminoid
+APA7,bgpnf,APA7bgpnf,Heteropogon contortus,Yes,112,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.02114351,78.38002126,Perennial graminoid,Graminoid
+APA7,bgrnf,APA7bgrnf,Heteropogon contortus,Yes,362,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.02257643,78.38102775,Perennial graminoid,Graminoid
+APA8,bgrnf,APA8bgrnf,Heteropogon contortus,Yes,80,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,14.02132073,78.3810486,Perennial graminoid,Graminoid
+APC10,ab,APC10ab,Heteropogon contortus,Yes,103,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.86199189,78.43342618,Perennial graminoid,Graminoid
+APC10,bgrnf,APC10bgrnf,Heteropogon contortus,Yes,920,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.8647888,78.3988028,Perennial graminoid,Graminoid
+APC11,ab,APC11ab,Heteropogon contortus,Yes,45,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.8371911,78.4106671,Perennial graminoid,Graminoid
+APC11,bgrnf,APC11bgrnf,Heteropogon contortus,Yes,185,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.8387583,78.4107094,Perennial graminoid,Graminoid
+APC12,ab,APC12ab,Heteropogon contortus,Yes,125,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.8698363,78.4179308,Perennial graminoid,Graminoid
+APC12,bgpnf,APC12bgpnf,Heteropogon contortus,Yes,130,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.89265608,78.41413564,Perennial graminoid,Graminoid
+APC13,bgpnf,APC13bgpnf,Heteropogon contortus,Yes,150,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.90649864,78.50191729,Perennial graminoid,Graminoid
+APC13,bgrnf,APC13bgrnf,Heteropogon contortus,Yes,1283,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.90526646,78.50195839,Perennial graminoid,Graminoid
+APC14,bgrnf,APC14bgrnf,Heteropogon contortus,Yes,863,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.90507205,78.50428427,Perennial graminoid,Graminoid
+APC1,bgrnf,APC1bgrnf,Heteropogon contortus,Yes,588,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.84873331,78.42895372,Perennial graminoid,Graminoid
+APC2,bgpnf,APC2bgpnf,Heteropogon contortus,Yes,180,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.85048708,78.44295442,Perennial graminoid,Graminoid
+APC2,bgrnf,APC2bgrnf,Heteropogon contortus,Yes,752,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.89582345,78.47713731,Perennial graminoid,Graminoid
+APC3,ab,APC3ab,Heteropogon contortus,Yes,17,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.8280097,78.4130915,Perennial graminoid,Graminoid
+APC3,bgrnf,APC3bgrnf,Heteropogon contortus,Yes,348,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.82903847,78.41240476,Perennial graminoid,Graminoid
+APC4,ab,APC4ab,Heteropogon contortus,Yes,115,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.8421781,78.4288606,Perennial graminoid,Graminoid
+APC4,bgrnf,APC4bgrnf,Heteropogon contortus,Yes,1855,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.8435626,78.4210518,Perennial graminoid,Graminoid
+APC5,bgpnf,APC5bgpnf,Heteropogon contortus,Yes,112,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.81476646,78.41896685,Perennial graminoid,Graminoid
+APC5,bgrnf,APC5bgrnf,Heteropogon contortus,Yes,312,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.80497605,78.41399812,Perennial graminoid,Graminoid
+APC6,ab,APC6ab,Heteropogon contortus,Yes,227,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.94070434,78.49388343,Perennial graminoid,Graminoid
+APC6,bgrnf,APC6bgrnf,Heteropogon contortus,Yes,966,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.94001826,78.49399366,Perennial graminoid,Graminoid
+APC7,bgpnf,APC7bgpnf,Heteropogon contortus,Yes,110,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.94232155,78.50763286,Perennial graminoid,Graminoid
+APC7,bgrnf,APC7bgrnf,Heteropogon contortus,Yes,672,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Poaceae,Herb,Grass,13.93962978,78.49521943,Perennial graminoid,Graminoid
+APA20,bgrnf,APA20bgrnf,Hibiscus lobatus,No,6,Hibiscus lobatus (Murray) Kuntze,Malvaceae,Herb,Mallow family,14.07855213,78.32909996,Annual herb,Forb
+APA1,bgrnf,APA1bgrnf,Indigofera glabra,Yes,8,Indigofera glabra L.,Fabaceae,Herb,Legumes,13.84898235,78.4284124,Annual/perennial herb,Forb
+APC12,bgpnf,APC12bgpnf,Indigofera linifolia,Yes,8,Indigofera linifolia (L.f.) Retz.,Fabaceae,Herb,Legumes,13.89265608,78.41413564,Annual/perennial herb,Forb
+APA10,bgpnf,APA10bgpnf,Justicia vahlii,Yes,7,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,14.01931795,78.38124299,Annual herb,Forb
+APA12,ab,APA12ab,Justicia vahlii,Yes,36,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,14.0411993,78.3177903,Annual herb,Forb
+APA17,bgpnf,APA17bgpnf,Justicia vahlii,Yes,9,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,14.1182461,78.3338937,Annual herb,Forb
+APA17,bgrnf,APA17bgrnf,Justicia vahlii,Yes,5,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,14.1183527,78.3349066,Annual herb,Forb
+APA7,bgpnf,APA7bgpnf,Justicia vahlii,Yes,32,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,14.02114351,78.38002126,Annual herb,Forb
+APA7,bgrnf,APA7bgrnf,Justicia vahlii,Yes,15,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,14.02257643,78.38102775,Annual herb,Forb
+APA8,bgrnf,APA8bgrnf,Justicia vahlii,Yes,23,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,14.02132073,78.3810486,Annual herb,Forb
+APC10,bgrnf,APC10bgrnf,Justicia vahlii,Yes,35,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,13.8647888,78.3988028,Annual herb,Forb
+APC11,bgrnf,APC11bgrnf,Justicia vahlii,Yes,37,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,13.8387583,78.4107094,Annual herb,Forb
+APC3,ab,APC3ab,Justicia vahlii,Yes,28,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,13.8280097,78.4130915,Annual herb,Forb
+APC3,bgrnf,APC3bgrnf,Justicia vahlii,Yes,7,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,13.82903847,78.41240476,Annual herb,Forb
+APC7,bgpnf,APC7bgpnf,Justicia vahlii,Yes,9,Justicia vahliana Schult.,Acanthaceae,Herb,Acanthus family,13.94232155,78.50763286,Annual herb,Forb
+APA10,bgpnf,APA10bgpnf,Lepidagathis cristata,Yes,11,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.01931795,78.38124299,Perennial herb,Forb
+APA12,ab,APA12ab,Lepidagathis cristata,Yes,127,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.0411993,78.3177903,Perennial herb,Forb
+APA12,bgrnf,APA12bgrnf,Lepidagathis cristata,Yes,22,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.0406286,78.3174365,Perennial herb,Forb
+APA15,bgpnf,APA15bgpnf,Lepidagathis cristata,Yes,147,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.07274083,78.36364415,Perennial herb,Forb
+APA16,bgrnf,APA16bgrnf,Lepidagathis cristata,Yes,40,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.1162124,78.340371,Perennial herb,Forb
+APA17,bgpnf,APA17bgpnf,Lepidagathis cristata,Yes,152,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.1182461,78.3338937,Perennial herb,Forb
+APA17,bgrnf,APA17bgrnf,Lepidagathis cristata,Yes,72,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.1183527,78.3349066,Perennial herb,Forb
+APA18,bgpnf,APA18bgpnf,Lepidagathis cristata,Yes,21,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.05877728,78.33773986,Perennial herb,Forb
+APA18,bgrnf,APA18bgrnf,Lepidagathis cristata,Yes,74,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.05540854,78.34276519,Perennial herb,Forb
+APA19,ab,APA19ab,Lepidagathis cristata,Yes,133,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.06168327,78.34201433,Perennial herb,Forb
+APA19,bgrnf,APA19bgrnf,Lepidagathis cristata,Yes,48,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.05936089,78.34454953,Perennial herb,Forb
+APA1,ab,APA1ab,Lepidagathis cristata,Yes,172,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.06974742,78.3350166,Perennial herb,Forb
+APA1,bgrnf,APA1bgrnf,Lepidagathis cristata,Yes,267,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.84898235,78.4284124,Perennial herb,Forb
+APA20,ab,APA20ab,Lepidagathis cristata,Yes,95,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.07351935,78.32029247,Perennial herb,Forb
+APA21,bgpnf,APA21bgpnf,Lepidagathis cristata,Yes,19,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.0091949,78.3198229,Perennial herb,Forb
+APA21,bgrnf,APA21bgrnf,Lepidagathis cristata,Yes,66,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.0087733,78.3203361,Perennial herb,Forb
+APA5,bgrnf,APA5bgrnf,Lepidagathis cristata,Yes,194,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.0633389,78.35483416,Perennial herb,Forb
+APA6,ab,APA6ab,Lepidagathis cristata,Yes,230,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.0322524,78.37958529,Perennial herb,Forb
+APA6,bgrnf,APA6bgrnf,Lepidagathis cristata,Yes,80,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.03027697,78.38398113,Perennial herb,Forb
+APA7,ab,APA7ab,Lepidagathis cristata,Yes,73,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.02755862,78.37557542,Perennial herb,Forb
+APA7,bgpnf,APA7bgpnf,Lepidagathis cristata,Yes,14,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.02114351,78.38002126,Perennial herb,Forb
+APA7,bgrnf,APA7bgrnf,Lepidagathis cristata,Yes,175,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.02257643,78.38102775,Perennial herb,Forb
+APA8,bgrnf,APA8bgrnf,Lepidagathis cristata,Yes,592,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,14.02132073,78.3810486,Perennial herb,Forb
+APC10,ab,APC10ab,Lepidagathis cristata,Yes,145,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.86199189,78.43342618,Perennial herb,Forb
+APC10,bgrnf,APC10bgrnf,Lepidagathis cristata,Yes,30,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.8647888,78.3988028,Perennial herb,Forb
+APC11,ab,APC11ab,Lepidagathis cristata,Yes,20,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.8371911,78.4106671,Perennial herb,Forb
+APC11,bgrnf,APC11bgrnf,Lepidagathis cristata,Yes,60,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.8387583,78.4107094,Perennial herb,Forb
+APC12,ab,APC12ab,Lepidagathis cristata,Yes,37,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.8698363,78.4179308,Perennial herb,Forb
+APC12,bgpnf,APC12bgpnf,Lepidagathis cristata,Yes,195,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.89265608,78.41413564,Perennial herb,Forb
+APC12,bgrnf,APC12bgrnf,Lepidagathis cristata,Yes,535,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.8937946,78.4132926,Perennial herb,Forb
+APC13,bgpnf,APC13bgpnf,Lepidagathis cristata,Yes,27,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.90649864,78.50191729,Perennial herb,Forb
+APC13,bgrnf,APC13bgrnf,Lepidagathis cristata,Yes,21,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.90526646,78.50195839,Perennial herb,Forb
+APC14,bgrnf,APC14bgrnf,Lepidagathis cristata,Yes,8,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.90507205,78.50428427,Perennial herb,Forb
+APC1,ab,APC1ab,Lepidagathis cristata,Yes,171,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.85288068,78.44261171,Perennial herb,Forb
+APC1,bgrnf,APC1bgrnf,Lepidagathis cristata,Yes,232,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.84873331,78.42895372,Perennial herb,Forb
+APC2,bgpnf,APC2bgpnf,Lepidagathis cristata,Yes,9,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.85048708,78.44295442,Perennial herb,Forb
+APC2,bgrnf,APC2bgrnf,Lepidagathis cristata,Yes,20,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.89582345,78.47713731,Perennial herb,Forb
+APC4,ab,APC4ab,Lepidagathis cristata,Yes,92,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.8421781,78.4288606,Perennial herb,Forb
+APC4,bgpnf,APC4bgpnf,Lepidagathis cristata,Yes,14,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.84584791,78.44843727,Perennial herb,Forb
+APC4,bgrnf,APC4bgrnf,Lepidagathis cristata,Yes,93,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.8435626,78.4210518,Perennial herb,Forb
+APC5,bgpnf,APC5bgpnf,Lepidagathis cristata,Yes,7,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.81476646,78.41896685,Perennial herb,Forb
+APC5,bgrnf,APC5bgrnf,Lepidagathis cristata,Yes,535,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.80497605,78.41399812,Perennial herb,Forb
+APC6,ab,APC6ab,Lepidagathis cristata,Yes,14,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.94070434,78.49388343,Perennial herb,Forb
+APC6,bgrnf,APC6bgrnf,Lepidagathis cristata,Yes,16,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.94001826,78.49399366,Perennial herb,Forb
+APC7,bgpnf,APC7bgpnf,Lepidagathis cristata,Yes,14,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.94232155,78.50763286,Perennial herb,Forb
+APC7,bgrnf,APC7bgrnf,Lepidagathis cristata,Yes,28,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.93962978,78.49521943,Perennial herb,Forb
+APC8,bgrnf,APC8bgrnf,Lepidagathis cristata,Yes,93,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.8733068,78.52803175,Perennial herb,Forb
+APC9,bgrnf,APC9bgrnf,Lepidagathis cristata,Yes,27,Lepidagathis cristata Willd.,Acanthaceae,Herb,Acanthus family,13.87330434,78.52919306,Perennial herb,Forb
+APA17,bgpnf,APA17bgpnf,Leucas aspera,No,80,Leucas aspera (Willd.) Link,Lamiaceae,Herb,Mint family,14.1182461,78.3338937,Annual herb,Forb
+APA21,bgpnf,APA21bgpnf,Leucas aspera,No,107,Leucas aspera (Willd.) Link,Lamiaceae,Herb,Mint family,14.0091949,78.3198229,Annual herb,Forb
+APA21,bgrnf,APA21bgrnf,Leucas aspera,No,14,Leucas aspera (Willd.) Link,Lamiaceae,Herb,Mint family,14.0087733,78.3203361,Annual herb,Forb
+APC11,ab,APC11ab,Leucas aspera,No,6,Leucas aspera (Willd.) Link,Lamiaceae,Herb,Mint family,13.8371911,78.4106671,Annual herb,Forb
+APC12,ab,APC12ab,Leucas aspera,No,27,Leucas aspera (Willd.) Link,Lamiaceae,Herb,Mint family,13.8698363,78.4179308,Annual herb,Forb
+APC4,ab,APC4ab,Leucas aspera,No,10,Leucas aspera (Willd.) Link,Lamiaceae,Herb,Mint family,13.8421781,78.4288606,Annual herb,Forb
+APC5,bgpnf,APC5bgpnf,Leucas aspera,No,10,Leucas aspera (Willd.) Link,Lamiaceae,Herb,Mint family,13.81476646,78.41896685,Annual herb,Forb
+APC7,bgpnf,APC7bgpnf,Leucas aspera,No,11,Leucas aspera (Willd.) Link,Lamiaceae,Herb,Mint family,13.94232155,78.50763286,Annual herb,Forb
+APA10,bgpnf,APA10bgpnf,Leucas zeylanica,No,24,Leucas zeylanica (L.) W.T.Aiton,Lamiaceae,Herb,Mint family,14.01931795,78.38124299,Annual herb,Forb
+APA10,bgrnf,APA10bgrnf,Leucas zeylanica,No,41,Leucas zeylanica (L.) W.T.Aiton,Lamiaceae,Herb,Mint family,14.01957255,78.38249092,Annual herb,Forb
+APA6,bgrnf,APA6bgrnf,Leucas zeylanica,No,25,Leucas zeylanica (L.) W.T.Aiton,Lamiaceae,Herb,Mint family,14.03027697,78.38398113,Annual herb,Forb
+APA7,bgpnf,APA7bgpnf,Leucas zeylanica,No,13,Leucas zeylanica (L.) W.T.Aiton,Lamiaceae,Herb,Mint family,14.02114351,78.38002126,Annual herb,Forb
+APA8,bgrnf,APA8bgrnf,Leucas zeylanica,No,12,Leucas zeylanica (L.) W.T.Aiton,Lamiaceae,Herb,Mint family,14.02132073,78.3810486,Annual herb,Forb
+APC10,ab,APC10ab,Leucas zeylanica,No,5,Leucas zeylanica (L.) W.T.Aiton,Lamiaceae,Herb,Mint family,13.86199189,78.43342618,Annual herb,Forb
+APC4,ab,APC4ab,Leucas zeylanica,No,120,Leucas zeylanica (L.) W.T.Aiton,Lamiaceae,Herb,Mint family,13.8421781,78.4288606,Annual herb,Forb
+APA10,bgrnf,APA10bgrnf,Mitracarpus hirtus,Yes,43,Mitracarpus hirtus (L.) DC.,Rubiaceae,Herb,Coffee family,14.01957255,78.38249092,Annual herb,Forb
+APA18,bgpnf,APA18bgpnf,Mitracarpus hirtus,Yes,32,Mitracarpus hirtus (L.) DC.,Rubiaceae,Herb,Coffee family,14.05877728,78.33773986,Annual herb,Forb
+APA18,bgrnf,APA18bgrnf,Mitracarpus hirtus,Yes,5,Mitracarpus hirtus (L.) DC.,Rubiaceae,Herb,Coffee family,14.05540854,78.34276519,Annual herb,Forb
+APA20,ab,APA20ab,Mitracarpus hirtus,Yes,14,Mitracarpus hirtus (L.) DC.,Rubiaceae,Herb,Coffee family,14.07351935,78.32029247,Annual herb,Forb
+APA20,bgrnf,APA20bgrnf,Mitracarpus hirtus,Yes,60,Mitracarpus hirtus (L.) DC.,Rubiaceae,Herb,Coffee family,14.07855213,78.32909996,Annual herb,Forb
+APA7,bgrnf,APA7bgrnf,Mitracarpus hirtus,Yes,230,Mitracarpus hirtus (L.) DC.,Rubiaceae,Herb,Coffee family,14.02257643,78.38102775,Annual herb,Forb
+APC1,bgrnf,APC1bgrnf,Mitracarpus hirtus,Yes,8,Mitracarpus hirtus (L.) DC.,Rubiaceae,Herb,Coffee family,13.84873331,78.42895372,Annual herb,Forb
+APC3,bgrnf,APC3bgrnf,Mitracarpus hirtus,Yes,93,Mitracarpus hirtus (L.) DC.,Rubiaceae,Herb,Coffee family,13.82903847,78.41240476,Annual herb,Forb
+APC8,ab,APC8ab,Mitracarpus hirtus,Yes,212,Mitracarpus hirtus (L.) DC.,Rubiaceae,Herb,Coffee family,13.87320667,78.52529305,Annual herb,Forb
+APC9,bgrnf,APC9bgrnf,Mitracarpus hirtus,Yes,192,Mitracarpus hirtus (L.) DC.,Rubiaceae,Herb,Coffee family,13.87330434,78.52919306,Annual herb,Forb
+APA10,bgrnf,APA10bgrnf,Oldenlandia umbellata,Yes,611,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,14.01957255,78.38249092,Annual/perennial herb,Forb
+APA12,bgrnf,APA12bgrnf,Oldenlandia umbellata,Yes,202,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,14.0406286,78.3174365,Annual/perennial herb,Forb
+APA18,bgpnf,APA18bgpnf,Oldenlandia umbellata,Yes,12,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,14.05877728,78.33773986,Annual/perennial herb,Forb
+APA18,bgrnf,APA18bgrnf,Oldenlandia umbellata,Yes,12,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,14.05540854,78.34276519,Annual/perennial herb,Forb
+APA1,bgrnf,APA1bgrnf,Oldenlandia umbellata,Yes,5,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,13.84898235,78.4284124,Annual/perennial herb,Forb
+APA20,bgrnf,APA20bgrnf,Oldenlandia umbellata,Yes,85,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,14.07855213,78.32909996,Annual/perennial herb,Forb
+APA21,bgrnf,APA21bgrnf,Oldenlandia umbellata,Yes,60,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,14.0087733,78.3203361,Annual/perennial herb,Forb
+APA7,bgrnf,APA7bgrnf,Oldenlandia umbellata,Yes,19,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,14.02257643,78.38102775,Annual/perennial herb,Forb
+APA8,bgrnf,APA8bgrnf,Oldenlandia umbellata,Yes,16,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,14.02132073,78.3810486,Annual/perennial herb,Forb
+APC10,ab,APC10ab,Oldenlandia umbellata,Yes,15,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,13.86199189,78.43342618,Annual/perennial herb,Forb
+APC12,ab,APC12ab,Oldenlandia umbellata,Yes,120,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,13.8698363,78.4179308,Annual/perennial herb,Forb
+APC1,bgrnf,APC1bgrnf,Oldenlandia umbellata,Yes,30,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,13.84873331,78.42895372,Annual/perennial herb,Forb
+APC2,bgpnf,APC2bgpnf,Oldenlandia umbellata,Yes,25,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,13.85048708,78.44295442,Annual/perennial herb,Forb
+APC4,ab,APC4ab,Oldenlandia umbellata,Yes,28,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,13.8421781,78.4288606,Annual/perennial herb,Forb
+APC5,bgpnf,APC5bgpnf,Oldenlandia umbellata,Yes,20,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,13.81476646,78.41896685,Annual/perennial herb,Forb
+APC5,bgrnf,APC5bgrnf,Oldenlandia umbellata,Yes,21,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,13.80497605,78.41399812,Annual/perennial herb,Forb
+APC6,ab,APC6ab,Oldenlandia umbellata,Yes,8,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,13.94070434,78.49388343,Annual/perennial herb,Forb
+APC7,bgpnf,APC7bgpnf,Oldenlandia umbellata,Yes,19,Oldenlandia umbellata L.,Rubiaceae,Herb,Coffee family,13.94232155,78.50763286,Annual/perennial herb,Forb
+APC12,ab,APC12ab,Parasopubia delphinifolia,Yes,8,Parasopubia delphiniifolia (L.) H.-P.Hofm. & Eb.Fisch.,Orobanchaceae,Herb,Broomrape,13.8698363,78.4179308,Annual herb,Forb
+APC1,bgrnf,APC1bgrnf,Parasopubia delphinifolia,Yes,147,Parasopubia delphiniifolia (L.) H.-P.Hofm. & Eb.Fisch.,Orobanchaceae,Herb,Broomrape,13.84873331,78.42895372,Annual herb,Forb
+APC2,bgrnf,APC2bgrnf,Parasopubia delphinifolia,Yes,44,Parasopubia delphiniifolia (L.) H.-P.Hofm. & Eb.Fisch.,Orobanchaceae,Herb,Broomrape,13.89582345,78.47713731,Annual herb,Forb
+APC4,bgrnf,APC4bgrnf,Parasopubia delphinifolia,Yes,25,Parasopubia delphiniifolia (L.) H.-P.Hofm. & Eb.Fisch.,Orobanchaceae,Herb,Broomrape,13.8435626,78.4210518,Annual herb,Forb
+APA10,bgrnf,APA10bgrnf,Phyllanthus virgatus,Yes,7,Phyllanthus virgatus G.Forst.,Phyllanthaceae,Herb,Leafflower family,14.01957255,78.38249092,Annual herb,Forb
+APA8,bgrnf,APA8bgrnf,Phyllanthus virgatus,Yes,8,Phyllanthus virgatus G.Forst.,Phyllanthaceae,Herb,Leafflower family,14.02132073,78.3810486,Annual herb,Forb
+APA12,bgrnf,APA12bgrnf,Polycarpaea corymbosa,Yes,7,Polycarpaea corymbosa (L.) Lam.,Caryophyllaceae,Herb,Carnation family,14.0406286,78.3174365,Annual herb,Forb
+APA19,bgrnf,APA19bgrnf,Polycarpaea corymbosa,Yes,16,Polycarpaea corymbosa (L.) Lam.,Caryophyllaceae,Herb,Carnation family,14.05936089,78.34454953,Annual herb,Forb
+APA1,bgrnf,APA1bgrnf,Polycarpaea corymbosa,Yes,4,Polycarpaea corymbosa (L.) Lam.,Caryophyllaceae,Herb,Carnation family,13.84898235,78.4284124,Annual herb,Forb
+APA21,bgpnf,APA21bgpnf,Polycarpaea corymbosa,Yes,9,Polycarpaea corymbosa (L.) Lam.,Caryophyllaceae,Herb,Carnation family,14.0091949,78.3198229,Annual herb,Forb
+APA7,bgpnf,APA7bgpnf,Polycarpaea corymbosa,Yes,6,Polycarpaea corymbosa (L.) Lam.,Caryophyllaceae,Herb,Carnation family,14.02114351,78.38002126,Annual herb,Forb
+APA8,bgrnf,APA8bgrnf,Polycarpaea corymbosa,Yes,7,Polycarpaea corymbosa (L.) Lam.,Caryophyllaceae,Herb,Carnation family,14.02132073,78.3810486,Annual herb,Forb
+APC10,ab,APC10ab,Polycarpaea corymbosa,Yes,5,Polycarpaea corymbosa (L.) Lam.,Caryophyllaceae,Herb,Carnation family,13.86199189,78.43342618,Annual herb,Forb
+APC1,bgrnf,APC1bgrnf,Polycarpaea corymbosa,Yes,7,Polycarpaea corymbosa (L.) Lam.,Caryophyllaceae,Herb,Carnation family,13.84873331,78.42895372,Annual herb,Forb
+APA10,bgrnf,APA10bgrnf,Polygala javana,Yes,24,Polygala javana DC.,Polygalaceae,Undershrub,NA,14.01957255,78.38249092,Annual/perennial herb,Forb
+APA7,bgrnf,APA7bgrnf,Polygala javana,Yes,9,Polygala javana DC.,Polygalaceae,Undershrub,NA,14.02257643,78.38102775,Annual/perennial herb,Forb
+APA10,bgpnf,APA10bgpnf,Pulicaria wightiana,Yes,10,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.01931795,78.38124299,Annual herb,Forb
+APA10,bgrnf,APA10bgrnf,Pulicaria wightiana,Yes,55,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.01957255,78.38249092,Annual herb,Forb
+APA12,ab,APA12ab,Pulicaria wightiana,Yes,168,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.0411993,78.3177903,Annual herb,Forb
+APA12,bgrnf,APA12bgrnf,Pulicaria wightiana,Yes,31,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.0406286,78.3174365,Annual herb,Forb
+APA15,bgpnf,APA15bgpnf,Pulicaria wightiana,Yes,45,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.07274083,78.36364415,Annual herb,Forb
+APA16,bgrnf,APA16bgrnf,Pulicaria wightiana,Yes,51,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.1162124,78.340371,Annual herb,Forb
+APA17,bgpnf,APA17bgpnf,Pulicaria wightiana,Yes,120,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.1182461,78.3338937,Annual herb,Forb
+APA17,bgrnf,APA17bgrnf,Pulicaria wightiana,Yes,1075,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.1183527,78.3349066,Annual herb,Forb
+APA18,bgpnf,APA18bgpnf,Pulicaria wightiana,Yes,8,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.05877728,78.33773986,Annual herb,Forb
+APA19,ab,APA19ab,Pulicaria wightiana,Yes,13,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.06168327,78.34201433,Annual herb,Forb
+APA1,ab,APA1ab,Pulicaria wightiana,Yes,7,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.06974742,78.3350166,Annual herb,Forb
+APA20,ab,APA20ab,Pulicaria wightiana,Yes,42,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.07351935,78.32029247,Annual herb,Forb
+APA20,bgrnf,APA20bgrnf,Pulicaria wightiana,Yes,39,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.07855213,78.32909996,Annual herb,Forb
+APA21,bgrnf,APA21bgrnf,Pulicaria wightiana,Yes,49,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.0087733,78.3203361,Annual herb,Forb
+APA5,bgrnf,APA5bgrnf,Pulicaria wightiana,Yes,175,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.0633389,78.35483416,Annual herb,Forb
+APA6,ab,APA6ab,Pulicaria wightiana,Yes,241,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.0322524,78.37958529,Annual herb,Forb
+APA6,bgrnf,APA6bgrnf,Pulicaria wightiana,Yes,452,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.03027697,78.38398113,Annual herb,Forb
+APA7,ab,APA7ab,Pulicaria wightiana,Yes,87,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.02755862,78.37557542,Annual herb,Forb
+APA7,bgrnf,APA7bgrnf,Pulicaria wightiana,Yes,15,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.02257643,78.38102775,Annual herb,Forb
+APA8,bgrnf,APA8bgrnf,Pulicaria wightiana,Yes,57,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,14.02132073,78.3810486,Annual herb,Forb
+APC10,ab,APC10ab,Pulicaria wightiana,Yes,135,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.86199189,78.43342618,Annual herb,Forb
+APC10,bgrnf,APC10bgrnf,Pulicaria wightiana,Yes,15,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.8647888,78.3988028,Annual herb,Forb
+APC12,ab,APC12ab,Pulicaria wightiana,Yes,14,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.8698363,78.4179308,Annual herb,Forb
+APC12,bgrnf,APC12bgrnf,Pulicaria wightiana,Yes,17,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.8937946,78.4132926,Annual herb,Forb
+APC13,bgrnf,APC13bgrnf,Pulicaria wightiana,Yes,9,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.90526646,78.50195839,Annual herb,Forb
+APC14,bgrnf,APC14bgrnf,Pulicaria wightiana,Yes,42,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.90507205,78.50428427,Annual herb,Forb
+APC1,ab,APC1ab,Pulicaria wightiana,Yes,23,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.85288068,78.44261171,Annual herb,Forb
+APC1,bgrnf,APC1bgrnf,Pulicaria wightiana,Yes,128,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.84873331,78.42895372,Annual herb,Forb
+APC2,bgpnf,APC2bgpnf,Pulicaria wightiana,Yes,37,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.85048708,78.44295442,Annual herb,Forb
+APC2,bgrnf,APC2bgrnf,Pulicaria wightiana,Yes,71,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.89582345,78.47713731,Annual herb,Forb
+APC3,bgrnf,APC3bgrnf,Pulicaria wightiana,Yes,6,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.82903847,78.41240476,Annual herb,Forb
+APC4,ab,APC4ab,Pulicaria wightiana,Yes,47,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.8421781,78.4288606,Annual herb,Forb
+APC4,bgpnf,APC4bgpnf,Pulicaria wightiana,Yes,19,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.84584791,78.44843727,Annual herb,Forb
+APC4,bgrnf,APC4bgrnf,Pulicaria wightiana,Yes,30,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.8435626,78.4210518,Annual herb,Forb
+APC5,bgpnf,APC5bgpnf,Pulicaria wightiana,Yes,13,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.81476646,78.41896685,Annual herb,Forb
+APC7,bgpnf,APC7bgpnf,Pulicaria wightiana,Yes,380,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.94232155,78.50763286,Annual herb,Forb
+APC7,bgrnf,APC7bgrnf,Pulicaria wightiana,Yes,11,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.93962978,78.49521943,Annual herb,Forb
+APC9,bgrnf,APC9bgrnf,Pulicaria wightiana,Yes,67,Pulicaria wightiana (DC.) C.B.Clarke,Asteraceae,Herb,Asters,13.87330434,78.52919306,Annual herb,Forb
+APC10,ab,APC10ab,Rhynchosia rufescens,Yes,11,Rhynchosia rufescens DC.,Fabaceae,Undershrub,Legumes,13.86199189,78.43342618,Perennial herb,Forb
+APC11,bgrnf,APC11bgrnf,Rhynchosia rufescens,Yes,20,Rhynchosia rufescens DC.,Fabaceae,Undershrub,Legumes,13.8387583,78.4107094,Perennial herb,Forb
+APC1,bgrnf,APC1bgrnf,Rhynchosia rufescens,Yes,8,Rhynchosia rufescens DC.,Fabaceae,Undershrub,Legumes,13.84873331,78.42895372,Perennial herb,Forb
+APC3,bgrnf,APC3bgrnf,Rhynchosia rufescens,Yes,13,Rhynchosia rufescens DC.,Fabaceae,Undershrub,Legumes,13.82903847,78.41240476,Perennial herb,Forb
+APC4,bgpnf,APC4bgpnf,Rhynchosia rufescens,Yes,12,Rhynchosia rufescens DC.,Fabaceae,Undershrub,Legumes,13.84584791,78.44843727,Perennial herb,Forb
+APC2,bgpnf,APC2bgpnf,Rhynchosia suaveolens,Yes,21,Rhynchosia suaveolens (L.f.) DC.,Fabaceae,Undershrub,Legumes,13.85048708,78.44295442,Perennial undershrub,Forb
+APA12,bgrnf,APA12bgrnf,Justicia procumbens,Yes,6,Rostellularia obtusa Nees,Acanthaceae,Herb,Acanthus family,14.0406286,78.3174365,Annual herb,Forb
+APA17,bgpnf,APA17bgpnf,Justicia procumbens,Yes,8,Rostellularia obtusa Nees,Acanthaceae,Herb,Acanthus family,14.1182461,78.3338937,Annual herb,Forb
+APA17,bgrnf,APA17bgrnf,Justicia procumbens,Yes,74,Rostellularia obtusa Nees,Acanthaceae,Herb,Acanthus family,14.1183527,78.3349066,Annual herb,Forb
+APA20,bgrnf,APA20bgrnf,Justicia procumbens,Yes,46,Rostellularia obtusa Nees,Acanthaceae,Herb,Acanthus family,14.07855213,78.32909996,Annual herb,Forb
+APC12,bgpnf,APC12bgpnf,Justicia procumbens,Yes,26,Rostellularia obtusa Nees,Acanthaceae,Herb,Acanthus family,13.89265608,78.41413564,Annual herb,Forb
+APC4,bgpnf,APC4bgpnf,Justicia procumbens,Yes,14,Rostellularia obtusa Nees,Acanthaceae,Herb,Acanthus family,13.84584791,78.44843727,Annual herb,Forb
+APC2,bgpnf,APC2bgpnf,Sehima nervosum,Yes,151,Sehima nervosa (Rottler) Stapf,Poaceae,Herb,Grass,13.85048708,78.44295442,Annual/perennial herb,Graminoid
+APC3,bgrnf,APC3bgrnf,Sehima nervosum,Yes,250,Sehima nervosa (Rottler) Stapf,Poaceae,Herb,Grass,13.82903847,78.41240476,Annual/perennial herb,Graminoid
+APC4,ab,APC4ab,Sesamum laciniatum,Yes,15,Sesamum prostratum Retz.,Pedaliaceae,Herb,Sesame family,13.8421781,78.4288606,Annual herb,Forb
+APC4,bgrnf,APC4bgrnf,Sesamum laciniatum,Yes,70,Sesamum prostratum Retz.,Pedaliaceae,Herb,Sesame family,13.8435626,78.4210518,Annual herb,Forb
+APA12,ab,APA12ab,Spermacoce hispida,Yes,20,Spermacoce hispida L.,Rubiaceae,Herb,Coffee family,14.0411993,78.3177903,Annual/perennial herb,Forb
+APA12,bgrnf,APA12bgrnf,Spermacoce hispida,Yes,17,Spermacoce hispida L.,Rubiaceae,Herb,Coffee family,14.0406286,78.3174365,Annual/perennial herb,Forb
+APA21,bgrnf,APA21bgrnf,Spermacoce hispida,Yes,15,Spermacoce hispida L.,Rubiaceae,Herb,Coffee family,14.0087733,78.3203361,Annual/perennial herb,Forb
+APC11,ab,APC11ab,Spermacoce hispida,Yes,74,Spermacoce hispida L.,Rubiaceae,Herb,Coffee family,13.8371911,78.4106671,Annual/perennial herb,Forb
+APC12,bgrnf,APC12bgrnf,Spermacoce hispida,Yes,315,Spermacoce hispida L.,Rubiaceae,Herb,Coffee family,13.8937946,78.4132926,Annual/perennial herb,Forb
+APC1,bgrnf,APC1bgrnf,Spermacoce hispida,Yes,106,Spermacoce hispida L.,Rubiaceae,Herb,Coffee family,13.84873331,78.42895372,Annual/perennial herb,Forb
+APA10,bgpnf,APA10bgpnf,Spermacoce pusilla,Yes,180,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.01931795,78.38124299,Annual herb,Forb
+APA12,bgrnf,APA12bgrnf,Spermacoce pusilla,Yes,15,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.0406286,78.3174365,Annual herb,Forb
+APA15,bgpnf,APA15bgpnf,Spermacoce pusilla,Yes,89,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.07274083,78.36364415,Annual herb,Forb
+APA16,bgrnf,APA16bgrnf,Spermacoce pusilla,Yes,37,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.1162124,78.340371,Annual herb,Forb
+APA17,bgpnf,APA17bgpnf,Spermacoce pusilla,Yes,25,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.1182461,78.3338937,Annual herb,Forb
+APA18,bgrnf,APA18bgrnf,Spermacoce pusilla,Yes,107,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.05540854,78.34276519,Annual herb,Forb
+APA19,ab,APA19ab,Spermacoce pusilla,Yes,164,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.06168327,78.34201433,Annual herb,Forb
+APA19,bgrnf,APA19bgrnf,Spermacoce pusilla,Yes,305,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.05936089,78.34454953,Annual herb,Forb
+APA1,ab,APA1ab,Spermacoce pusilla,Yes,222,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.06974742,78.3350166,Annual herb,Forb
+APA1,bgrnf,APA1bgrnf,Spermacoce pusilla,Yes,16,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.84898235,78.4284124,Annual herb,Forb
+APA21,bgpnf,APA21bgpnf,Spermacoce pusilla,Yes,35,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.0091949,78.3198229,Annual herb,Forb
+APA21,bgrnf,APA21bgrnf,Spermacoce pusilla,Yes,22,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.0087733,78.3203361,Annual herb,Forb
+APA5,bgrnf,APA5bgrnf,Spermacoce pusilla,Yes,161,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.0633389,78.35483416,Annual herb,Forb
+APA6,ab,APA6ab,Spermacoce pusilla,Yes,30,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.0322524,78.37958529,Annual herb,Forb
+APA8,bgrnf,APA8bgrnf,Spermacoce pusilla,Yes,103,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,14.02132073,78.3810486,Annual herb,Forb
+APC10,ab,APC10ab,Spermacoce pusilla,Yes,70,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.86199189,78.43342618,Annual herb,Forb
+APC10,bgrnf,APC10bgrnf,Spermacoce pusilla,Yes,10,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.8647888,78.3988028,Annual herb,Forb
+APC11,bgrnf,APC11bgrnf,Spermacoce pusilla,Yes,498,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.8387583,78.4107094,Annual herb,Forb
+APC12,ab,APC12ab,Spermacoce pusilla,Yes,30,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.8698363,78.4179308,Annual herb,Forb
+APC12,bgpnf,APC12bgpnf,Spermacoce pusilla,Yes,13,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.89265608,78.41413564,Annual herb,Forb
+APC13,bgpnf,APC13bgpnf,Spermacoce pusilla,Yes,76,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.90649864,78.50191729,Annual herb,Forb
+APC13,bgrnf,APC13bgrnf,Spermacoce pusilla,Yes,245,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.90526646,78.50195839,Annual herb,Forb
+APC14,bgrnf,APC14bgrnf,Spermacoce pusilla,Yes,6,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.90507205,78.50428427,Annual herb,Forb
+APC1,ab,APC1ab,Spermacoce pusilla,Yes,104,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.85288068,78.44261171,Annual herb,Forb
+APC2,bgpnf,APC2bgpnf,Spermacoce pusilla,Yes,139,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.85048708,78.44295442,Annual herb,Forb
+APC2,bgrnf,APC2bgrnf,Spermacoce pusilla,Yes,166,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.89582345,78.47713731,Annual herb,Forb
+APC4,ab,APC4ab,Spermacoce pusilla,Yes,45,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.8421781,78.4288606,Annual herb,Forb
+APC4,bgpnf,APC4bgpnf,Spermacoce pusilla,Yes,46,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.84584791,78.44843727,Annual herb,Forb
+APC4,bgrnf,APC4bgrnf,Spermacoce pusilla,Yes,20,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.8435626,78.4210518,Annual herb,Forb
+APC5,bgrnf,APC5bgrnf,Spermacoce pusilla,Yes,255,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.80497605,78.41399812,Annual herb,Forb
+APC6,ab,APC6ab,Spermacoce pusilla,Yes,11,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.94070434,78.49388343,Annual herb,Forb
+APC6,bgrnf,APC6bgrnf,Spermacoce pusilla,Yes,210,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.94001826,78.49399366,Annual herb,Forb
+APC7,bgpnf,APC7bgpnf,Spermacoce pusilla,Yes,18,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.94232155,78.50763286,Annual herb,Forb
+APC7,bgrnf,APC7bgrnf,Spermacoce pusilla,Yes,71,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.93962978,78.49521943,Annual herb,Forb
+APC8,bgrnf,APC8bgrnf,Spermacoce pusilla,Yes,121,Spermacoce pusilla Wall.,Rubiaceae,Herb,Coffee family,13.8733068,78.52803175,Annual herb,Forb
+APA20,bgrnf,APA20bgrnf,Sphaeranthus indicus,No,26,Sphaeranthus indicus L.,Asteraceae,Herb,Asters,14.07855213,78.32909996,Annual herb,Forb
+APC2,bgrnf,APC2bgrnf,Stylosanthes scabra,Yes,13,Stylosanthes scabra Vogel,Fabaceae,Herb,Legumes,13.89582345,78.47713731,Perennial herb,Forb
+APC7,bgrnf,APC7bgrnf,Stylosanthes scabra,Yes,13,Stylosanthes scabra Vogel,Fabaceae,Herb,Legumes,13.93962978,78.49521943,Perennial herb,Forb
+APA1,bgrnf,APA1bgrnf,Tephrosia strigosa,Yes,6,Tephrosia strigosa (Dalzell) Santapau & Maheshw.,Fabaceae,Herb,Legumes,13.84898235,78.4284124,Annual/perennial herb,Forb
+APA7,bgpnf,APA7bgpnf,Tephrosia strigosa,Yes,10,Tephrosia strigosa (Dalzell) Santapau & Maheshw.,Fabaceae,Herb,Legumes,14.02114351,78.38002126,Annual/perennial herb,Forb
+APC10,ab,APC10ab,Tephrosia strigosa,Yes,5,Tephrosia strigosa (Dalzell) Santapau & Maheshw.,Fabaceae,Herb,Legumes,13.86199189,78.43342618,Annual/perennial herb,Forb
+APC12,bgpnf,APC12bgpnf,Tephrosia strigosa,Yes,8,Tephrosia strigosa (Dalzell) Santapau & Maheshw.,Fabaceae,Herb,Legumes,13.89265608,78.41413564,Annual/perennial herb,Forb
+APC1,ab,APC1ab,Tephrosia strigosa,Yes,9,Tephrosia strigosa (Dalzell) Santapau & Maheshw.,Fabaceae,Herb,Legumes,13.85288068,78.44261171,Annual/perennial herb,Forb
+APC2,bgpnf,APC2bgpnf,Tephrosia strigosa,Yes,11,Tephrosia strigosa (Dalzell) Santapau & Maheshw.,Fabaceae,Herb,Legumes,13.85048708,78.44295442,Annual/perennial herb,Forb
+APA18,bgpnf,APA18bgpnf,Tephrosia villosa,No,57,Tephrosia villosa (L.) Pers.,Fabaceae,Herb,Legumes,14.05877728,78.33773986,Annual herb,Forb
+APA19,bgrnf,APA19bgrnf,Tephrosia villosa,No,9,Tephrosia villosa (L.) Pers.,Fabaceae,Herb,Legumes,14.05936089,78.34454953,Annual herb,Forb
+APA1,ab,APA1ab,Tephrosia villosa,No,7,Tephrosia villosa (L.) Pers.,Fabaceae,Herb,Legumes,14.06974742,78.3350166,Annual herb,Forb
+APA1,bgrnf,APA1bgrnf,Tephrosia villosa,No,16,Tephrosia villosa (L.) Pers.,Fabaceae,Herb,Legumes,13.84898235,78.4284124,Annual herb,Forb
+APA20,bgrnf,APA20bgrnf,Tephrosia villosa,No,119,Tephrosia villosa (L.) Pers.,Fabaceae,Herb,Legumes,14.07855213,78.32909996,Annual herb,Forb
+APC1,bgrnf,APC1bgrnf,Tephrosia villosa,No,238,Tephrosia villosa (L.) Pers.,Fabaceae,Herb,Legumes,13.84873331,78.42895372,Annual herb,Forb
+APA17,bgrnf,APA17bgrnf,Tricholepis radicans,Yes,25,Tricholepis radicans (Roxb.) Wight,Asteraceae,Herb,Asters,14.1183527,78.3349066,Annual herb,Forb
+APA12,bgrnf,APA12bgrnf,Trichuriella monsoniae,Yes,5,Trichuriella monsoniae (L.f.) Bennet,Amaranthaceae,Herb,Amaranth family,14.0406286,78.3174365,Perennial herb,Forb
+APA12,bgrnf,APA12bgrnf,Tridax procumbens,Yes,9,Tridax procumbens L.,Asteraceae,Herb,Asters,14.0406286,78.3174365,Perennial herb,Forb
+APA16,bgrnf,APA16bgrnf,Tridax procumbens,Yes,12,Tridax procumbens L.,Asteraceae,Herb,Asters,14.1162124,78.340371,Perennial herb,Forb
+APA18,bgpnf,APA18bgpnf,Tridax procumbens,Yes,12,Tridax procumbens L.,Asteraceae,Herb,Asters,14.05877728,78.33773986,Perennial herb,Forb
+APA19,ab,APA19ab,Tridax procumbens,Yes,11,Tridax procumbens L.,Asteraceae,Herb,Asters,14.06168327,78.34201433,Perennial herb,Forb
+APA19,bgrnf,APA19bgrnf,Tridax procumbens,Yes,10,Tridax procumbens L.,Asteraceae,Herb,Asters,14.05936089,78.34454953,Perennial herb,Forb
+APA1,bgrnf,APA1bgrnf,Tridax procumbens,Yes,2,Tridax procumbens L.,Asteraceae,Herb,Asters,13.84898235,78.4284124,Perennial herb,Forb
+APA20,ab,APA20ab,Tridax procumbens,Yes,7,Tridax procumbens L.,Asteraceae,Herb,Asters,14.07351935,78.32029247,Perennial herb,Forb
+APA20,bgrnf,APA20bgrnf,Tridax procumbens,Yes,35,Tridax procumbens L.,Asteraceae,Herb,Asters,14.07855213,78.32909996,Perennial herb,Forb
+APA21,bgpnf,APA21bgpnf,Tridax procumbens,Yes,10,Tridax procumbens L.,Asteraceae,Herb,Asters,14.0091949,78.3198229,Perennial herb,Forb
+APC10,bgrnf,APC10bgrnf,Tridax procumbens,Yes,6,Tridax procumbens L.,Asteraceae,Herb,Asters,13.8647888,78.3988028,Perennial herb,Forb
+APA12,ab,APA12ab,Pentanema indicum,Yes,10,Vicoa indica (L.) DC.,Asteraceae,Herb,Asters,14.0411993,78.3177903,Perennial herb,Forb
+APA1,bgrnf,APA1bgrnf,Pentanema indicum,Yes,16,Vicoa indica (L.) DC.,Asteraceae,Herb,Asters,13.84898235,78.4284124,Perennial herb,Forb
+APC11,ab,APC11ab,Pentanema indicum,Yes,14,Vicoa indica (L.) DC.,Asteraceae,Herb,Asters,13.8371911,78.4106671,Perennial herb,Forb
+APC11,bgrnf,APC11bgrnf,Pentanema indicum,Yes,26,Vicoa indica (L.) DC.,Asteraceae,Herb,Asters,13.8387583,78.4107094,Perennial herb,Forb
+APC12,ab,APC12ab,Pentanema indicum,Yes,51,Vicoa indica (L.) DC.,Asteraceae,Herb,Asters,13.8698363,78.4179308,Perennial herb,Forb
+APC1,bgrnf,APC1bgrnf,Pentanema indicum,Yes,52,Vicoa indica (L.) DC.,Asteraceae,Herb,Asters,13.84873331,78.42895372,Perennial herb,Forb
+APC3,ab,APC3ab,Pentanema indicum,Yes,25,Vicoa indica (L.) DC.,Asteraceae,Herb,Asters,13.8280097,78.4130915,Perennial herb,Forb
+APC3,bgrnf,APC3bgrnf,Pentanema indicum,Yes,190,Vicoa indica (L.) DC.,Asteraceae,Herb,Asters,13.82903847,78.41240476,Perennial herb,Forb
+APA1,bgrnf,APA1bgrnf,Vigna aconitifolia,Yes,4,Vigna aconitifolia (Jacq.) Maréchal,Fabaceae,Herb,Legumes,13.84898235,78.4284124,Annual herb,Forb
+APC5,bgpnf,APC5bgpnf,Vigna trilobata,Yes,6,Vigna trilobata (L.) Verdc.,Fabaceae,Herb,Legumes,13.81476646,78.41896685,Annual herb,Forb
+APC2,bgrnf,APC2bgrnf,Waltheria indica,Yes,8,Waltheria indica L.,Malvaceae,Undershrub,Mallow family,13.89582345,78.47713731,Perennial herb,Forb
+APA17,bgpnf,APA17bgpnf,Merremia tridentata,Yes,6,Xenostegia tridentata (L.) D.F.Austin & Staples,Convolvulaceae,Herb,Morning glory family,14.1182461,78.3338937,Annual herb,Forb
+APC1,bgrnf,APC1bgrnf,Merremia tridentata,Yes,8,Xenostegia tridentata (L.) D.F.Austin & Staples,Convolvulaceae,Herb,Morning glory family,13.84873331,78.42895372,Annual herb,Forb
+APC5,bgpnf,APC5bgpnf,Merremia tridentata,Yes,17,Xenostegia tridentata (L.) D.F.Austin & Staples,Convolvulaceae,Herb,Morning glory family,13.81476646,78.41896685,Annual herb,Forb
