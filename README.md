@@ -7,9 +7,21 @@ and generate results and figures for the article.
 
 ### Data
 
+xx data sents associated with this project are found on xxxx DOI listed above.
+
+**Data xx**
+
+**Data xx**
+
+**Data xx**
+
 
 ### R Scripts
 
-Citations
+xx scripts are provided in this repository.
 
-Saneesh C S, Paradesi Anjaneyulu, Anil Kumar, Emma Ladouceur, Tiffany Knight (20xx) Rxxx xxxx xxxx xxx xxxxxxx xxxxxx xxxx. Restoration xxxxxxx. DOI: xx.xxxx/xxx.xxxx
+
+
+**Citations**
+
+*Saneesh C S, Paradesi Anjaneyulu, Anil Kumar, Emma Ladouceur, Tiffany Knight (20xx) Rxxx xxxx xxxx xxx xxxxxxx xxxxxx xxxx. Restoration xxxxxxx. DOI: xx.xxxx/xxx.xxxx*
