@@ -9,3 +9,7 @@ and generate results and figures for the article.
 
 
 ### R Scripts
+
+Citations
+
+Saneesh C S, Paradesi Anjaneyulu, Anil Kumar, Emma Ladouceur, Tiffany Knight (20xx) Rxxx xxxx xxxx xxx xxxxxxx xxxxxx xxxx. Restoration xxxxxxx. DOI: xx.xxxx/xxx.xxxx
