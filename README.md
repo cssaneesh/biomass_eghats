@@ -18,8 +18,11 @@ xx data sents associated with this project are found on xxxx DOI listed above.
 
 xx scripts are provided in this repository.
 
+<<<<<<< HEAD
 
 
 **Citations**
 
+=======
+>>>>>>> f1b9bfc944d0f9d267f82a9bcd09191b8973a546
 *Saneesh C S, Paradesi Anjaneyulu, Anil Kumar, Emma Ladouceur, Tiffany Knight (20xx) Rxxx xxxx xxxx xxx xxxxxxx xxxxxx xxxx. Restoration xxxxxxx. DOI: xx.xxxx/xxx.xxxx*
