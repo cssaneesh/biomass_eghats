@@ -26,6 +26,9 @@ transect_dat <- raw_dat %>%
     Functional_groups = as.factor(Functional_groups)
   )
 
+
+# create transect prep data
+
 transect_prep <- transect_dat %>%
   arrange(Transect, Treatment) %>%
   mutate(
