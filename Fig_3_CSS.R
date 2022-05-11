@@ -143,15 +143,15 @@ with(ar.plot, plot(Treatment, ma$Estimate))
 with(ar.plot, plot(Site, ma$Estimate))
 # you want these to be centrered on zero
 
-fig_s3a <- pp_check(ghats.alpha_rich) +
+fig_s1b <- pp_check(ghats.alpha_rich) +
     xlab( "Species richness") + ylab("Density") + 
   ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
-  labs(subtitle = "a)") +
+  labs(subtitle = "b)") +
   theme_classic() + xlim(-5,25)+
   theme(plot.title = element_text(size = 18, hjust = 0.5),
-        legend.position = "none")# predicted vs. observed values
+        legend.position = "bottom")# predicted vs. observed values
 
-fig_s3a
+fig_s1b
 
 ghats_alpha_rich <-
   conditional_effects(
