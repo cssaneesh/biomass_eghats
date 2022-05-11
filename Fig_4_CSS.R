@@ -73,6 +73,8 @@ transect_calc <- transect_prep %>% left_join(transect_sum) %>%
     relative_biomass_nc_p = ((Weight / transect_biomass) * 100)
   )
 
+View(transect_calc)
+
 alpha_div <-
   transect_calc %>% group_by(Transect, Treatment) %>%
   dplyr::summarise(
@@ -88,31 +90,54 @@ alpha_div <-
 
 # ghats.alpha_ENSPIE----
 
-# ghats.alpha_ENSPIE <-
-#   brm(
-#     alpha_ENSPIE ~   Treatment + (Treatment  | Transect) ,
-#     family = gaussian(),
-#     data = alpha_div,
-#     iter = 2000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4,
-#     backend = 'rstan'
-#   )
-# 
-# save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
+ghats.alpha_ENSPIE <-
+  brm(
+    alpha_ENSPIE ~   Treatment + ( Treatment  | Transect) ,
+    family = 'lognormal',
+    data = alpha_div,
+    iter = 6000,
+    warmup = 1000,
+    cores = 4,
+    chains = 4,
+    control = list(adapt_delta = 0.85) )
+ 
+ save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
 
 load('ghats.alpha_ENSPIE.Rdata')
 
+
+summary(ghats.alpha_ENSPIE) # summary of alpha richness model
+
 color_scheme_set("darkgray")
-density_plot <- pp_check(ghats.alpha_ENSPIE) +
-  xlab("alpha Richness") + ylab("Density") +
+# caterpillars/chains
+plot(ghats.alpha_ENSPIE)
+# you want these 'caterpillars to be 'hairy' (very evenly squiggly)
+
+# check model residuals
+head(alpha_div)
+ma <- residuals(ghats.alpha_ENSPIE)
+ma <- as.data.frame(ma)
+ar.plot <- cbind(alpha_div, ma$Estimate)
+
+#make sure they are factors
+ar.plot$Treatment <- as.factor(ar.plot$Treatment )
+ar.plot$Transect <- as.factor(ar.plot$Transect )
+
+#plot residuals
+par(mfrow=c(1,2))
+with(ar.plot, plot(Treatment, ma$Estimate))
+with(ar.plot, plot(Transect, ma$Estimate))
+# you want these to be centrered on zero
+
+fig_s4a <- pp_check(ghats.alpha_ENSPIE) +
+    xlab( expression(paste(ENS[PIE])) ) + ylab("Density") + 
+  ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
   labs(subtitle = "a)") +
-  theme_classic() +
+  theme_classic() + xlim(-5,20) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "none")# predicted vs. observed values
 
-density_plot
+fig_s4a
 
 ghats_alpha_ENSPIE <-
   conditional_effects(

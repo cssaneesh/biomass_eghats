@@ -1,3 +1,4 @@
+
 # Packages----
 library(tidyverse)
 library(patchwork)
@@ -100,31 +101,55 @@ gamma_dat <- alpha_dat_prep %>%
 
 # ghats.alpha_rich----
 
-# ghats.alpha_rich <-
-#   brm(
-#     alpha_rich ~   Treatment + (Treatment  | Transect) ,
-#     family = student(),
-#     data = alpha_div,
-#     iter = 5000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4,
-#     backend = 'rstan'
-#   )
-#
-# save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
+ghats.alpha_rich <-
+  brm(
+    alpha_rich ~  Treatment + ( Treatment | Transect) ,
+    family = poisson(),
+    data = alpha_div,
+    iter = 2000,
+    warmup = 1000,
+    cores = 4,
+    chains = 4,
+    control = list(adapt_delta = 0.9)
+  )
+
+save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
 
 load('ghats.alpha_rich.Rdata')
 
+
+summary(ghats.alpha_rich) # summary of alpha richness model
+
 color_scheme_set("darkgray")
-density_plot <- pp_check(ghats.alpha_rich) +
-  xlab("alpha Richness") + ylab("Density") +
+# caterpillars/chains
+plot(ghats.alpha_rich)
+# you want these 'caterpillars to be 'hairy' (very evenly squiggly)
+
+# check model residuals
+head(alpha_div)
+ma <- residuals(ghats.alpha_rich)
+ma <- as.data.frame(ma)
+ar.plot <- cbind(alpha_div, ma$Estimate)
+
+#make sure they are factors
+ar.plot$Treatment <- as.factor(ar.plot$Treatment )
+ar.plot$Transect <- as.factor(ar.plot$Transect )
+
+#plot residuals
+par(mfrow=c(1,2))
+with(ar.plot, plot(Treatment, ma$Estimate))
+with(ar.plot, plot(Transect, ma$Estimate))
+# you want these to be centrered on zero
+
+fig_s3a <- pp_check(ghats.alpha_rich) +
+    xlab( "Species richness") + ylab("Density") + 
+  ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
   labs(subtitle = "a)") +
-  theme_classic() +
+  theme_classic() + xlim(-5,25)+
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "none")# predicted vs. observed values
 
-density_plot
+fig_s3a
 
 ghats_alpha_rich <-
   conditional_effects(
@@ -133,6 +158,8 @@ ghats_alpha_rich <-
     re_formula = NA,
     method = 'fitted'
   )  # conditional effects
+
+
 
 # beta data----
 
@@ -331,7 +358,9 @@ fig_alpha_rich <- ggplot() +
     panel.background = element_rect(fill = "white")
   ) + labs(subtitle = 'a)')
 
-fig_a <- fig_alpha_rich
+fig_2a <- fig_alpha_rich
+
+fig_2a
 
 # Beta
 beta_S_all <- ggplot() +
