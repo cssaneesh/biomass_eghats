@@ -66,7 +66,7 @@ transect_calc <- transect_prep %>% left_join(transect_sum) %>%
 
 # for alpha
 alpha_div <-
-  transect_calc %>% group_by(Transect, Treatment) %>%
+  transect_calc %>% group_by(Site, Transect, Treatment) %>%
   dplyr::summarise(
     alpha_rich = n_distinct(Sci_name),
     alpha_ENSPIE = vegan::diversity(relative_biomass,
@@ -75,6 +75,8 @@ alpha_div <-
   mutate(Treatment = factor(Treatment)) %>%
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))  %>%
   ungroup()
+
+write.csv( alpha_div, "alpha_div.csv")
 
 # for beta
 alpha_dat <-  transect_dat %>%
@@ -103,10 +105,10 @@ gamma_dat <- alpha_dat_prep %>%
 
 ghats.alpha_rich <-
   brm(
-    alpha_rich ~  Treatment + ( Treatment | Transect) ,
+    alpha_rich ~  Treatment + ( 1 | Site/Transect ) ,
     family = poisson(),
     data = alpha_div,
-    iter = 2000,
+    iter = 3000,
     warmup = 1000,
     cores = 4,
     chains = 4,
@@ -133,12 +135,12 @@ ar.plot <- cbind(alpha_div, ma$Estimate)
 
 #make sure they are factors
 ar.plot$Treatment <- as.factor(ar.plot$Treatment )
-ar.plot$Transect <- as.factor(ar.plot$Transect )
+ar.plot$Site <- as.factor(ar.plot$Site )
 
 #plot residuals
 par(mfrow=c(1,2))
 with(ar.plot, plot(Treatment, ma$Estimate))
-with(ar.plot, plot(Transect, ma$Estimate))
+with(ar.plot, plot(Site, ma$Estimate))
 # you want these to be centrered on zero
 
 fig_s3a <- pp_check(ghats.alpha_rich) +

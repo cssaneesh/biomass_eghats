@@ -75,16 +75,16 @@ transect_calc <- transect_prep %>% left_join(transect_sum) %>%
 
 View(transect_calc)
 
-alpha_div <-
-  transect_calc %>% group_by(Transect, Treatment) %>%
-  dplyr::summarise(
-    alpha_rich = n_distinct(Sci_name),
-    alpha_ENSPIE = vegan::diversity(relative_biomass,
-                                    index = 'invsimpson')) %>% 
-  mutate(Treatment = factor(Treatment)) %>% 
-  mutate(Treatment = fct_relevel(Treatment, c("Control","CPFA","CAFA")))  %>%
-  ungroup()
 
+alpha_div <- read.csv(
+  "alpha_div.csv",
+  header = T,
+  fill = TRUE,
+  sep = ",",
+  na.strings = c("", " ", "NA", "NA ", "na", "NULL")
+)
+
+head(alpha_div)
 
 # Analysis-----
 
@@ -92,14 +92,14 @@ alpha_div <-
 
 ghats.alpha_ENSPIE <-
   brm(
-    alpha_ENSPIE ~   Treatment + ( Treatment  | Transect) ,
+    alpha_ENSPIE ~   Treatment + ( 1  | Site ) ,
     family = 'lognormal',
     data = alpha_div,
-    iter = 6000,
+    iter = 3000,
     warmup = 1000,
     cores = 4,
     chains = 4,
-    control = list(adapt_delta = 0.85) )
+    control = list(adapt_delta = 0.99) )
  
  save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
 
@@ -121,19 +121,19 @@ ar.plot <- cbind(alpha_div, ma$Estimate)
 
 #make sure they are factors
 ar.plot$Treatment <- as.factor(ar.plot$Treatment )
-ar.plot$Transect <- as.factor(ar.plot$Transect )
+ar.plot$Site <- as.factor(ar.plot$Site )
 
 #plot residuals
 par(mfrow=c(1,2))
 with(ar.plot, plot(Treatment, ma$Estimate))
-with(ar.plot, plot(Transect, ma$Estimate))
+with(ar.plot, plot(Site, ma$Estimate))
 # you want these to be centrered on zero
 
 fig_s4a <- pp_check(ghats.alpha_ENSPIE) +
     xlab( expression(paste(ENS[PIE])) ) + ylab("Density") + 
   ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
   labs(subtitle = "a)") +
-  theme_classic() + xlim(-5,20) +
+  theme_classic() + xlim(-2,10) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "none")# predicted vs. observed values
 
