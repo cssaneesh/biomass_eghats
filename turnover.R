@@ -209,8 +209,8 @@ summary(ghats.turnover)
 #   control = list(adapt_delta = 0.99),
 #   backend = 'rstan'
 # )
-# 
-# save(ghats.nest , file = 'ghats.nest .Rdata')
+
+save(ghats.nest , file = 'ghats.nest .Rdata')
 load('ghats.nest .Rdata')
 
 summary(ghats.turnover) # model summary
