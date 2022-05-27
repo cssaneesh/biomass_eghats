@@ -158,6 +158,9 @@ ggplot() +
         plot.background = element_blank())
 
 
-
+# could do something like Michael's plots below his NMDS in Figure 4
+#  https://doi.org/10.1111/rec.13006
+# you already have somehting like this but I would suggest doing it for relative cover at the treatment scale so you have 3 different histograms below your NMDS
+# one for each treatment
 
 
