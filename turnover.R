@@ -32,11 +32,16 @@ transect_details <- transect_calc %>%
   select(Transect, Treatment, Site) %>% distinct()  %>%
   mutate(
     Treatment = case_when(
-      Treatment == "ab" ~ "Cymb. present fire present",
-      Treatment == "bgpnf" ~ "Cymb. present no fire",
-      Treatment == "bgrnf" ~ "Cymb. removed no fire"
+      Treatment == "ab" ~ "Control",
+      # Cymbopogon present fire present
+      Treatment == "bgpnf" ~ "CPFA",
+      # Cymbopogon present fire absent
+      Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
     )
   ) %>%
+  mutate(Treatment = factor(Treatment)) %>%
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))  %>%
+  ungroup() %>%
   arrange(Site, Treatment)
 
 head(transect_details, 3)
@@ -46,12 +51,15 @@ control_prep <- transect_calc %>% as_tibble() %>%
   select(Transect, Treatment, Sci_name, pres) %>%
   mutate(
     Treatment = case_when(
-      Treatment == "ab" ~ "Cymb. present fire present",
-      Treatment == "bgpnf" ~ "Cymb. present no fire",
-      Treatment == "bgrnf" ~ "Cymb. removed no fire"
+      Treatment == "ab" ~ "Control",
+      # Cymbopogon present fire present
+      Treatment == "bgpnf" ~ "CPFA",
+      # Cymbopogon present fire absent
+      Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
     )
   ) %>%
-  filter(Treatment == "Cymb. present fire present") %>%
+  mutate(Treatment = factor(Treatment)) %>%
+  filter(Treatment == "Control") %>%
   select(-Transect) %>%
   distinct() %>%
   mutate(Sci_name_sp = paste0('sp_', Sci_name)) %>%
@@ -71,14 +79,18 @@ species_prep <- transect_calc %>% as_tibble() %>%
   select(Transect, Treatment, Sci_name, pres) %>%
   mutate(
     Treatment = case_when(
-      Treatment == "ab" ~ "Cymb. present fire present",
-      Treatment == "bgpnf" ~ "Cymb. present no fire",
-      Treatment == "bgrnf" ~ "Cymb. removed no fire"
+      Treatment == "ab" ~ "Control",
+      # Cymbopogon present fire present
+      Treatment == "bgpnf" ~ "CPFA",
+      # Cymbopogon present fire absent
+      Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
     )
   ) %>%
-  filter(!Treatment == "Cymb. present fire present")
+  mutate(Treatment = factor(Treatment)) %>%
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))  %>%
+  ungroup()
 
-head(species_prep)
+View(species_prep)
 
 species_wide <- species_prep %>%
   mutate(Sci_name_sp = paste0('sp_', Sci_name)) %>%
@@ -96,11 +108,11 @@ beta_pairs <- function(x) {
   # return dataframe with dissimilarities and the treatment magnitude (seed.rich)
   # separate out the control and treatment plots
   contr.plots = x %>%
-    filter(Treatment == "Cymb. present fire present")
+    filter(Treatment == "Control")
   # fix for treatment labels
   trt.plots = x %>%
-    filter(Treatment == 'Cymb. present no fire' |
-             Treatment == 'Cymb. removed no fire')
+    filter(Treatment == 'CPFA' |
+             Treatment == 'CAFA')
   out <- tibble()
   if (nrow(contr.plots) > 0) {
     for (i in 1:nrow(contr.plots)) {
@@ -181,23 +193,24 @@ head(beta.df)
 
 
 # models
-# ghats.turnover <-
-#   brm(
-#     jtu ~   Treatment + (Treatment | Site / Transect) ,
-#     family = zero_one_inflated_beta(),
-#     data = beta.df,
-#     iter = 7000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4,
-#     control = list(adapt_delta = 0.99),
-#     backend = 'rstan'
-#   )
-# 
-# save(ghats.turnover, file = 'ghats.turnover.Rdata')
+ # ghats.turnover <-
+ #  brm(
+ #    jtu ~   Treatment + (1 | Site) ,
+ #    family = zero_one_inflated_beta(),
+ #    data = beta.df,
+ #    iter = 3000,
+ #    warmup = 1000,
+ #    cores = 4,
+ #    chains = 4,
+ #    control = list(adapt_delta = 0.99)
+ #  )
+ # 
+ #  save(ghats.turnover, file = 'ghats.turnover.Rdata')
 load('ghats.turnover.Rdata')
+
 summary(ghats.turnover)
 
+<<<<<<< HEAD
 # ghats.nest <- brm(
 #   jne ~  Treatment + (Treatment | Site / Transect) ,
 #   family = zero_inflated_beta(),
@@ -209,6 +222,18 @@ summary(ghats.turnover)
 #   control = list(adapt_delta = 0.99),
 #   backend = 'rstan'
 # )
+=======
+ghats.nest <- brm(
+  jne ~  Treatment + (1 | Site) ,
+  family = zero_inflated_beta(),
+  data = beta.df,
+  iter = 3000,
+  warmup = 1000,
+  cores = 4,
+  chains = 4,
+  control = list(adapt_delta = 0.99)
+)
+>>>>>>> d51818eb36df5b6b8c21ab67213596bd8486aca5
 
 save(ghats.nest , file = 'ghats.nest .Rdata')
 load('ghats.nest .Rdata')
@@ -364,3 +389,6 @@ fig_4b <- ggplot() +
 
 
 fig_4b
+
+
+(fig_4a |fig_4b)

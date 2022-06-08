@@ -67,10 +67,12 @@ absolute_weight <- transect_calc %>%
   mutate(Palatability = fct_relevel(Palatability, c('Yes', 'No', 'Cymbopogon sp.'))) %>%
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
 
+head(transect_calc)
+
 # Relative_biomass
 relative_weight <-
-  transect_calc %>% select(Transect, Treatment, Palatability, relative_biomass) %>%
-  group_by(Treatment, Transect, Palatability) %>%
+  transect_calc %>% select(Site, Transect, Treatment, Palatability, relative_biomass) %>%
+  group_by(Site, Treatment, Transect, Palatability) %>%
   summarise(relative_biomass = sum(relative_biomass) * 100) %>%
   mutate(Treatment = factor(Treatment)) %>%
   mutate(Palatability = factor(Palatability)) %>%
@@ -173,32 +175,34 @@ fig_e
 
 # Analysis----
 
-# ghats.rel_biomass <-
-#   brm(
-#     relative_biomass ~   Treatment * Palatability  +
-#       (Treatment * Palatability  | Transect) ,
-#     family = student(),
-#     data = relative_weight,
-#     iter = 2000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4,
-#     backend = 'rstan'
-#   )
-#
-# save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
+head(relative_weight)
+
+ghats.rel_biomass <-
+  brm(
+    relative_biomass ~   Treatment * Palatability  +
+      ( 1 | Site/Transect ) ,
+    family = student(),
+    data = relative_weight,
+    iter = 2000,
+    warmup = 1000,
+    cores = 4,
+    chains = 4
+  )
+
+save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
 load("ghats.rel_biomass.Rdata")
 
 color_scheme_set("darkgray")
 
-density_plot <- pp_check(ghats.rel_biomass) +
-  xlab("Relative biomass") + ylab("Density") +
-  labs(subtitle = "a)") +
-  theme_classic() +
+fig_s1a <- pp_check(ghats.rel_biomass) +
+  xlab("Functional group Relative biomass") + ylab("Density") +
+  labs(title = "Transect-level",
+    subtitle = "a)") +
+  theme_classic() + xlim(-20,150) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "none")# predicted vs. observed values
 
-density_plot
+fig_s1a
 
 summary(ghats.rel_biomass)
 

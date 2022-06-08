@@ -73,46 +73,75 @@ transect_calc <- transect_prep %>% left_join(transect_sum) %>%
     relative_biomass_nc_p = ((Weight / transect_biomass) * 100)
   )
 
-alpha_div <-
-  transect_calc %>% group_by(Transect, Treatment) %>%
-  dplyr::summarise(
-    alpha_rich = n_distinct(Sci_name),
-    alpha_ENSPIE = vegan::diversity(relative_biomass,
-                                    index = 'invsimpson')) %>% 
-  mutate(Treatment = factor(Treatment)) %>% 
-  mutate(Treatment = fct_relevel(Treatment, c("Control","CPFA","CAFA")))  %>%
-  ungroup()
+View(transect_calc)
 
+
+alpha_div <- read.csv(
+  "alpha_div.csv",
+  header = T,
+  fill = TRUE,
+  sep = ",",
+  na.strings = c("", " ", "NA", "NA ", "na", "NULL")
+)
+
+head(alpha_div)
 
 # Analysis-----
 
 # ghats.alpha_ENSPIE----
 
-# ghats.alpha_ENSPIE <-
-#   brm(
-#     alpha_ENSPIE ~   Treatment + (Treatment  | Transect) ,
-#     family = gaussian(),
-#     data = alpha_div,
-#     iter = 2000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4,
-#     backend = 'rstan'
-#   )
-# 
-# save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
+ghats.alpha_ENSPIE <-
+  brm(
+    alpha_ENSPIE ~   Treatment + ( 1  | Site ) ,
+    family = 'lognormal',
+    data = alpha_div,
+    iter = 3000,
+    warmup = 1000,
+    cores = 4,
+    chains = 4,
+    control = list(adapt_delta = 0.99) )
+ 
+ save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
 
 load('ghats.alpha_ENSPIE.Rdata')
 
+
+summary(ghats.alpha_ENSPIE) # summary of alpha richness model
+
 color_scheme_set("darkgray")
-density_plot <- pp_check(ghats.alpha_ENSPIE) +
-  xlab("alpha Richness") + ylab("Density") +
-  labs(subtitle = "a)") +
-  theme_classic() +
+# caterpillars/chains
+plot(ghats.alpha_ENSPIE)
+# you want these 'caterpillars to be 'hairy' (very evenly squiggly)
+
+# check model residuals
+head(alpha_div)
+ma <- residuals(ghats.alpha_ENSPIE)
+ma <- as.data.frame(ma)
+ar.plot <- cbind(alpha_div, ma$Estimate)
+
+#make sure they are factors
+ar.plot$Treatment <- as.factor(ar.plot$Treatment )
+ar.plot$Site <- as.factor(ar.plot$Site )
+
+#plot residuals
+par(mfrow=c(1,2))
+with(ar.plot, plot(Treatment, ma$Estimate))
+with(ar.plot, plot(Site, ma$Estimate))
+# you want these to be centrered on zero
+
+fig_s1c <- pp_check(ghats.alpha_ENSPIE) +
+    xlab( expression(paste(ENS[PIE])) ) + ylab("") + 
+  ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
+  labs(subtitle = "c)") +
+  theme_classic() + xlim(-2,10) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "none")# predicted vs. observed values
 
-density_plot
+fig_s1c
+
+fig_s1 <- (fig_s1a | fig_s1b | fig_s1c)
+
+fig_s1
 
 ghats_alpha_ENSPIE <-
   conditional_effects(
