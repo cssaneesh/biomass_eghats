@@ -87,7 +87,7 @@ relative_weight_matrix <- relative_weight %>%  select(Transect, Sci_name, relati
   mutate(Sci_name = str_replace(Sci_name, " ", "_")) %>%
   group_by(Transect) %>%
   spread(Sci_name, relative_biomass) %>% replace(is.na(.), 0) %>%
-  `row.names<-`(., NULL) %>% 
+  `row.names <-`(., NULL) %>% 
   column_to_rownames(var = "Transect")
 
 head(relative_weight_matrix)
