@@ -3,6 +3,7 @@ library(tidyverse)
 library(patchwork)
 library(vegan)
 library(MetBrewer)
+library(forcats)
 
 # Data----
 # raw data
@@ -13,7 +14,6 @@ raw_dat <- read.csv(
   sep = ",",
   na.strings = c("", " ", "NA", "NA ", "na", "NULL")
 )
- 
 
 # Data wrangling----
 transect_dat <- raw_dat %>%
@@ -23,9 +23,7 @@ transect_dat <- raw_dat %>%
     Functional_groups = as.factor(Functional_groups)
   )
 
-
 # create transect prep data
-
 transect_prep <- transect_dat %>%
   arrange(Transect, Treatment) %>%
   mutate(
@@ -87,7 +85,7 @@ relative_weight_matrix <- relative_weight %>%  select(Transect, Sci_name, relati
   mutate(Sci_name = str_replace(Sci_name, " ", "_")) %>%
   group_by(Transect) %>%
   spread(Sci_name, relative_biomass) %>% replace(is.na(.), 0) %>%
-  `row.names <-`(., NULL) %>% 
+  `row.names<-`(., NULL) %>% 
   column_to_rownames(var = "Transect")
 
 head(relative_weight_matrix)
@@ -96,7 +94,6 @@ head(relative_weight_matrix)
 # https://chrischizinski.github.io/rstats/vegan-ggplot2/
 
 eghats.mds <- metaMDS(relative_weight_matrix, distance = "bray", autotransform = FALSE)
-
 
 plot(eghats.mds, type = "t")
 
@@ -108,7 +105,6 @@ eghats.scores <- data.scores %>%
   left_join(eghats_details) %>% arrange(Treatment)
 
 head(eghats.scores)
-
 
 # species scores
 species.scores <- as.data.frame(scores(eghats.mds, "species"))  #Using the scores function from vegan to extract the species scores and convert to a data.frame
@@ -122,7 +118,6 @@ eghats.species.scores <- species.scores %>%
 
 head(eghats.species.scores)
 
-
 head(eghats.scores)
 
 eghats.ctl <- eghats.scores[eghats.scores$Treatment == "Control", ][chull(eghats.scores[eghats.scores$Treatment == 
@@ -135,7 +130,7 @@ eghats.cafa<- eghats.scores[eghats.scores$Treatment == "CAFA", ][chull(eghats.sc
 hull.data <- rbind(eghats.ctl, eghats.cpfa, eghats.cafa)  #combine groups
 hull.data
 
-ggplot() + 
+nmdsplot <- ggplot() + 
   geom_polygon(data=hull.data, aes(x=NMDS1, y=NMDS2, fill=Treatment, group=Treatment), alpha=0.30) + # add the convex hulls
   #geom_text(data=eghats.species.scores, aes(x=NMDS1,y=NMDS2,label=Sci_name),alpha=0.5) +  # add the species labels
   geom_point(data=hull.data, aes(x=NMDS1, y=NMDS2, shape=Treatment, colour=Treatment),size=4) + # add the point markers
@@ -150,8 +145,8 @@ ggplot() +
   theme(axis.text.x = element_blank(),  # remove x-axis text
         axis.text.y = element_blank(), # remove y-axis text
         axis.ticks = element_blank(),  # remove axis ticks
-        axis.title.x = element_text(size=18), # remove x-axis labels
-        axis.title.y = element_text(size=18), # remove y-axis labels
+        axis.title.x = element_text(size=12), # remove x-axis labels
+        axis.title.y = element_text(size=12), # remove y-axis labels
         panel.background = element_blank(), 
         panel.grid.major = element_blank(),  #remove major-grid labels
         panel.grid.minor = element_blank(),  #remove minor-grid labels
@@ -163,4 +158,35 @@ ggplot() +
 # you already have somehting like this but I would suggest doing it for relative cover at the treatment scale so you have 3 different histograms below your NMDS
 # one for each treatment
 
+# Histogram of top xx biomass species
 
+for_hist <-
+  relative_weight %>% group_by(Treatment) %>% top_n(25) %>%
+  arrange(Treatment, relative_biomass)
+
+sp_hist <-
+  ggplot(for_hist,
+         aes(relative_biomass, Sci_name, col = Treatment, fill = Treatment)) +
+  geom_histogram(stat = 'identity') +
+  facet_wrap( ~ Treatment) +
+  scale_color_manual(values = c(
+    "Control" = "#BB9689",
+    "CPFA" = "#836656",
+    "CAFA" = "#6C3859"
+  ))  +
+  scale_fill_manual(values = c(
+    "Control" = "#BB9689",
+    "CPFA" = "#836656",
+    "CAFA" = "#6C3859"
+  ))+
+  theme_bw()+
+  theme(axis.ticks = element_blank(),  # remove axis ticks
+        axis.title.x = element_text(size=12), # remove x-axis labels
+        axis.title.y = element_text(size=12), # remove y-axis labels
+        panel.background = element_blank(), 
+        panel.grid.major = element_blank(),  #remove major-grid labels
+        panel.grid.minor = element_blank(),  #remove minor-grid labels
+        plot.background = element_blank())
+
+sp_histogram <- sp_hist + aes(y = reorder(Sci_name, relative_biomass))+
+  labs(x='Relative biomass', y= 'Scientific name')  
