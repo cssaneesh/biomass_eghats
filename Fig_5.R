@@ -189,4 +189,4 @@ sp_hist <-
         plot.background = element_blank())
 
 sp_histogram <- sp_hist + aes(y = reorder(Sci_name, relative_biomass))+
-  labs(x='Relative biomass', y= 'Scientific name')  
+  labs(x='Relative biomass', y= 'Scientific name')
