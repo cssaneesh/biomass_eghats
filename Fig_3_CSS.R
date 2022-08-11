@@ -1,4 +1,3 @@
-
 # Packages----
 library(tidyverse)
 library(patchwork)
@@ -9,7 +8,6 @@ library(cowplot)
 library(vegan)
 library(gt)
 library(webshot)
-
 # Data----
 raw_dat <- read.csv(
   "biomass_data.csv",
