@@ -177,19 +177,19 @@ fig_e
 
 head(relative_weight)
 
-ghats.rel_biomass <-
-  brm(
-    relative_biomass ~   Treatment * Palatability  +
-      ( 1 | Site/Transect ) ,
-    family = student(),
-    data = relative_weight,
-    iter = 2000,
-    warmup = 1000,
-    cores = 4,
-    chains = 4
-  )
-
-save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
+# ghats.rel_biomass <-
+#   brm(
+#     relative_biomass ~   Treatment * Palatability  +
+#       ( 1 | Site/Transect ) ,
+#     family = student(),
+#     data = relative_weight,
+#     iter = 2000,
+#     warmup = 1000,
+#     cores = 4,
+#     chains = 4
+#   )
+# 
+# save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
 load("ghats.rel_biomass.Rdata")
 
 color_scheme_set("darkgray")
