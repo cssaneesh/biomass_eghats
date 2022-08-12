@@ -112,7 +112,7 @@ CAFA= Cymbopogon absent and fire absent"
 
 
 
-transect.TD.fig_op1+
+(transect.TD.fig_op1+
   #   labs(caption = "Control= Cymbopogon present and fire present
   # CPFA= Cymbopogon present and fire absent
   # CAFA= Cymbopogon absent and fire absent")+
@@ -120,7 +120,6 @@ transect.TD.fig_op1+
                                     hjust = 0.0))+
   theme(legend.position = 'bottom', )+
   theme(legend.position = c(0.95,.75), legend.direction = "vertical")+
-  theme(legend.background = element_rect(fill = NA))
-
+  theme(legend.background = element_rect(fill = NA)))
 
 ggsave('fig_annex.jpg', width = 10, height = 6, dpi = 300)  
