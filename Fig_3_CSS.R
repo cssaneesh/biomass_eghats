@@ -74,7 +74,7 @@ alpha_div <-
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))  %>%
   ungroup()
 
-write.csv( alpha_div, "alpha_div.csv")
+# write.csv( alpha_div, "alpha_div.csv")
 
 # for beta
 alpha_dat <-  transect_dat %>%
@@ -101,19 +101,19 @@ gamma_dat <- alpha_dat_prep %>%
 
 # ghats.alpha_rich----
 
-ghats.alpha_rich <-
-  brm(
-    alpha_rich ~  Treatment + ( 1 | Site/Transect ) ,
-    family = poisson(),
-    data = alpha_div,
-    iter = 3000,
-    warmup = 1000,
-    cores = 4,
-    chains = 4,
-    control = list(adapt_delta = 0.9)
-  )
+# ghats.alpha_rich <-
+#   brm(
+#     alpha_rich ~  Treatment + ( 1 | Site/Transect ) ,
+#     family = poisson(),
+#     data = alpha_div,
+#     iter = 3000,
+#     warmup = 1000,
+#     cores = 4,
+#     chains = 4,
+#     control = list(adapt_delta = 0.9)
+#   )
 
-save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
+# save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
 
 load('ghats.alpha_rich.Rdata')
 
