@@ -62,6 +62,7 @@ transect_calc <- transect_prep %>% left_join(transect_sum) %>%
     relative_biomass_nc = (Weight / transect_biomass_no_cym) ,
     relative_biomass_nc_p = ((Weight / transect_biomass) * 100)
   )
+
 # for alpha
 alpha_div <-
   transect_calc %>% group_by(Site, Transect, Treatment) %>%
@@ -71,10 +72,10 @@ alpha_div <-
                                     index = 'invsimpson')
   ) %>%
   mutate(Treatment = factor(Treatment)) %>%
-  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))  %>%
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))  %>% # (control, cpfa, cafa reorder here to see them in the graph)
   ungroup()
 
-write.csv( alpha_div, "alpha_div.csv")
+# write.csv( alpha_div, "alpha_div.csv")
 
 # for beta
 alpha_dat <-  transect_dat %>%
@@ -83,7 +84,10 @@ alpha_dat <-  transect_dat %>%
 
 plot_dat <- alpha_dat %>%
   group_by(Transect, Site, Treatment) %>%
-  summarise(plot_weight = sum(weight))
+  summarise(plot_weight = sum(weight)) # plot data is from 28 potential sites
+
+plot_dat %>% 
+  group_by (Site) %>% dplyr::count(Site)
 
 alpha_dat_prep <- alpha_dat %>%
   left_join(plot_dat) %>%
@@ -95,6 +99,7 @@ gamma_dat <- alpha_dat_prep %>%
   group_by(Treatment, Transect) %>%
   nest(c(Sci_name, rel_weight, weight, plot_weight)) %>%
   ungroup()
+
 # Analysis----
 # Alpha_div
 
@@ -115,6 +120,8 @@ gamma_dat <- alpha_dat_prep %>%
 # save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
 
 load('ghats.alpha_rich.Rdata')
+
+
 summary(ghats.alpha_rich) # summary of alpha richness model
 
 color_scheme_set("darkgray")
@@ -155,6 +162,7 @@ ghats_alpha_rich <-
     re_formula = NA,
     method = 'fitted'
   )  # conditional effects
+
 
 
 # beta data----
@@ -255,6 +263,8 @@ gamma_boot_results <-
   mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
 
+# View(gamma_boot_results)
+
 # Table----
 # alpha diversity
 # View(ghats_alpha_rich)
@@ -291,179 +301,7 @@ table_2_gamma <-
 
 table_2_gamma %>% gtsave('Table_2 (gamma).png', expand = 5) # expand to set white space
 
-
-# Gamma data----
-alpha_div <- read.csv(
-  "alpha_div.csv",
-  header = T,
-  fill = TRUE,
-  sep = ",",
-  na.strings = c("", " ", "NA", "NA ", "na", "NULL")
-)
-
-# Analysis-----
-  
-  # ghats.alpha_ENSPIE----
-
-# ghats.alpha_ENSPIE <-
-#   brm(
-#     alpha_ENSPIE ~   Treatment + ( 1  | Site ) ,
-#     family = 'lognormal',
-#     data = alpha_div,
-#     iter = 3000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4,
-#     control = list(adapt_delta = 0.99) )
-
-# save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
-
-load('ghats.alpha_ENSPIE.Rdata')
-
-summary(ghats.alpha_ENSPIE) # summary of alpha richness model
-
-color_scheme_set("darkgray")
-# caterpillars/chains
-plot(ghats.alpha_ENSPIE)
-# you want these 'caterpillars to be 'hairy' (very evenly squiggly)
-
-# check model residuals
-head(alpha_div)
-ma <- residuals(ghats.alpha_ENSPIE)
-ma <- as.data.frame(ma)
-ar.plot <- cbind(alpha_div, ma$Estimate)
-
-#make sure they are factors
-ar.plot$Treatment <- as.factor(ar.plot$Treatment )
-ar.plot$Site <- as.factor(ar.plot$Site )
-
-#plot residuals
-par(mfrow=c(1,2))
-with(ar.plot, plot(Treatment, ma$Estimate))
-with(ar.plot, plot(Site, ma$Estimate))
-# you want these to be centrered on zero
-
-fig_s1c <- pp_check(ghats.alpha_ENSPIE) +
-  xlab( expression(paste(ENS[PIE])) ) + ylab("") + 
-  ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
-  labs(subtitle = "c)") +
-  theme_classic() + xlim(-2,10) +
-  theme(plot.title = element_text(size = 18, hjust = 0.5),
-        legend.position = "none")# predicted vs. observed values
-
-fig_s1c
-
-fig_s1 <- (fig_s1a | fig_s1b | fig_s1c)
-
-fig_s1
-
-ghats_alpha_ENSPIE <-
-  conditional_effects(
-    ghats.alpha_ENSPIE,
-    effects = 'Treatment',
-    re_formula = NA,
-    method = 'fitted'
-  )
-
-# beta
-
-# the solution, bootstrap resampling: prepare the data for bootstrap resampling of sites
-gamma_dat <- alpha_dat_prep %>% 
-  # collate relative weight of each species at each location (these are alpha-scale samples)
-  group_by(Treatment, Transect) %>% 
-  nest(c(Sci_name, rel_weight, weight, plot_weight)) %>% 
-  ungroup()
-
-# for n_samps, get 10 sites (alpha samples)
-
-# n_sites = 10
-# n_samps <- 200
-# gamma_metrics <- tibble()
-# for(i in 1:n_samps){
-#   print(i)
-#   # get these n_sites rows and calculate alpha S
-#   alpha_sub_samp <- gamma_dat %>%
-#     # from each group
-#     group_by(Treatment) %>%
-#     # get 10 rows
-#     sample_n(n_sites, replace = F) %>%
-#     # unnest
-#     unnest() %>%
-#     # calculate PIE, S for each site
-#     group_by(Treatment, Transect) %>%
-#     mutate(alphaS = n_distinct(Sci_name),
-#            alpha_Spie = vegan::diversity(rel_weight, index = 'invsimpson')) %>%
-#     ungroup() %>%
-#     # get the minimum N and mean S for each treatment
-#     group_by(Treatment) %>%
-#     mutate(mean_alpha_S = mean(alphaS),
-#            mean_alpha_Spie = mean(alpha_Spie)) %>%
-#     ungroup()
-# 
-#   # aggregate same sub sample for gamma calculations
-#   sub_samp <- alpha_sub_samp %>%
-#     # aggregate data to gamma scale
-#     group_by(Treatment, Sci_name) %>%
-#     summarise(sp_trt_weight = sum(weight)) %>%
-#     ungroup() %>%
-#     # get minimum N for Sn
-#     group_by(Treatment) %>%
-#     mutate(trt_weight = sum(sp_trt_weight),
-#            gamma_rel_weight = (sp_trt_weight/trt_weight)) %>%
-#     ungroup() %>%
-#     mutate(minrel = min(gamma_rel_weight))
-# 
-# 
-#   # calculate the metrics we want
-#   gamma_metrics <- gamma_metrics %>%
-#     bind_rows(sub_samp %>%
-#                 group_by(Treatment) %>%
-#                 summarise(S = n_distinct(Sci_name),
-#                           ENSPIE = vegan::diversity(gamma_rel_weight, index = 'invsimpson'))  %>%
-#                 # add counter for sample based rarefaction
-#                 left_join( alpha_sub_samp %>%
-#                              select(Treatment, mean_alpha_S, mean_alpha_Spie) %>%
-#                              distinct() %>%
-#                              group_by(Treatment) %>%
-#                              mutate(
-#                                alpha_S = mean_alpha_S,
-#                                alpha_Spie = mean_alpha_Spie,
-#                                resample = i) ) )
-# }
-# 
-# save(gamma_metrics, file= 'gamma_metrics.Rdata')
-
-load('gamma_metrics.Rdata')
-gamma_boot_results <- gamma_metrics %>% # calculate beta-diversities (beta = gamma/alpha) 
-  mutate(beta_S = S/alpha_S,
-         beta_S_PIE = ENSPIE/alpha_Spie ) %>% 
-  group_by(Treatment) %>% 
-  summarise(S_mean = mean(S),
-            S_median = median(S),
-            S_Q95 = quantile(S, probs = 0.95, names = F),
-            S_Q5 = quantile(S, probs = 0.05, names = F),
-            ENSPIE_mean = mean(ENSPIE),
-            ENSPIE_median = median(ENSPIE),
-            ENSPIE_Q95 = quantile(ENSPIE, probs = 0.95, names = F),
-            ENSPIE_Q5 = quantile(ENSPIE, probs = 0.05, names = F),
-            beta_S_mean = mean(beta_S),
-            beta_S_median = median(beta_S),
-            beta_S_Q95 = quantile(beta_S, probs = 0.95, names = F),
-            beta_S_Q5 = quantile(beta_S, probs = 0.05, names = F),
-            beta_S_PIE_mean = mean(beta_S_PIE),
-            beta_S_PIE_median = median(beta_S_PIE),
-            beta_S_PIE_Q95 = quantile(beta_S_PIE, probs = 0.95, names = F),
-            beta_S_PIE_Q5 = quantile(beta_S_PIE, probs = 0.05, names = F))  %>%
-  mutate( Treatment = case_when( 
-    Treatment == "ab" ~ "Control", # Cymbopogon present fire present
-    Treatment == "bgpnf" ~ "CPFA", # Cymbopogon present fire absent
-    Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
-  )) %>% 
-  mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
-  mutate(Treatment = fct_relevel(Treatment, c("Control","CPFA","CAFA")))
-
-# plots-----
-
+# Plot----
 # alpha richness
 fig_alpha_rich <- ggplot() +
   geom_point(
@@ -547,6 +385,83 @@ fig_2c <- gamma_S_all
 
 # Evenness----
 
+alpha_div <- read.csv(
+  "alpha_div.csv",
+  header = T,
+  fill = TRUE,
+  sep = ",",
+  na.strings = c("", " ", "NA", "NA ", "na", "NULL")
+)
+
+head(alpha_div)
+View(alpha_div)
+
+alpha_div <- alpha_div %>%
+  mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
+
+levels(alpha_div$Treatment)
+
+# Analysis-----
+
+# ghats.alpha_ENSPIE----
+
+# ghats.alpha_ENSPIE <-
+#   brm(
+#     alpha_ENSPIE ~   Treatment + ( 1  | Site ) ,
+#     family = 'lognormal',
+#     data = alpha_div,
+#     iter = 3000,
+#     warmup = 1000,
+#     cores = 4,
+#     chains = 4,
+#     control = list(adapt_delta = 0.99) )
+# 
+# save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
+
+load('ghats.alpha_ENSPIE.Rdata')
+
+summary(ghats.alpha_ENSPIE) # summary of alpha richness model
+
+color_scheme_set("darkgray")
+# caterpillars/chains
+plot(ghats.alpha_ENSPIE)
+# you want these 'caterpillars to be 'hairy' (very evenly squiggly)
+
+# check model residuals
+head(alpha_div)
+ma <- residuals(ghats.alpha_ENSPIE)
+ma <- as.data.frame(ma)
+ar.plot <- cbind(alpha_div, ma$Estimate)
+
+#make sure they are factors
+ar.plot$Treatment <- as.factor(ar.plot$Treatment )
+ar.plot$Site <- as.factor(ar.plot$Site )
+
+#plot residuals
+par(mfrow=c(1,2))
+with(ar.plot, plot(Treatment, ma$Estimate))
+with(ar.plot, plot(Site, ma$Estimate))
+# you want these to be centrered on zero
+
+fig_s1c <- pp_check(ghats.alpha_ENSPIE) +
+  xlab( expression(paste(ENS[PIE])) ) + ylab("") + 
+  ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
+  labs(subtitle = "c)") +
+  theme_classic() + xlim(-2,10) +
+  theme(plot.title = element_text(size = 18, hjust = 0.5),
+        legend.position = "none")# predicted vs. observed values
+
+ghats_alpha_ENSPIE <-
+  conditional_effects(
+    ghats.alpha_ENSPIE,
+    effects = 'Treatment',
+    re_formula = NA,
+    method = 'fitted'
+  )
+
+
+# Plot----
 fig_alpha_ENSPIE <- ggplot() +
   geom_point(
     data = alpha_div,
@@ -587,9 +502,8 @@ fig_alpha_ENSPIE <- ggplot() +
   theme(panel.grid.major = element_line(colour = "gray86", size = 0.1),
         panel.background = element_rect(fill = "white"))
 
+fig_alpha_ENSPIE
 fig_4a <- fig_alpha_ENSPIE
-
-fig_4a
 
 gamma_S_PIE_all <- ggplot() +
   geom_point(data = gamma_boot_results,
@@ -612,15 +526,12 @@ gamma_S_PIE_all <- ggplot() +
 
 fig_4c <- gamma_S_PIE_all
 
-fig_4c
-
-Evenness <- fig_4a + fig_4c
-
+Evenness <- fig_4a+fig_4c
+Evenness
 Richness/Evenness
 
-# Beta diversity and Beta ENSPie----
 
-# Beta
+# Beta----
 beta_S_all <- ggplot() +
   geom_point(
     data = gamma_boot_results,
@@ -641,7 +552,7 @@ beta_S_all <- ggplot() +
   scale_color_manual(values =  c("#BB9689", '#836656', "#6C3859")) +
   labs(title = " ",
        x = ' ',
-       y = expression(paste(italic(beta), "- diversity"))) +
+       y = expression(paste(italic(beta), "-diversity"))) +
   theme_bw(base_size = 12) +
   theme(
     legend.position = 'none',
@@ -655,10 +566,8 @@ beta_S_all <- ggplot() +
     panel.background = element_rect(fill = "white")
   ) + labs(subtitle = 'a)')
 
-fig_b <- beta_S_all
-
-fig_b
-# Beta ENSPie----
+fig_4a <- beta_S_all
+fig_4a
 
 beta_S_PIE_all <- ggplot() +
   geom_point(data = gamma_boot_results,
@@ -686,5 +595,33 @@ beta_S_PIE_all <- ggplot() +
 fig_4b <- beta_S_PIE_all
 fig_4b
 
+fig_4a+fig_4b
 
-fig_b+fig_4b
+
+# beta diversity
+table_2_beta <-
+  gamma_boot_results %>% select(Treatment, beta_S_mean , beta_S_Q5, beta_S_Q95) %>%
+  rename(Estimate = beta_S_mean,
+         Lower = beta_S_Q5,
+         Upper = beta_S_Q95) %>%
+  mutate_if(is.numeric, round, 2) %>% 
+  gt()%>% 
+  tab_options(column_labels.font.size = 11,
+              table.font.size = 10,
+              column_labels.font.weight = "bold") %>% 
+  opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
+  opt_table_outline(style = "solid", width = px(2))
+
+table_3_ens_beta <- gamma_boot_results %>% 
+  select(Treatment, beta_S_PIE_mean, beta_S_PIE_Q5, beta_S_PIE_Q95) %>% 
+  rename(Estimate= beta_S_PIE_mean, Lower= beta_S_PIE_Q5, Upper= beta_S_PIE_Q95) %>% 
+  mutate_if(is.numeric, round, 2) %>% 
+  gt()%>% 
+  tab_options(column_labels.font.size = 11,
+              table.font.size = 10,
+              column_labels.font.weight = "bold") %>% 
+  opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
+  opt_table_outline(style = "solid", width = px(2))
+
+table_3_ens_beta %>% gtsave('Table_3 (ens_beta).png', expand = 5) # expand to set white space
+

@@ -17,6 +17,8 @@ raw_dat <- read.csv(
   na.strings = c("", " ", "NA", "NA ", "na", "NULL")
 )
 
+raw_dat %>% filter(Transect==)
+
 # Data wrangling----
 transect_dat <- raw_dat %>%
   mutate(
@@ -71,7 +73,7 @@ alpha_div <-
                                     index = 'invsimpson')
   ) %>%
   mutate(Treatment = factor(Treatment)) %>%
-  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))  %>%
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))  %>% # (control, cpfa, cafa reorder here to see them in the graph)
   ungroup()
 
 # write.csv( alpha_div, "alpha_div.csv")
@@ -83,7 +85,12 @@ alpha_dat <-  transect_dat %>%
 
 plot_dat <- alpha_dat %>%
   group_by(Transect, Site, Treatment) %>%
-  summarise(plot_weight = sum(weight))
+  summarise(plot_weight = sum(weight))# plot data is from 28 potential sites
+
+test <- plot_dat %>% 
+  group_by (Site, Treatment) %>% dplyr::count(Site) %>% view()
+
+write.csv(test, 'sites_treatments.csv')
 
 alpha_dat_prep <- alpha_dat %>%
   left_join(plot_dat) %>%

@@ -75,7 +75,6 @@ transect_calc <- transect_prep %>% left_join(transect_sum) %>%
 
 View(transect_calc)
 
-
 alpha_div <- read.csv(
   "alpha_div.csv",
   header = T,
@@ -85,6 +84,13 @@ alpha_div <- read.csv(
 )
 
 head(alpha_div)
+View(alpha_div)
+
+alpha_div <- alpha_div %>%
+  mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
+
+levels(alpha_div$Treatment)
 
 # Analysis-----
 
@@ -100,11 +106,10 @@ head(alpha_div)
 #     cores = 4,
 #     chains = 4,
 #     control = list(adapt_delta = 0.99) )
- 
+# 
 # save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
 
 load('ghats.alpha_ENSPIE.Rdata')
-
 
 summary(ghats.alpha_ENSPIE) # summary of alpha richness model
 
@@ -216,7 +221,7 @@ gamma_dat <- alpha_dat_prep %>%
 #                                alpha_Spie = mean_alpha_Spie,
 #                                resample = i) ) )
 # }
-# 
+
 # save(gamma_metrics, file= 'gamma_metrics.Rdata')
 
 load('gamma_metrics.Rdata')
@@ -244,7 +249,9 @@ gamma_boot_results <- gamma_metrics %>% # calculate beta-diversities (beta = gam
     Treatment == "ab" ~ "Control", # Cymbopogon present fire present
     Treatment == "bgpnf" ~ "CPFA", # Cymbopogon present fire absent
     Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
-  )) %>% 
+  )) 
+
+#%>% 
   mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
   mutate(Treatment = fct_relevel(Treatment, c("Control","CPFA","CAFA"))) 
 
@@ -335,6 +342,7 @@ fig_alpha_ENSPIE <- ggplot() +
   theme(panel.grid.major = element_line(colour = "gray86", size = 0.1),
         panel.background = element_rect(fill = "white"))
 
+fig_alpha_ENSPIE
 fig_4a <- fig_alpha_ENSPIE
 
 
