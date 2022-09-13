@@ -199,3 +199,6 @@ sp_histogram <- sp_hist + aes(y = reorder(Sci_name, relative_biomass))+
 
 
 sp_histogram+nmdsplot
+
+# Save image (Evenness)
+ggsave('fig_5.jpg', width = 10, height = 6, dpi = 300) 
