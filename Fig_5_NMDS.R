@@ -80,7 +80,7 @@ eghats_details <- relative_weight %>% select(Site, Treatment, Transect) %>% dist
 
 eghats_species_details <- relative_weight %>% select(Sci_name, Palatability) %>% distinct()
 
-# creative a transect by species matrix
+# create a transect by species matrix
 relative_weight_matrix <- relative_weight %>%  select(Transect, Sci_name, relative_biomass) %>%
   mutate(Sci_name = str_replace(Sci_name, " ", "_")) %>%
   group_by(Transect) %>%
@@ -133,7 +133,7 @@ hull.data
 nmdsplot <- ggplot() + 
   geom_polygon(data=hull.data, aes(x=NMDS1, y=NMDS2, fill=Treatment, group=Treatment), alpha=0.30) + # add the convex hulls
   #geom_text(data=eghats.species.scores, aes(x=NMDS1,y=NMDS2,label=Sci_name),alpha=0.5) +  # add the species labels
-  geom_point(data=hull.data, aes(x=NMDS1, y=NMDS2, shape=Treatment, colour=Treatment),size=4) + # add the point markers
+  geom_point(data=hull.data, aes(x=NMDS1, y=NMDS2, shape=Treatment, colour=Treatment),size=2) + # add the point markers
   scale_color_manual(values = c("Control" = "#BB9689",
                                 "CPFA" = "#836656",
                                 "CAFA" = "#6C3859"))+
@@ -150,7 +150,10 @@ nmdsplot <- ggplot() +
         panel.background = element_blank(), 
         panel.grid.major = element_blank(),  #remove major-grid labels
         panel.grid.minor = element_blank(),  #remove minor-grid labels
-        plot.background = element_blank())
+        plot.background = element_blank())+
+  theme(legend.position = 'top')
+
+nmdsplot
 
 
 # could do something like Michael's plots below his NMDS in Figure 4
@@ -186,7 +189,13 @@ sp_hist <-
         panel.background = element_blank(), 
         panel.grid.major = element_blank(),  #remove major-grid labels
         panel.grid.minor = element_blank(),  #remove minor-grid labels
-        plot.background = element_blank())
+        plot.background = element_blank())+
+  theme(legend.position = 'none')
+  
+
 
 sp_histogram <- sp_hist + aes(y = reorder(Sci_name, relative_biomass))+
   labs(x='Relative biomass', y= 'Scientific name')
+
+
+sp_histogram+nmdsplot
