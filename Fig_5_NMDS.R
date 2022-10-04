@@ -131,7 +131,11 @@ hull.data <- rbind(eghats.ctl, eghats.cpfa, eghats.cafa)  #combine groups
 hull.data
 
 nmdsplot <- ggplot() + 
-  geom_polygon(data=hull.data, aes(x=NMDS1, y=NMDS2, fill=Treatment, group=Treatment), alpha=0.30) + # add the convex hulls
+  geom_polygon(data=hull.data, 
+               aes(x=NMDS1, y=NMDS2, 
+                   fill=Treatment, 
+                   group=Treatment), 
+               alpha=0.30) + # add the convex hulls
   #geom_text(data=eghats.species.scores, aes(x=NMDS1,y=NMDS2,label=Sci_name),alpha=0.5) +  # add the species labels
   geom_point(data=hull.data, aes(x=NMDS1, y=NMDS2, shape=Treatment, colour=Treatment),size=2) + # add the point markers
   scale_color_manual(values = c("Control" = "#BB9689",
@@ -161,17 +165,37 @@ nmdsplot
 # you already have somehting like this but I would suggest doing it for relative cover at the treatment scale so you have 3 different histograms below your NMDS
 # one for each treatment
 
-# Histogram of top xx biomass species
+# Histogram of top 10 species----
+absolute_biomass <- transect_calc %>%
+  select(Treatment, Weight, Sci_name) %>%
+  group_by(Sci_name, Treatment,) %>%
+  summarise(Weight = sum(Weight)) %>%
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
 
-for_hist <-
-  relative_weight %>% group_by(Treatment) %>% top_n(25) %>%
-  arrange(Treatment, relative_biomass)
+View(absolute_biomass)
 
-sp_hist <-
-  ggplot(for_hist,
-         aes(relative_biomass, Sci_name, col = Treatment, fill = Treatment)) +
-  geom_histogram(stat = 'identity') +
-  facet_wrap( ~ Treatment) +
+treatment_weights <-
+  absolute_biomass %>% 
+  group_by(Treatment) %>% 
+  summarise(group_biomass= sum(Weight))
+
+View(absolute_biomass)
+
+hist_relative_biomass <- left_join(x= absolute_biomass, 
+                                   y = treatment_weights, 
+                                   "Treatment") %>% 
+  mutate(Treatment= as.factor(Treatment)) %>% 
+  mutate(relative_biomass= (Weight/group_biomass)*100) %>% 
+  group_by(Treatment) %>% top_n(10) %>%
+  arrange(Treatment, relative_biomass) %>%
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
+
+glimpse(hist_relative_biomass)
+View(hist_relative_biomass)
+
+sp_histogram <- ggplot(hist_relative_biomass, aes(relative_biomass, Sci_name, fill=Treatment))+
+  geom_histogram(stat = 'identity')+
+  facet_grid(~Treatment)+
   scale_color_manual(values = c(
     "Control" = "#BB9689",
     "CPFA" = "#836656",
@@ -186,19 +210,21 @@ sp_hist <-
   theme(axis.ticks = element_blank(),  # remove axis ticks
         axis.title.x = element_text(size=12), # remove x-axis labels
         axis.title.y = element_text(size=12), # remove y-axis labels
-        panel.background = element_blank(), 
+        axis.text.y= element_text(size = 11 ,face = 'italic'),
+          panel.background = element_blank(), 
         panel.grid.major = element_blank(),  #remove major-grid labels
         panel.grid.minor = element_blank(),  #remove minor-grid labels
         plot.background = element_blank())+
-  theme(legend.position = 'none')
-  
-
-
-sp_histogram <- sp_hist + aes(y = reorder(Sci_name, relative_biomass))+
-  labs(x='Relative biomass', y= 'Scientific name')
-
+  theme(legend.position = 'none')+
+  aes(y = reorder(Sci_name, relative_biomass))+
+  labs(x=' Relative biomass', y= 'Scientific names')
 
 sp_histogram+nmdsplot
 
+# NMDS plots shows the low evenness in Control and CPFA treatments at the gamma scale,
+# We also have more variance in composition more site to site turnover when CAFA this is 
+# We can see the names of top 10 species responsible for this result
+
 # Save image (Evenness)
 ggsave('fig_5.jpg', width = 10, height = 6, dpi = 300) 
+  
