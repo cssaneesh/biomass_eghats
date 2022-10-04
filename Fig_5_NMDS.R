@@ -130,6 +130,7 @@ eghats.cafa<- eghats.scores[eghats.scores$Treatment == "CAFA", ][chull(eghats.sc
 hull.data <- rbind(eghats.ctl, eghats.cpfa, eghats.cafa)  #combine groups
 hull.data
 
+# nmdsplot----
 nmdsplot <- ggplot() + 
   geom_polygon(data=hull.data, 
                aes(x=NMDS1, y=NMDS2, 
@@ -221,10 +222,16 @@ sp_histogram <- ggplot(hist_relative_biomass, aes(relative_biomass, Sci_name, fi
 
 sp_histogram+nmdsplot
 
-# NMDS plots shows the low evenness in Control and CPFA treatments at the gamma scale,
-# We also have more variance in composition more site to site turnover when CAFA this is 
-# We can see the names of top 10 species responsible for this result
+# For my own understanding:
+# NMDS plots shows the low evenness in Control and CPFA treatments at the gamma 
+# scale,We also have more variance in composition more site to site turnover 
+# when CAFA in the beta diversity. We can see the names of top 10 species 
+# responsible for this result
 
-# Save image (Evenness)
+# statistical analysis----
+# ? is composition different across our treatments- may be not because there is 
+# a lot of overlap.
+
+# Save image----
 ggsave('fig_5.jpg', width = 10, height = 6, dpi = 300) 
   
