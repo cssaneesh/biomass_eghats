@@ -1,4 +1,8 @@
-# Packages----
+# Install packages----
+# install.packages("remotes")
+# remotes::install_github("KaiHsiangHu/iNEXT.3D")
+
+# library ----
 library(tidyverse)
 library(patchwork)
 library(iNEXT.3D)
@@ -19,8 +23,6 @@ transect_dat <- transect_dat %>%
     Life_form = as.factor(Life_form),
     Functional_groups = as.factor(Functional_groups)
   )
-
-# Exploratory plots----
 
 # Analysis----
 transect_prep_iNext <- transect_dat %>%
@@ -61,9 +63,20 @@ TD_treat_out <-
     diversity = 'TD',
     q = c(0, 1, 2),
     datatype = 'incidence_raw',
-    size = c(1:65),
+    size = c(1:60),
     nboot = 0
   )
+
+TD_treat_out$DataInfo
+# Assemblage = the treatment or groups
+# T = Reference sample size
+# U = Total number of incidents
+# S.obs = Observed species richness
+# SC = Sample coverage
+
+TD_treat_out$AsyEst # to see the asymptotic diversity estimates
+
+# Make df for ploting----
 transect.TD.df <- TD_treat_out %>%
   purrr::pluck("iNextEst", "size_based")
 
@@ -123,3 +136,13 @@ CAFA= Cymbopogon absent and fire absent"
   theme(legend.background = element_rect(fill = NA)))
 
 ggsave('fig_annex.jpg', width = 10, height = 6, dpi = 300)  
+
+transect_prep_iNext  %>% 
+  group_by(Treatment) %>% 
+  distinct(species) %>% 
+  summarise(species=n()) # note the number of Family and run the following code
+
+TD_treat_out$DataInfo # S.obs= Observed species richness will be the same, this is the q=0 in the plot
+
+
+

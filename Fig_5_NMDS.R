@@ -2,11 +2,8 @@
 library(tidyverse)
 library(patchwork)
 library(vegan)
-library(MetBrewer)
-library(forcats)
 
 # Data----
-# raw data
 raw_dat <- read.csv(
   "biomass_data.csv",
   header = T,
@@ -61,8 +58,6 @@ absolute_weight <- transect_calc %>%
   mutate(Palatability = fct_relevel(Palatability, c('Yes', 'No', 'Cymbopogon sp.'))) %>%
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
 
-head(transect_calc)
-
 # Relative_biomass
 relative_weight <-
   transect_calc %>% select( Sci_name, Site, Transect, Treatment, Palatability, relative_biomass) %>%
@@ -74,8 +69,28 @@ relative_weight <-
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA"))) %>% 
   arrange(Transect) %>% ungroup()
 
-head(relative_weight)
+# df of top 10 species----
+species_biomass <- transect_calc %>%
+  select(Treatment, Weight, Sci_name) %>%
+  group_by(Sci_name, Treatment,) %>%
+  summarise(Weight = sum(Weight)) %>%
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
 
+treatment_total <-
+  species_biomass %>% 
+  group_by(Treatment) %>% 
+  summarise(group_biomass= sum(Weight))
+
+top10_biomass <- left_join(x= species_biomass, 
+                           y = treatment_total, 
+                           "Treatment") %>% 
+  mutate(Treatment= as.factor(Treatment)) %>% 
+  mutate(relative_biomass= (Weight/group_biomass)*100) %>% 
+  group_by(Treatment) %>% top_n(10) %>%
+  arrange(Treatment, relative_biomass) %>%
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
+
+# Making nmds metrics
 eghats_details <- relative_weight %>% select(Site, Treatment, Transect) %>% distinct()
 
 eghats_species_details <- relative_weight %>% select(Sci_name, Palatability) %>% distinct()
@@ -88,8 +103,6 @@ relative_weight_matrix <- relative_weight %>%  select(Transect, Sci_name, relati
   `row.names<-`(., NULL) %>% 
   column_to_rownames(var = "Transect")
 
-head(relative_weight_matrix)
-
 # run NMDS with  bray curtis distance
 # https://chrischizinski.github.io/rstats/vegan-ggplot2/
 
@@ -97,35 +110,60 @@ eghats.mds <- metaMDS(relative_weight_matrix, distance = "bray", autotransform =
 
 plot(eghats.mds, type = "t")
 
-# site scores
+# permutation test----
+relative_weight_matrix_1 <- relative_weight %>%  select(Transect, Sci_name, relative_biomass) %>%
+  mutate(Sci_name = str_replace(Sci_name, " ", "_")) %>%
+  group_by(Transect) %>%
+  spread(Sci_name, relative_biomass) %>% replace(is.na(.), 0) %>%
+  `row.names<-`(., NULL)
+
+data <- eghats_details %>% left_join(relative_weight_matrix_1) %>% select(-Transect)
+
+dataM <- data %>% 
+  select(-c(Site, Treatment)) %>% 
+  as.matrix() 
+
+rownames(dataM) <- data$Site
+
+# Bray-Curtis
+distances <- vegdist(dataM, 
+                     distance = 'bray')
+# order of samples
+distances_groups <- data[match(labels(distances),
+                               data$Site),]$Treatment 
+# beta dispersion
+distances_betadispersion <- betadisper(distances, 
+                                       distances_groups)
+# test homogenous dispersion
+permutest(distances_betadispersion) 
+# not met, p < 0.05
+
+# site scores for ggplot
 data.scores <- as.data.frame(scores(eghats.mds))  #Using the scores function from vegan to extract the site scores and convert to a data.frame
 data.scores$Transect <- rownames(data.scores)  # create a column of site names, from the rownames of data.scores
 
 eghats.scores <- data.scores %>% 
   left_join(eghats_details) %>% arrange(Treatment)
 
-head(eghats.scores)
-
 # species scores
 species.scores <- as.data.frame(scores(eghats.mds, "species"))  #Using the scores function from vegan to extract the species scores and convert to a data.frame
 species.scores$species <- rownames(species.scores)  # create a column of species, from the rownames of species.scores
-head(species.scores)  #look at the data
 
 eghats.species.scores <- species.scores %>% 
   mutate(Sci_name = species) %>% select(-species) %>%
   mutate(Sci_name = str_replace(Sci_name, "_", " ")) %>%
   left_join(eghats_species_details)
 
-head(eghats.species.scores)
-
-head(eghats.scores)
-
-eghats.ctl <- eghats.scores[eghats.scores$Treatment == "Control", ][chull(eghats.scores[eghats.scores$Treatment == 
-                                                                   "Control", c("NMDS1", "NMDS2")]), ]  # hull values for grp A
-eghats.cpfa <- eghats.scores[eghats.scores$Treatment == "CPFA", ][chull(eghats.scores[eghats.scores$Treatment == 
-                                                                   "CPFA", c("NMDS1", "NMDS2")]), ]  # hull values for grp B
-eghats.cafa<- eghats.scores[eghats.scores$Treatment == "CAFA", ][chull(eghats.scores[eghats.scores$Treatment == 
-                                                                               "CAFA", c("NMDS1", "NMDS2")]), ]  # hull values for grp B
+# convex hull values for treatments
+eghats.ctl <-
+  eghats.scores[eghats.scores$Treatment == "Control",][chull(eghats.scores[eghats.scores$Treatment ==
+                                                                             "Control", c("NMDS1", "NMDS2")]),]  
+eghats.cpfa <-
+  eghats.scores[eghats.scores$Treatment == "CPFA",][chull(eghats.scores[eghats.scores$Treatment ==
+                                                                          "CPFA", c("NMDS1", "NMDS2")]),]
+eghats.cafa <-
+  eghats.scores[eghats.scores$Treatment == "CAFA",][chull(eghats.scores[eghats.scores$Treatment ==
+                                                                          "CAFA", c("NMDS1", "NMDS2")]),]
 
 hull.data <- rbind(eghats.ctl, eghats.cpfa, eghats.cafa)  #combine groups
 hull.data
@@ -143,8 +181,8 @@ nmdsplot <- ggplot() +
                                 "CPFA" = "#836656",
                                 "CAFA" = "#6C3859"))+
   scale_fill_manual(values = c("Control" = "#BB9689",
-                                "CPFA" = "#836656",
-                                "CAFA" = "#6C3859"))+
+                               "CPFA" = "#836656",
+                               "CAFA" = "#6C3859"))+
   coord_equal() +
   theme_bw() + 
   theme(axis.text.x = element_blank(),  # remove x-axis text
@@ -160,41 +198,7 @@ nmdsplot <- ggplot() +
 
 nmdsplot
 
-
-# could do something like Michael's plots below his NMDS in Figure 4
-#  https://doi.org/10.1111/rec.13006
-# you already have somehting like this but I would suggest doing it for relative cover at the treatment scale so you have 3 different histograms below your NMDS
-# one for each treatment
-
-# Histogram of top 10 species----
-absolute_biomass <- transect_calc %>%
-  select(Treatment, Weight, Sci_name) %>%
-  group_by(Sci_name, Treatment,) %>%
-  summarise(Weight = sum(Weight)) %>%
-  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
-
-View(absolute_biomass)
-
-treatment_weights <-
-  absolute_biomass %>% 
-  group_by(Treatment) %>% 
-  summarise(group_biomass= sum(Weight))
-
-View(absolute_biomass)
-
-hist_relative_biomass <- left_join(x= absolute_biomass, 
-                                   y = treatment_weights, 
-                                   "Treatment") %>% 
-  mutate(Treatment= as.factor(Treatment)) %>% 
-  mutate(relative_biomass= (Weight/group_biomass)*100) %>% 
-  group_by(Treatment) %>% top_n(10) %>%
-  arrange(Treatment, relative_biomass) %>%
-  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
-
-glimpse(hist_relative_biomass)
-View(hist_relative_biomass)
-
-sp_histogram <- ggplot(hist_relative_biomass, aes(relative_biomass, Sci_name, fill=Treatment))+
+top10_hist <- ggplot(top10_biomass, aes(relative_biomass, Sci_name, fill=Treatment))+
   geom_histogram(stat = 'identity')+
   facet_grid(~Treatment)+
   scale_color_manual(values = c(
@@ -212,7 +216,7 @@ sp_histogram <- ggplot(hist_relative_biomass, aes(relative_biomass, Sci_name, fi
         axis.title.x = element_text(size=12), # remove x-axis labels
         axis.title.y = element_text(size=12), # remove y-axis labels
         axis.text.y= element_text(size = 11 ,face = 'italic'),
-          panel.background = element_blank(), 
+        panel.background = element_blank(), 
         panel.grid.major = element_blank(),  #remove major-grid labels
         panel.grid.minor = element_blank(),  #remove minor-grid labels
         plot.background = element_blank())+
@@ -220,7 +224,7 @@ sp_histogram <- ggplot(hist_relative_biomass, aes(relative_biomass, Sci_name, fi
   aes(y = reorder(Sci_name, relative_biomass))+
   labs(x=' Relative biomass', y= 'Scientific names')
 
-sp_histogram+nmdsplot
+top10_hist+nmdsplot
 
 # For my own understanding:
 # NMDS plots shows the low evenness in Control and CPFA treatments at the gamma 
@@ -234,4 +238,3 @@ sp_histogram+nmdsplot
 
 # Save image----
 ggsave('fig_5.jpg', width = 10, height = 6, dpi = 300) 
-  
