@@ -27,6 +27,45 @@ transect_dat <- raw_dat %>%
     Functional_groups = as.factor(Functional_groups)
   )
 
+
+unique.sp.list <- transect_dat %>% select(Scientific_name) %>% unique()
+# write.csv(unique.sp.list, 'unique.sp.list.csv')
+
+palatability.count <- transect_dat %>% select(Scientific_name, Palatability) %>% 
+  distinct(Scientific_name, Palatability) %>% 
+  mutate(Palatability=as.factor(Palatability)) %>% 
+  dplyr::count(Palatability)
+
+# number of graminoids (annual/perennial) and forbs (annual/perennial)
+
+anu.peri <- transect_dat %>% 
+  select(Scientific_name, Functional_type, Functional_groups) %>%
+  mutate(
+    Functional_type= case_when(
+      Functional_type == "Annual undershrub"  ~ "Annual",
+      Functional_type == "Annual herb"   ~ "Annual",
+      Functional_type == "Annual graminoid"  ~ "Annual",
+      Functional_type == "Annual/perennial graminoid "  ~ "Annual",
+      Functional_type == "Annual/perennial herb"  ~ "Annual",
+      Functional_type == "Perennial herb"   ~ "Perennial",
+      Functional_type == "Perennial graminoid"   ~ "Perennial",
+      Functional_type == "Perennial undershrub"  ~ "Perennial")) %>%
+  distinct(Functional_groups, Functional_type, Scientific_name) %>% 
+  mutate(anu.peri=as.factor(Functional_groups)) %>% 
+  dplyr::count(Functional_groups,Functional_type)
+
+transect_prep <- transect_dat %>%
+  arrange(Transect, Treatment) %>%
+  mutate(
+    Treatment = case_when(
+      Treatment == "ab" ~ "Control",
+      # Cymbopogon present fire present
+      Treatment == "bgpnf" ~ "CPFA",
+      # Cymbopogon present fire absent
+      Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
+    )
+  )
+
 # create transect prep data
 transect_prep <- transect_dat %>%
   arrange(Transect, Treatment) %>%
