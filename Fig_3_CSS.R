@@ -17,8 +17,6 @@ raw_dat <- read.csv(
   na.strings = c("", " ", "NA", "NA ", "na", "NULL")
 )
 
-raw_dat %>% filter(Transect==)
-
 # Data wrangling----
 transect_dat <- raw_dat %>%
   mutate(
@@ -90,7 +88,7 @@ plot_dat <- alpha_dat %>%
 test <- plot_dat %>% 
   group_by (Site, Treatment) %>% dplyr::count(Site) %>% view()
 
-write.csv(test, 'sites_treatments.csv')
+# write.csv(test, 'sites_treatments.csv')
 
 alpha_dat_prep <- alpha_dat %>%
   left_join(plot_dat) %>%
@@ -110,7 +108,7 @@ gamma_dat <- alpha_dat_prep %>%
 
 # ghats.alpha_rich <-
 #   brm(
-#     alpha_rich ~  Treatment + ( 1 | Site/Transect ) ,
+#     alpha_rich ~  Treatment + ( 1 | Transect ) ,
 #     family = poisson(),
 #     data = alpha_div,
 #     iter = 3000,
@@ -119,7 +117,7 @@ gamma_dat <- alpha_dat_prep %>%
 #     chains = 4,
 #     control = list(adapt_delta = 0.9)
 #   )
-
+# 
 # save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
 
 load('ghats.alpha_rich.Rdata')
@@ -166,8 +164,6 @@ ghats_alpha_rich <-
     method = 'fitted'
   )  # conditional effects
 
-
-
 # beta data----
 
 # for n_samps, get 10 sites (alpha samples)
@@ -195,7 +191,7 @@ ghats_alpha_rich <-
 #     mutate(mean_alpha_S = mean(alphaS),
 #            mean_alpha_Spie = mean(alpha_Spie)) %>%
 #     ungroup()
-#
+# 
 #   # aggregate same sub sample for gamma calculations
 #   sub_samp <- alpha_sub_samp %>%
 #     # aggregate data to gamma scale
@@ -208,8 +204,8 @@ ghats_alpha_rich <-
 #            gamma_rel_weight = (sp_trt_weight/trt_weight)) %>%
 #     ungroup() %>%
 #     mutate(minrel = min(gamma_rel_weight))
-#
-#
+# 
+# 
 #   # calculate the metrics we want
 #   gamma_metrics <- gamma_metrics %>%
 #     bind_rows(sub_samp %>%
@@ -226,7 +222,7 @@ ghats_alpha_rich <-
 #                                alpha_Spie = mean_alpha_Spie,
 #                                resample = i) ) )
 # }
-#
+# 
 # save(gamma_metrics, file= 'gamma_metrics.Rdata')
 
 load('gamma_metrics.Rdata')
@@ -348,9 +344,9 @@ fig_alpha_rich <- ggplot() +
   ) + labs(x = '', y = '') +
   scale_color_manual(values = c(
     "#A6BAd7",
-    "Control" = "#BB9689",
-    "CPFA" = "#836656",
-    "CAFA" = "#6C3859"
+    "Control" = "#3b5d4d",
+    "CPFA" = "#c5af99",
+    "CAFA" = "#ffd365"
   )) +
   ylab(expression(paste(italic(alpha), "- species richness (S)"))) +
   theme_bw(base_size = 12) + theme(
@@ -365,9 +361,9 @@ fig_alpha_rich <- ggplot() +
     panel.background = element_rect(fill = "white")
   ) + labs(subtitle = 'a)')
 
-fig_2a <- fig_alpha_rich
+fig_a <- fig_alpha_rich
 
-fig_2a
+fig_a
 
 # Beta
 beta_S_all <- ggplot() +
@@ -387,7 +383,7 @@ beta_S_all <- ggplot() +
     size = 1.3,
     width = 0.1
   ) +
-  scale_color_manual(values =  c("#BB9689", '#836656', "#6C3859")) +
+  scale_color_manual(values =  c("#3b5d4d", '#c5af99', "#ffd365")) +
   labs(title = " ",
        x = ' ',
        y = expression(paste(italic(beta), "- species richness (S)"))) +
@@ -405,6 +401,7 @@ beta_S_all <- ggplot() +
   ) + labs(subtitle = 'b)')
 
 fig_b <- beta_S_all
+fig_b
 
 # Gamma
 gamma_S_all <- ggplot() +
@@ -422,7 +419,7 @@ gamma_S_all <- ggplot() +
     size = 1.3,
     width = 0.1
   ) +
-  scale_color_manual(values =  c("#BB9689", '#836656', "#6C3859")) +
+  scale_color_manual(values =  c("#3b5d4d", '#c5af99', "#ffd365")) +
   labs(x = '',
        y = expression(paste(italic(gamma), '- species richness (S)'))) +
   theme_bw() +
@@ -436,26 +433,27 @@ gamma_S_all <- ggplot() +
   theme(plot.caption = element_text(size = 8, face = "italic",
                                     hjust = 0)) + labs(subtitle = 'c)')
 fig_c <- gamma_S_all
+fig_c
 
 (Richness <- fig_a + fig_b + fig_c)
 
-# To add images to x axis
-treats <- axis_canvas(Richness, axis = 'x') +
-  cowplot::draw_image('CPFP.png', x = 0.5, scale = 0.5) +
-  cowplot::draw_image('CPFA.png', x = 1.5, scale = 0.5) +
-  cowplot::draw_image('CAFA.png', x = 2.5, scale = 0.5)
-
-Fig_3a <-
-  ggdraw(insert_xaxis_grob(fig_a, treats, position = "bottom"))
-Fig_3b <-
-  ggdraw(insert_xaxis_grob(fig_b, treats, position = "bottom"))
-Fig_3c <-
-  ggdraw(insert_xaxis_grob(fig_c, treats, position = "bottom"))
-
-Richness <- Fig_3a + Fig_3b + Fig_3c #
-
-Richness + plot_annotation(title = "Species richness",
-                           theme = theme(plot.title = element_text(size = 14, hjust = 0.5)))
+# To add images to x axis----
+# treats <- axis_canvas(Richness, axis = 'x') +
+#   cowplot::draw_image('CPFP.png', x = 0.5, scale = 0.5) +
+#   cowplot::draw_image('CPFA.png', x = 1.5, scale = 0.5) +
+#   cowplot::draw_image('CAFA.png', x = 2.5, scale = 0.5)
+#
+# Fig_3a <-
+#   ggdraw(insert_xaxis_grob(fig_a, treats, position = "bottom"))
+# Fig_3b <-
+#   ggdraw(insert_xaxis_grob(fig_b, treats, position = "bottom"))
+# Fig_3c <-
+#   ggdraw(insert_xaxis_grob(fig_c, treats, position = "bottom"))
+#
+# Richness <- Fig_3a + Fig_3b + Fig_3c #
+#
+# Richness + plot_annotation(title = "Species richness",
+                           # theme = theme(plot.title = element_text(size = 14, hjust = 0.5)))
 
 # Save image (Richness)
 ggsave('fig_3.jpg',
