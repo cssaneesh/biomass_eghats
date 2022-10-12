@@ -98,7 +98,7 @@ levels(alpha_div$Treatment)
 
 # ghats.alpha_ENSPIE <-
 #   brm(
-#     alpha_ENSPIE ~   Treatment + ( 1  | Site ) ,
+#     alpha_ENSPIE ~   Treatment + ( 1  | Transect ) ,
 #     family = 'lognormal',
 #     data = alpha_div,
 #     iter = 3000,
@@ -106,7 +106,7 @@ levels(alpha_div$Treatment)
 #     cores = 4,
 #     chains = 4,
 #     control = list(adapt_delta = 0.99) )
-# 
+
 # save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
 
 load('ghats.alpha_ENSPIE.Rdata')
@@ -249,9 +249,7 @@ gamma_boot_results <- gamma_metrics %>% # calculate beta-diversities (beta = gam
     Treatment == "ab" ~ "Control", # Cymbopogon present fire present
     Treatment == "bgpnf" ~ "CPFA", # Cymbopogon present fire absent
     Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
-  )) 
-
-#%>% 
+  )) %>% 
   mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
   mutate(Treatment = fct_relevel(Treatment, c("Control","CPFA","CAFA"))) 
 
@@ -324,15 +322,15 @@ fig_alpha_ENSPIE <- ggplot() +
       colour = Treatment
     ),
     size = 1,
-    width = 0
+    width = 0.1
   ) + labs(x = '', y = '') +
   scale_color_manual(values = c("#A6BAd7",
-                                "Control" = "#BB9689",
-                                "CPFA" = "#836656",
-                                "CAFA" = "#6C3859"))+
+                                "Control" = "#3b5d4d",
+                                "CPFA" = "#c5af99",
+                                "CAFA" = "#ffd365"))+
   labs(subtitle = 'a)')+
-  ylab(expression(paste(italic(alpha), '-',
-                        ENS[PIE])))+
+  #ylab(expression(paste(italic(alpha), '-', ENS[PIE])))+
+  ylab(expression(paste(italic(alpha), '-', 'Simpson diversity')))+
   theme_bw(base_size = 12) +
   theme(legend.position = 'none', 
         panel.grid.minor = element_blank(),
@@ -355,11 +353,12 @@ beta_S_PIE_all <- ggplot() +
                     colour = Treatment),
                 size = 1.3,
                 width = 0.1) +
-  scale_color_manual(values = c("Control" = "#BB9689",
-                                "CPFA" = "#836656",
-                                "CAFA" = "#6C3859"))+
+  scale_color_manual(values = c("Control" = "#3b5d4d",
+                                "CPFA" = "#c5af99",
+                                "CAFA" = "#ffd365"))+
 labs(subtitle = 'b)', x = '',
-       y = expression(paste(italic(beta), '-', ENS[PIE]))) +
+       #y = expression(paste(italic(beta), '-', ENS[PIE]))) 
+     y = expression(paste(italic(beta), '-', 'Simpson diversity')))+
   theme_bw(base_size = 12) +
   theme(legend.position = 'none', 
         panel.grid.minor = element_blank(),
@@ -380,9 +379,12 @@ gamma_S_PIE_all <- ggplot() +
                     colour = Treatment),
                 size = 1.3,
                 width = 0.1)+
-  scale_color_manual(values =  c("#BB9689", '#836656',"#6C3859"))+
+  scale_color_manual(values = c("Control" = "#3b5d4d", 
+                                "CPFA" = "#c5af99",
+                                "CAFA" = "#ffd365"))+
  labs(subtitle = 'c)', x = '',
-       y = expression(paste(italic(gamma),'-', ENS[PIE]))) +
+       #y = expression(paste(italic(gamma),'-', ENS[PIE]))) 
+      y = expression(paste(italic(gamma),'-', 'Simpson diversity')))+
   theme_bw() +
   theme(legend.position = 'none', 
         panel.grid.minor = element_blank(),
@@ -392,23 +394,23 @@ gamma_S_PIE_all <- ggplot() +
 
 fig_4c <- gamma_S_PIE_all
 
-Evenness <- fig_4a+fig_4b+fig_4c
+(Evenness <- fig_4a+fig_4b+fig_4c)
 
 # To add images to x axis
-treats <- axis_canvas(Evenness,axis = 'x')+
-  cowplot::draw_image('CPFP.png', x = 0.5, scale = 0.5)+
-  cowplot::draw_image('CPFA.png', x = 1.5, scale = 0.5)+
-  cowplot::draw_image('CAFA.png', x = 2.5, scale = 0.5)
-
-Fig_4a <- ggdraw(insert_xaxis_grob(fig_4a, treats, position = "bottom"))
-Fig_4b <- ggdraw(insert_xaxis_grob(fig_4b, treats, position = "bottom"))
-Fig_4c <- ggdraw(insert_xaxis_grob(fig_4c, treats, position = "bottom"))
-
-
-Evenness <- Fig_4a+Fig_4b+Fig_4c
-
-Evenness+plot_annotation(title ="Species evenness",
-                         theme = theme(plot.title = element_text(size = 14, hjust = 0.5)))
+# treats <- axis_canvas(Evenness,axis = 'x')+
+#   cowplot::draw_image('CPFP.png', x = 0.5, scale = 0.5)+
+#   cowplot::draw_image('CPFA.png', x = 1.5, scale = 0.5)+
+#   cowplot::draw_image('CAFA.png', x = 2.5, scale = 0.5)
+# 
+# Fig_4a <- ggdraw(insert_xaxis_grob(fig_4a, treats, position = "bottom"))
+# Fig_4b <- ggdraw(insert_xaxis_grob(fig_4b, treats, position = "bottom"))
+# Fig_4c <- ggdraw(insert_xaxis_grob(fig_4c, treats, position = "bottom"))
+# 
+# 
+# Evenness <- Fig_4a+Fig_4b+Fig_4c
+# 
+# Evenness+plot_annotation(title ="Species evenness",
+#                          theme = theme(plot.title = element_text(size = 14, hjust = 0.5)))
 
 
 
