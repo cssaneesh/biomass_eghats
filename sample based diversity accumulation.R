@@ -151,7 +151,7 @@ CAFA= Cymbopogon absent and fire absent"
     theme(legend.background = element_rect(fill = NA))
 )
 
-ggsave('fig_annex.jpg',
+ggsave('fig_annex_acu_curve.jpg',
        width = 10,
        height = 6,
        dpi = 300)  
