@@ -27,6 +27,32 @@ transect_dat <- raw_dat %>%
     Functional_groups = as.factor(Functional_groups)
   )
 
+unique.sp.list <- transect_dat %>% select(Scientific_name) %>% unique()
+# write.csv(unique.sp.list, 'unique.sp.list.csv')
+
+palatability.count <- transect_dat %>% select(Scientific_name, Palatability) %>% 
+  distinct(Scientific_name, Palatability) %>% 
+  mutate(Palatability=as.factor(Palatability)) %>% 
+  dplyr::count(Palatability)
+
+# number of graminoids (annual/perennial) and forbs (annual/perennial)
+
+anu.peri <- transect_dat %>% 
+  select(Scientific_name, Functional_type, Functional_groups) %>%
+  mutate(
+    Functional_type= case_when(
+      Functional_type == "Annual undershrub"  ~ "Annual",
+      Functional_type == "Annual herb"   ~ "Annual",
+      Functional_type == "Annual graminoid"  ~ "Annual",
+      Functional_type == "Annual/perennial graminoid "  ~ "Annual",
+      Functional_type == "Annual/perennial herb"  ~ "Annual",
+      Functional_type == "Perennial herb"   ~ "Perennial",
+      Functional_type == "Perennial graminoid"   ~ "Perennial",
+      Functional_type == "Perennial undershrub"  ~ "Perennial")) %>%
+  distinct(Functional_groups, Functional_type, Scientific_name) %>% 
+  mutate(anu.peri=as.factor(Functional_groups)) %>% 
+  dplyr::count(Functional_groups,Functional_type)
+
 # create transect prep data
 transect_prep <- transect_dat %>%
   arrange(Transect, Treatment) %>%
@@ -178,7 +204,7 @@ head(relative_weight)
 # ghats.rel_biomass <-
 #   brm(
 #     relative_biomass ~   Treatment * Palatability  +
-#       ( 1 | Site/Transect ) ,
+#       ( 1 | Transect ) ,
 #     family = student(),
 #     data = relative_weight,
 #     iter = 2000,
@@ -246,7 +272,7 @@ fig_rel_biomass <- ggplot() +
       colour = 	Palatability
     ),
     size = 1,
-    alpha = 0.5,
+    alpha = 0.7,
     position = position_jitterdodge(
       jitter.width = 0.05,
       jitter.height = 0.45,
@@ -263,7 +289,7 @@ fig_rel_biomass <- ggplot() +
       colour = Palatability
     ),
     size = 3,
-    position = position_dodge(width = 0.75)
+    position = position_dodge(width = 0.75,)
   ) +
   geom_errorbar(
     data = ghats_rel_biomass$`Treatment:Palatability`,
@@ -275,11 +301,10 @@ fig_rel_biomass <- ggplot() +
       colour = Palatability
     ),
     position = position_dodge(width = 0.75),
-    size = 1,
-    width = 0
+    size = 1.3,
+    width = 0.1
   ) + labs(x = '', y = '') +
-  scale_color_manual(values =  c("#f8bb49", '#a45200', "#4A2300"))  +
-  # scale_colour_grey()+
+  scale_color_manual(values =  c("#a7a7a7", '#ffd9b2', "#999af7"))+
   theme_bw(base_size = 12) + theme(
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
@@ -293,28 +318,24 @@ fig_rel_biomass <- ggplot() +
     plot.title = element_text(size = 14, hjust =
                                 0.5),
     strip.background = element_blank(),
-    legend.position = "bottom"
-  ) + labs(subtitle = '') + ylab("Relative biomass") +
+    #legend.position = "bottom"
+  ) + labs(subtitle = '') + ylab("Relative biomass(g)") +
   theme(
     panel.grid.major = element_line(colour = "gray86", size = 0.1),
     panel.background = element_rect(fill = "white")
-  )
-
-fig_rel_biomass + plot_annotation(title = "Relative biomass",
-                                  theme = theme(plot.title = element_text(size = 14, hjust = 0.5)))
+  )+
+  theme(axis.ticks = element_blank())
 
 # add treatment icons to x axis
-treats <- axis_canvas(fig_rel_biomass, axis = 'x') +
-  cowplot::draw_image('CPFP.png', x = 0.5, scale = 0.5) +
-  cowplot::draw_image('CPFA.png', x = 1.5, scale = 0.5) +
-  cowplot::draw_image('CAFA.png', x = 2.5, scale = 0.5)
-
-Fig_2 <-
-  ggdraw(insert_xaxis_grob(fig_rel_biomass, treats, position = "center"))
-
-Fig_2 <- Fig_2 + plot_annotation(title = "Relative biomass",
-                        theme = theme(plot.title = element_text(size = 14, hjust = 0.5)))
-Fig_2
+# treats <- axis_canvas(fig_rel_biomass, axis = 'x') +
+#   cowplot::draw_image('CPFP.png', x = 0.75, scale = 0.5, width = 0.5) +
+#   cowplot::draw_image('CPFA.png', x = 1.75, scale = 0.5, width = 0.5) +
+#   cowplot::draw_image('CAFA.png', x = 2.75, scale = 0.5, width = 0.5)
+# 
+# Fig_2 <-
+#   ggdraw(insert_xaxis_grob(fig_rel_biomass, treats, position = "center"))
+# 
+# Fig_2
 
 # Save image (Biomass/Fig_2)
 ggsave('Fig_2.jpg',
