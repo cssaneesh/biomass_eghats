@@ -134,9 +134,17 @@ distances_groups <- data[match(labels(distances),
 # beta dispersion
 distances_betadispersion <- betadisper(distances, 
                                        distances_groups)
-# test homogenous dispersion
-permutest(distances_betadispersion) 
-# not met, p < 0.05
+anova(distances_betadispersion) # not met, p < 0.05
+
+# test homogenous dispersion/Permutation test for F
+pmod <- permutest(distances_betadispersion, permutations = 99, pairwise = TRUE)
+
+## Tukey's Honest Significant Differences
+(mod.HSD <- TukeyHSD(distances_betadispersion))
+plot(mod.HSD)
+
+
+
 
 # site scores for ggplot
 data.scores <- as.data.frame(scores(eghats.mds))  #Using the scores function from vegan to extract the site scores and convert to a data.frame
@@ -169,32 +177,66 @@ hull.data <- rbind(eghats.ctl, eghats.cpfa, eghats.cafa)  #combine groups
 hull.data
 
 # nmdsplot----
-nmdsplot <- ggplot() + 
-  geom_polygon(data=hull.data, 
-               aes(x=NMDS1, y=NMDS2, 
-                   fill=Treatment, 
-                   group=Treatment), 
-               alpha=0.30) + # add the convex hulls
+nmdsplot <- ggplot() +
+  geom_point(
+    data = hull.data,
+    aes(
+      x = NMDS1,
+      y = NMDS2,
+      shape = Treatment,
+      colour = Treatment
+    ),
+    size = 2
+  ) + # add the point markers
+  geom_polygon(
+    data = hull.data,
+    aes(
+      x = NMDS1,
+      y = NMDS2,
+      fill = Treatment,
+      group = Treatment
+    ),
+    alpha = 0.30
+  ) + # add the convex hulls
   #geom_text(data=eghats.species.scores, aes(x=NMDS1,y=NMDS2,label=Sci_name),alpha=0.5) +  # add the species labels
-  geom_point(data=hull.data, aes(x=NMDS1, y=NMDS2, shape=Treatment, colour=Treatment),size=2) + # add the point markers
-  scale_color_manual(values = c("Control" = "#BB9689",
-                                "CPFA" = "#836656",
-                                "CAFA" = "#6C3859"))+
-  scale_fill_manual(values = c("Control" = "#BB9689",
-                               "CPFA" = "#836656",
-                               "CAFA" = "#6C3859"))+
+  scale_color_manual(values = c(
+    "Control" = "#BB9689",
+    "CPFA" = "#836656",
+    "CAFA" = "#6C3859"
+  )) +
+  scale_fill_manual(values = c(
+    "Control" = "#BB9689",
+    "CPFA" = "#836656",
+    "CAFA" = "#6C3859"
+  )) +
   coord_equal() +
-  theme_bw() + 
-  theme(axis.text.x = element_blank(),  # remove x-axis text
-        axis.text.y = element_blank(), # remove y-axis text
-        axis.ticks = element_blank(),  # remove axis ticks
-        axis.title.x = element_text(size=12), # remove x-axis labels
-        axis.title.y = element_text(size=12), # remove y-axis labels
-        panel.background = element_blank(), 
-        panel.grid.major = element_blank(),  #remove major-grid labels
-        panel.grid.minor = element_blank(),  #remove minor-grid labels
-        plot.background = element_blank())+
-  theme(legend.position = 'top')
+  theme_bw() +
+  theme(
+    axis.text.x = element_blank(),
+    # remove x-axis text
+    axis.text.y = element_blank(),
+    # remove y-axis text
+    axis.ticks = element_blank(),
+    # remove axis ticks
+    axis.title.x = element_text(size = 12),
+    # remove x-axis labels
+    axis.title.y = element_text(size = 12),
+    # remove y-axis labels
+    panel.background = element_blank(),
+    panel.grid.major = element_blank(),
+    #remove major-grid labels
+    panel.grid.minor = element_blank(),
+    #remove minor-grid labels
+    plot.background = element_blank()
+  ) +
+  theme(legend.position = 'top') +
+  labs(subtitle = 'b)') +
+  geom_hline(yintercept = 0,
+             color = 'gray',
+             alpha = .5) +
+  geom_vline(xintercept = 0,
+             color = 'gray',
+             alpha = .5)
 
 nmdsplot
 
@@ -222,7 +264,8 @@ top10_hist <- ggplot(top10_biomass, aes(relative_biomass, Sci_name, fill=Treatme
         plot.background = element_blank())+
   theme(legend.position = 'none')+
   aes(y = reorder(Sci_name, relative_biomass))+
-  labs(x=' Relative biomass', y= 'Scientific names')
+  labs(x=' Relative biomass', y= 'Scientific names')+
+  labs(subtitle = 'a)')
 
 top10_hist+nmdsplot
 
@@ -238,3 +281,7 @@ top10_hist+nmdsplot
 
 # Save image----
 ggsave('fig_5.jpg', width = 10, height = 6, dpi = 300) 
+
+
+library(plotly)
+plotly::ggplotly(p = nmdsplot)
