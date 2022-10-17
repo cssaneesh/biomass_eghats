@@ -1,4 +1,4 @@
-Site,Treatment,Transect,Sci_name,Palatability,Weight,Scientific_name,Family,Life_form,General_terms,x,y,Functional_type,Functional_groups
+Village,Treatment,Site,Sci_name,Palatability,Weight,Scientific_name,Family,Life_form,General_terms,x,y,Functional_type,Functional_groups
 APA1,bgrnf,APA1bgrnf,Acalypha alnifolia,No,4,Acalypha scabrosa Sw.,Euphorbiaceae,Herb,Milkweeds,13.84898235,78.4284124,Annual undershrub,Forb
 APC1,bgrnf,APC1bgrnf,Acalypha alnifolia,No,20,Acalypha scabrosa Sw.,Euphorbiaceae,Herb,Milkweeds,13.84873331,78.42895372,Annual undershrub,Forb
 APA17,bgrnf,APA17bgrnf,Hybanthus enneaspermus,Yes,5,Afrohybanthus enneaspermus (L.) Flicker,Violaceae,Herb,Violet family,14.1183527,78.3349066,Perennial herb,Forb
@@ -147,8 +147,8 @@ APA10,bgrnf,APA10bgrnf,Cyanthillium albicans,Yes,9,Cyanthillium albicans (DC.) H
 APA7,bgrnf,APA7bgrnf,Cyanthillium albicans,Yes,10,Cyanthillium albicans (DC.) H.Rob.,Asteraceae,Herb,Asters,14.02257643,78.38102775,Annual herb,Forb
 APC1,bgrnf,APC1bgrnf,Cyanthillium albicans,Yes,16,Cyanthillium albicans (DC.) H.Rob.,Asteraceae,Herb,Asters,13.84873331,78.42895372,Annual herb,Forb
 APA20,bgrnf,APA20bgrnf,Cyanthillium cinereum,Yes,16,Cyanthillium cinereum (L.) H.Rob.,Asteraceae,Herb,Asters,14.07855213,78.32909996,Annual/perennial herb,Forb
-APA7,bgrnf,APA7bgrnf,Cymbopogon martini,Yes,9,Cymbopogon martini (Roxb.) W.Watson,Poaceae,Herb,Grass,14.02257643,78.38102775,Perennial graminoid,Graminoid
-APA8,bgrnf,APA8bgrnf,Cymbopogon martini,Yes,7,Cymbopogon martini (Roxb.) W.Watson,Poaceae,Herb,Grass,14.02132073,78.3810486,Perennial graminoid,Graminoid
+APA7,bgrnf,APA7bgrnf,Cymbopogon sp.,Cymbopogon sp.,9,Cymbopogon sp.,Poaceae,Herb,Grass,14.02257643,78.38102775,Perennial graminoid,Cymbopogon
+APA8,bgrnf,APA8bgrnf,Cymbopogon sp.,Cymbopogon sp.,7,Cymbopogon sp.,Poaceae,Herb,Grass,14.02132073,78.3810486,Perennial graminoid,Cymbopogon
 APA10,bgpnf,APA10bgpnf,Cymbopogon sp.,Cymbopogon sp.,2750,Cymbopogon sp.,Poaceae,Herb,Grass,14.01931795,78.38124299,Perennial graminoid,Cymbopogon
 APA10,bgrnf,APA10bgrnf,Cymbopogon sp.,Cymbopogon sp.,120,Cymbopogon sp.,Poaceae,Herb,Grass,14.01957255,78.38249092,Perennial graminoid,Cymbopogon
 APA12,ab,APA12ab,Cymbopogon sp.,Cymbopogon sp.,1485,Cymbopogon sp.,Poaceae,Herb,Grass,14.0411993,78.3177903,Perennial graminoid,Cymbopogon

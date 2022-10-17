@@ -1,4 +1,3 @@
-
 # Packages----
 library(tidyverse)
 library(patchwork)
@@ -18,27 +17,17 @@ raw_dat <- read.csv(
   sep = ",",
   na.strings = c("", " ", "NA", "NA ", "na", "NULL")
 )
-
 # Data wrangling----
-transect_dat <- raw_dat %>%
+Site_dat <- raw_dat %>%
   mutate(
     Treatment = as.factor(Treatment),
     Life_form = as.factor(Life_form),
     Functional_groups = as.factor(Functional_groups)
   )
 
-unique.sp.list <- transect_dat %>% select(Scientific_name) %>% unique()
-# write.csv(unique.sp.list, 'unique.sp.list.csv')
-
-palatability.count <- transect_dat %>% select(Scientific_name, Palatability) %>% 
-  distinct(Scientific_name, Palatability) %>% 
-  mutate(Palatability=as.factor(Palatability)) %>% 
-  dplyr::count(Palatability)
-
 # number of graminoids (annual/perennial) and forbs (annual/perennial)
-
-anu.peri <- transect_dat %>% 
-  select(Scientific_name, Functional_type, Functional_groups) %>%
+species_list <- Site_dat %>% 
+  select(Scientific_name, Functional_type, Functional_groups, Palatability) %>%
   mutate(
     Functional_type= case_when(
       Functional_type == "Annual undershrub"  ~ "Annual",
@@ -49,13 +38,18 @@ anu.peri <- transect_dat %>%
       Functional_type == "Perennial herb"   ~ "Perennial",
       Functional_type == "Perennial graminoid"   ~ "Perennial",
       Functional_type == "Perennial undershrub"  ~ "Perennial")) %>%
-  distinct(Functional_groups, Functional_type, Scientific_name) %>% 
-  mutate(anu.peri=as.factor(Functional_groups)) %>% 
-  dplyr::count(Functional_groups,Functional_type)
+    mutate(Palatability= recode(Palatability, 'Cymbopogon sp.'= 'No')) %>%  
+  distinct(Functional_groups,Palatability, Functional_type, Scientific_name)
 
-# create transect prep data
-transect_prep <- transect_dat %>%
-  arrange(Transect, Treatment) %>%
+# write.csv(species_list, 'Species list- supplementary- 1.csv')
+species_list %>%
+  mutate(anu.peri = as.factor(Functional_groups)) %>%
+  dplyr::count(Functional_groups, Functional_type, Palatability) 
+# 56 palatable 13 non palatable- including 4 Cymbopogons as No palatable.
+
+# create Site prep data
+Site_prep <- Site_dat %>%
+  arrange(Site, Treatment) %>%
   mutate(
     Treatment = case_when(
       Treatment == "ab" ~ "Control",
@@ -66,37 +60,35 @@ transect_prep <- transect_dat %>%
     )
   )
 
-# what is the summed biomass per transect with cymbopogon?
-transect_sum <-
-  transect_prep %>% group_by(Transect, Treatment) %>%
-  summarise(transect_biomass = sum(Weight)) %>%
+# what is the summed biomass per Site with cymbopogon?
+Site_sum <-
+  Site_prep %>% group_by(Site, Treatment) %>%
+  summarise(Site_biomass = sum(Weight)) %>%
   ungroup()
 
-# Transect_calc
-transect_calc <- transect_prep %>% left_join(transect_sum) %>%
+# Site_calc
+Site_calc <- Site_prep %>% left_join(Site_sum) %>%
   mutate(
-    relative_biomass = (Weight / transect_biomass) ,
+    relative_biomass = (Weight / Site_biomass) ,
     relative_biomass_p =  round(((
-      Weight / transect_biomass
+      Weight / Site_biomass
     ) * 100) , 2)
   )
 
 # Absolute_biomass
-absolute_weight <- transect_calc %>%
-  select(Transect, Treatment, Weight, Palatability) %>%
-  group_by(Palatability, Treatment, Transect) %>%
+absolute_weight <- Site_calc %>%
+  select(Site, Treatment, Weight, Palatability) %>%
+  group_by(Palatability, Treatment, Site) %>%
   summarise(Weight = sum(Weight)) %>%
   mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
   mutate(Palatability = factor(Palatability)) %>%
   mutate(Palatability = fct_relevel(Palatability, c('Yes', 'No', 'Cymbopogon sp.'))) %>%
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
 
-head(transect_calc)
-
 # Relative_biomass
 relative_weight <-
-  transect_calc %>% select(Site, Transect, Treatment, Palatability, relative_biomass) %>%
-  group_by(Site, Treatment, Transect, Palatability) %>%
+  Site_calc %>% select(Village, Site, Treatment, Palatability, relative_biomass) %>%
+  group_by(Village, Treatment, Site, Palatability) %>%
   summarise(relative_biomass = sum(relative_biomass) * 100) %>%
   mutate(Treatment = factor(Treatment)) %>%
   mutate(Palatability = factor(Palatability)) %>%
@@ -198,13 +190,10 @@ fig_e <- (fig_e1 / fig_e2) # use patchwork to stick plots together
 fig_e
 
 # Analysis----
-
-head(relative_weight)
-
 # ghats.rel_biomass <-
 #   brm(
 #     relative_biomass ~   Treatment * Palatability  +
-#       ( 1 | Transect ) ,
+#       ( 1 | Site ) ,
 #     family = student(),
 #     data = relative_weight,
 #     iter = 2000,
@@ -212,7 +201,6 @@ head(relative_weight)
 #     cores = 4,
 #     chains = 4
 #   )
-# 
 # save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
 load("ghats.rel_biomass.Rdata")
 
@@ -220,7 +208,7 @@ color_scheme_set("darkgray")
 
 fig_s1a <- pp_check(ghats.rel_biomass) +
   xlab("Functional group Relative biomass") + ylab("Density") +
-  labs(title = "Transect-level",
+  labs(title = "Site-level",
     subtitle = "a)") +
   theme_classic() + xlim(-20,150) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
@@ -326,42 +314,7 @@ fig_rel_biomass <- ggplot() +
   )+
   theme(axis.ticks = element_blank())
 
-# add treatment icons to x axis
-# treats <- axis_canvas(fig_rel_biomass, axis = 'x') +
-#   cowplot::draw_image('CPFP.png', x = 0.75, scale = 0.5, width = 0.5) +
-#   cowplot::draw_image('CPFA.png', x = 1.75, scale = 0.5, width = 0.5) +
-#   cowplot::draw_image('CAFA.png', x = 2.75, scale = 0.5, width = 0.5)
-# 
-# Fig_2 <-
-#   ggdraw(insert_xaxis_grob(fig_rel_biomass, treats, position = "center"))
-# 
-# Fig_2
-
-# Save image (Biomass/Fig_2)
 ggsave('Fig_2.jpg',
        width = 10,
        height = 6,
        dpi = 300)
-
-
-# table test----
-
-
-test <- ghats_rel_biomass_df %>%
-  select(Treatment, Palatability, estimate__, lower__, upper__) %>%
-  rename(Estimate = estimate__,
-         Lower = lower__,
-         Upper = upper__) %>%
-  mutate_if(is.numeric, round, 2) %>% 
-  gt() %>% 
-  tab_options(column_labels.font.size = 11,
-              table.font.size = 10,
-              column_labels.font.weight = "bold") %>% 
-  opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
-  opt_table_outline(style = "solid", width = px(2))
-
-test
-
-test %>% gtsave('test.png', expand = 5) # expand to set white spacegtsave("test.jpg")
-
-  

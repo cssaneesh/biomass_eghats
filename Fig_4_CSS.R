@@ -7,7 +7,6 @@ library(cmdstanr)
 library(cowplot)
 library(gt)
 library(webshot)
-
 # Data----
 # raw data
 raw_dat <- read.csv(
@@ -19,27 +18,27 @@ raw_dat <- read.csv(
 )
 
 # Data wrangling----
-transect_dat <- raw_dat %>%
+Site_dat <- raw_dat %>%
   mutate(
     Treatment = as.factor(Treatment),
     Life_form = as.factor(Life_form),
     Functional_groups = as.factor(Functional_groups)
   )
 
-alpha_dat <-  transect_dat %>% 
-  group_by(Transect, Site, Treatment, Sci_name) %>%
-  summarise(weight = sum(Weight)) %>% arrange(Transect, Sci_name)
+alpha_dat <-  Site_dat %>% 
+  group_by(Site, Village, Treatment, Sci_name) %>%
+  summarise(weight = sum(Weight)) %>% arrange(Site, Sci_name)
 
 plot_dat <- alpha_dat %>% 
-  group_by(Transect, Site, Treatment) %>%
+  group_by(Site, Village, Treatment) %>%
   summarise(plot_weight = sum(weight))
 
 alpha_dat_prep <- alpha_dat %>% 
   left_join(plot_dat) %>%
   mutate(rel_weight = (weight/plot_weight))
 
-transect_prep <- transect_dat %>%
-  arrange(Transect, Treatment) %>%
+Site_prep <- Site_dat %>%
+  arrange(Site, Treatment) %>%
   mutate(
     Treatment = case_when(
       Treatment == "ab" ~ "Control", # Cymbopogon present fire present
@@ -48,32 +47,31 @@ transect_prep <- transect_dat %>%
     )
   )
 
-# what is the summed biomass per transect without cymbopogon?
-transect_sum_no_cym <- transect_prep %>%
+# what is the summed biomass per Site without cymbopogon?
+Site_sum_no_cym <- Site_prep %>%
   filter(!Sci_name == "Cymbopogon sp.") %>%
-  group_by(Transect, Treatment) %>%
-  summarise(transect_biomass_no_cym = sum(Weight)) %>%
+  group_by(Site, Treatment) %>%
+  summarise(Site_biomass_no_cym = sum(Weight)) %>%
   ungroup()
 
-# what is the summed biomass per transect with cymbopogon?
-transect_sum_w_cym <-
-  transect_prep %>% group_by(Transect, Treatment) %>%
-  summarise(transect_biomass = sum(Weight)) %>%
+# what is the summed biomass per Site with cymbopogon?
+Site_sum_w_cym <-
+  Site_prep %>% group_by(Site, Treatment) %>%
+  summarise(Site_biomass = sum(Weight)) %>%
   ungroup()
 
-transect_sum <-
-  transect_sum_w_cym %>% left_join(transect_sum_no_cym)
+Site_sum <-
+  Site_sum_w_cym %>% left_join(Site_sum_no_cym)
 
-# Transect_calc
-transect_calc <- transect_prep %>% left_join(transect_sum) %>%
+# Site_calc
+Site_calc <- Site_prep %>% left_join(Site_sum) %>%
   mutate(
-    relative_biomass = (Weight / transect_biomass) ,
-    relative_biomass_p = ((Weight / transect_biomass) * 100),
-    relative_biomass_nc = (Weight / transect_biomass_no_cym) ,
-    relative_biomass_nc_p = ((Weight / transect_biomass) * 100)
+    relative_biomass = (Weight / Site_biomass) ,
+    relative_biomass_p = ((Weight / Site_biomass) * 100),
+    relative_biomass_nc = (Weight / Site_biomass_no_cym) ,
+    relative_biomass_nc_p = ((Weight / Site_biomass) * 100)
   )
-
-View(transect_calc)
+# View(Site_calc)
 
 alpha_div <- read.csv(
   "alpha_div.csv",
@@ -83,9 +81,6 @@ alpha_div <- read.csv(
   na.strings = c("", " ", "NA", "NA ", "na", "NULL")
 )
 
-head(alpha_div)
-View(alpha_div)
-
 alpha_div <- alpha_div %>%
   mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
@@ -93,12 +88,11 @@ alpha_div <- alpha_div %>%
 levels(alpha_div$Treatment)
 
 # Analysis-----
-
 # ghats.alpha_ENSPIE----
 
 # ghats.alpha_ENSPIE <-
 #   brm(
-#     alpha_ENSPIE ~   Treatment + ( 1  | Transect ) ,
+#     alpha_ENSPIE ~   Treatment + ( 1  | Site ) ,
 #     family = 'lognormal',
 #     data = alpha_div,
 #     iter = 3000,
@@ -106,11 +100,9 @@ levels(alpha_div$Treatment)
 #     cores = 4,
 #     chains = 4,
 #     control = list(adapt_delta = 0.99) )
-
 # save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
 
 load('ghats.alpha_ENSPIE.Rdata')
-
 summary(ghats.alpha_ENSPIE) # summary of alpha richness model
 
 color_scheme_set("darkgray")
@@ -126,12 +118,12 @@ ar.plot <- cbind(alpha_div, ma$Estimate)
 
 #make sure they are factors
 ar.plot$Treatment <- as.factor(ar.plot$Treatment )
-ar.plot$Site <- as.factor(ar.plot$Site )
+ar.plot$Village <- as.factor(ar.plot$Village )
 
 #plot residuals
 par(mfrow=c(1,2))
 with(ar.plot, plot(Treatment, ma$Estimate))
-with(ar.plot, plot(Site, ma$Estimate))
+with(ar.plot, plot(Village, ma$Estimate))
 # you want these to be centrered on zero
 
 fig_s1c <- pp_check(ghats.alpha_ENSPIE) +
@@ -144,10 +136,6 @@ fig_s1c <- pp_check(ghats.alpha_ENSPIE) +
 
 fig_s1c
 
-fig_s1 <- (fig_s1a | fig_s1b | fig_s1c)
-
-fig_s1
-
 ghats_alpha_ENSPIE <-
   conditional_effects(
     ghats.alpha_ENSPIE,
@@ -157,40 +145,40 @@ ghats_alpha_ENSPIE <-
   )
 
 # beta
-
 # the solution, bootstrap resampling: prepare the data for bootstrap resampling of sites
 gamma_dat <- alpha_dat_prep %>% 
   # collate relative weight of each species at each location (these are alpha-scale samples)
-  group_by(Treatment, Transect) %>% 
+  group_by(Treatment, Site) %>% 
   nest(c(Sci_name, rel_weight, weight, plot_weight)) %>% 
   ungroup()
 
 # for n_samps, get 10 sites (alpha samples)
 
-# n_sites = 10
+# n_Sites = 10
 # n_samps <- 200
 # gamma_metrics <- tibble()
-# for(i in 1:n_samps){
+# for (i in 1:n_samps) {
 #   print(i)
-#   # get these n_sites rows and calculate alpha S
+#   # get these n_Sites rows and calculate alpha S
 #   alpha_sub_samp <- gamma_dat %>%
 #     # from each group
 #     group_by(Treatment) %>%
 #     # get 10 rows
-#     sample_n(n_sites, replace = F) %>%
+#     sample_n(n_Sites, replace = F) %>%
 #     # unnest
 #     unnest() %>%
 #     # calculate PIE, S for each site
-#     group_by(Treatment, Transect) %>%
-#     mutate(alphaS = n_distinct(Sci_name),
-#            alpha_Spie = vegan::diversity(rel_weight, index = 'invsimpson')) %>%
+#     group_by(Treatment, Site) %>%
+#     mutate(
+#       alphaS = n_distinct(Sci_name),
+#       alpha_Spie = vegan::diversity(rel_weight, index = 'invsimpson')
+#     ) %>%
 #     ungroup() %>%
 #     # get the minimum N and mean S for each treatment
 #     group_by(Treatment) %>%
 #     mutate(mean_alpha_S = mean(alphaS),
 #            mean_alpha_Spie = mean(alpha_Spie)) %>%
 #     ungroup()
-# 
 #   # aggregate same sub sample for gamma calculations
 #   sub_samp <- alpha_sub_samp %>%
 #     # aggregate data to gamma scale
@@ -199,29 +187,35 @@ gamma_dat <- alpha_dat_prep %>%
 #     ungroup() %>%
 #     # get minimum N for Sn
 #     group_by(Treatment) %>%
-#     mutate(trt_weight = sum(sp_trt_weight),
-#            gamma_rel_weight = (sp_trt_weight/trt_weight)) %>%
+#     mutate(
+#       trt_weight = sum(sp_trt_weight),
+#       gamma_rel_weight = (sp_trt_weight / trt_weight)
+#     ) %>%
 #     ungroup() %>%
 #     mutate(minrel = min(gamma_rel_weight))
-# 
-# 
 #   # calculate the metrics we want
 #   gamma_metrics <- gamma_metrics %>%
-#     bind_rows(sub_samp %>%
-#                 group_by(Treatment) %>%
-#                 summarise(S = n_distinct(Sci_name),
-#                           ENSPIE = vegan::diversity(gamma_rel_weight, index = 'invsimpson'))  %>%
-#                 # add counter for sample based rarefaction
-#                 left_join( alpha_sub_samp %>%
-#                              select(Treatment, mean_alpha_S, mean_alpha_Spie) %>%
-#                              distinct() %>%
-#                              group_by(Treatment) %>%
-#                              mutate(
-#                                alpha_S = mean_alpha_S,
-#                                alpha_Spie = mean_alpha_Spie,
-#                                resample = i) ) )
+#     bind_rows(
+#       sub_samp %>%
+#         group_by(Treatment) %>%
+#         summarise(
+#           S = n_distinct(Sci_name),
+#           ENSPIE = vegan::diversity(gamma_rel_weight, index = 'invsimpson')
+#         )  %>%
+#         # add counter for sample based rarefaction
+#         left_join(
+#           alpha_sub_samp %>%
+#             select(Treatment, mean_alpha_S, mean_alpha_Spie) %>%
+#             distinct() %>%
+#             group_by(Treatment) %>%
+#             mutate(
+#               alpha_S = mean_alpha_S,
+#               alpha_Spie = mean_alpha_Spie,
+#               resample = i
+#             )
+#         )
+#     )
 # }
-
 # save(gamma_metrics, file= 'gamma_metrics.Rdata')
 
 load('gamma_metrics.Rdata')
@@ -268,7 +262,7 @@ table_3_ens_alpha <- ghats_alpha_ENSPIE_df %>% select(Treatment, estimate__, low
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
-table_3_ens_alpha %>% gtsave('Table_3 (ens_alpha).png', expand = 5) # expand to set white space
+table_3_ens_alpha %>% gtsave('Table_3 (Simpson div_alpha).png', expand = 5) # expand to set white space
 
 # Table beta_ENSPIE
 table_3_ens_beta <- gamma_boot_results %>% 
@@ -282,7 +276,7 @@ table_3_ens_beta <- gamma_boot_results %>%
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
-table_3_ens_beta %>% gtsave('Table_3 (ens_beta).png', expand = 5) # expand to set white space
+table_3_ens_beta %>% gtsave('Table_3 (Simpson div_beta).png', expand = 5) # expand to set white space
 
 # Table gamma_ENSPIE
 table_3_ens_gamma <- gamma_boot_results %>% 
@@ -296,9 +290,7 @@ table_3_ens_gamma <- gamma_boot_results %>%
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
-table_3_ens_gamma %>% gtsave('Table_3 (ens_gamma).png', expand = 5) # expand to set white space
-
-
+table_3_ens_gamma %>% gtsave('Table_3 (Simpson div_gamma).png', expand = 5) # expand to set white space
 # Plot----
 fig_alpha_ENSPIE <- ggplot() +
   geom_point(
@@ -342,7 +334,6 @@ fig_alpha_ENSPIE <- ggplot() +
 
 fig_alpha_ENSPIE
 fig_4a <- fig_alpha_ENSPIE
-
 
 beta_S_PIE_all <- ggplot() +
   geom_point(data = gamma_boot_results,
@@ -411,7 +402,6 @@ fig_4c <- gamma_S_PIE_all
 # 
 # Evenness+plot_annotation(title ="Species evenness",
 #                          theme = theme(plot.title = element_text(size = 14, hjust = 0.5)))
-
 
 
 # Save image (Evenness)

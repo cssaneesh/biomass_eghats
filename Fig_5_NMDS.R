@@ -106,7 +106,9 @@ relative_weight_matrix <- relative_weight %>%  select(Transect, Sci_name, relati
 # run NMDS with  bray curtis distance
 # https://chrischizinski.github.io/rstats/vegan-ggplot2/
 
+set.seed(1980)
 eghats.mds <- metaMDS(relative_weight_matrix, distance = "bray", autotransform = FALSE)
+# stress is 0.18 ideal is less than 0.2
 
 plot(eghats.mds, type = "t")
 
@@ -270,10 +272,10 @@ top10_hist <- ggplot(top10_biomass, aes(relative_biomass, Sci_name, fill=Treatme
 top10_hist+nmdsplot
 
 # For my own understanding:
-# NMDS plots shows the low evenness in Control and CPFA treatments at the gamma 
-# scale,We also have more variance in composition more site to site turnover 
-# when CAFA in the beta diversity. We can see the names of top 10 species 
-# responsible for this result
+# In this ordination, the closer two points are, the more similar the corresponding samples are with respect to the variables that went into making the NMDS plot.
+# The closer the points/samples are together in the ordination space, the more similar their plant communities.
+# In the histogram we can see the species responsible for the result in NMDS
+# We can see the names of top 10 species responsible for this result
 
 # statistical analysis----
 # ? is composition different across our treatments- may be not because there is 

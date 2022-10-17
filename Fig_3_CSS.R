@@ -18,15 +18,15 @@ raw_dat <- read.csv(
 )
 
 # Data wrangling----
-transect_dat <- raw_dat %>%
+Site_dat <- raw_dat %>%
   mutate(
     Treatment = as.factor(Treatment),
     Life_form = as.factor(Life_form),
     Functional_groups = as.factor(Functional_groups)
   )
 
-transect_prep <- transect_dat %>%
-  arrange(Transect, Treatment) %>%
+Site_prep <- Site_dat %>%
+  arrange(Site, Treatment) %>%
   mutate(
     Treatment = case_when(
       Treatment == "ab" ~ "Control",
@@ -37,34 +37,34 @@ transect_prep <- transect_dat %>%
     )
   )
 
-# what is the summed biomass per transect without cymbopogon?
-transect_sum_no_cym <- transect_prep %>%
+# what is the summed biomass per Site without cymbopogon?
+Site_sum_no_cym <- Site_prep %>%
   filter(!Sci_name == "Cymbopogon sp.") %>%
-  group_by(Transect, Treatment) %>%
-  summarise(transect_biomass_no_cym = sum(Weight)) %>%
+  group_by(Site, Treatment) %>%
+  summarise(Site_biomass_no_cym = sum(Weight)) %>%
   ungroup()
 
-# what is the summed biomass per transect with cymbopogon?
-transect_sum_w_cym <-
-  transect_prep %>% group_by(Transect, Treatment) %>%
-  summarise(transect_biomass = sum(Weight)) %>%
+# what is the summed biomass per Site with cymbopogon?
+Site_sum_w_cym <-
+  Site_prep %>% group_by(Site, Treatment) %>%
+  summarise(Site_biomass = sum(Weight)) %>%
   ungroup()
 
-transect_sum <-
-  transect_sum_w_cym %>% left_join(transect_sum_no_cym)
+Site_sum <-
+  Site_sum_w_cym %>% left_join(Site_sum_no_cym)
 
-# Transect_calc
-transect_calc <- transect_prep %>% left_join(transect_sum) %>%
+# Site_calc
+Site_calc <- Site_prep %>% left_join(Site_sum) %>%
   mutate(
-    relative_biomass = (Weight / transect_biomass) ,
-    relative_biomass_p = ((Weight / transect_biomass) * 100),
-    relative_biomass_nc = (Weight / transect_biomass_no_cym) ,
-    relative_biomass_nc_p = ((Weight / transect_biomass) * 100)
+    relative_biomass = (Weight / Site_biomass) ,
+    relative_biomass_p = ((Weight / Site_biomass) * 100),
+    relative_biomass_nc = (Weight / Site_biomass_no_cym) ,
+    relative_biomass_nc_p = ((Weight / Site_biomass) * 100)
   )
 
 # for alpha
 alpha_div <-
-  transect_calc %>% group_by(Site, Transect, Treatment) %>%
+  Site_calc %>% group_by(Village, Site, Treatment) %>%
   dplyr::summarise(
     alpha_rich = n_distinct(Sci_name),
     alpha_ENSPIE = vegan::diversity(relative_biomass,
@@ -77,27 +77,22 @@ alpha_div <-
 # write.csv( alpha_div, "alpha_div.csv")
 
 # for beta
-alpha_dat <-  transect_dat %>%
-  group_by(Transect, Site, Treatment, Sci_name) %>%
-  summarise(weight = sum(Weight)) %>% arrange(Transect, Sci_name)
+alpha_dat <-  Site_dat %>%
+  group_by(Site, Village, Treatment, Sci_name) %>%
+  summarise(weight = sum(Weight)) %>% arrange(Site, Sci_name)
 
 plot_dat <- alpha_dat %>%
-  group_by(Transect, Site, Treatment) %>%
-  summarise(plot_weight = sum(weight))# plot data is from 28 potential sites
-
-test <- plot_dat %>% 
-  group_by (Site, Treatment) %>% dplyr::count(Site) %>% view()
-
-# write.csv(test, 'sites_treatments.csv')
+  group_by(Site, Village, Treatment) %>%
+  summarise(plot_weight = sum(weight))
 
 alpha_dat_prep <- alpha_dat %>%
   left_join(plot_dat) %>%
   mutate(rel_weight = (weight / plot_weight))
 
-# the solution, bootstrap resampling: prepare the data for bootstrap resampling of sites
+# the solution, bootstrap resampling: prepare the data for bootstrap resampling of Sites
 gamma_dat <- alpha_dat_prep %>%
   # collate relative weight of each species at each location (these are alpha-scale samples)
-  group_by(Treatment, Transect) %>%
+  group_by(Treatment, Site) %>%
   nest(c(Sci_name, rel_weight, weight, plot_weight)) %>%
   ungroup()
 
@@ -105,10 +100,9 @@ gamma_dat <- alpha_dat_prep %>%
 # Alpha_div
 
 # ghats.alpha_rich----
-
 # ghats.alpha_rich <-
 #   brm(
-#     alpha_rich ~  Treatment + ( 1 | Transect ) ,
+#     alpha_rich ~  Treatment + ( 1 | Site ) ,
 #     family = poisson(),
 #     data = alpha_div,
 #     iter = 3000,
@@ -117,12 +111,9 @@ gamma_dat <- alpha_dat_prep %>%
 #     chains = 4,
 #     control = list(adapt_delta = 0.9)
 #   )
-# 
 # save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
 
 load('ghats.alpha_rich.Rdata')
-
-
 summary(ghats.alpha_rich) # summary of alpha richness model
 
 color_scheme_set("darkgray")
@@ -138,12 +129,12 @@ ar.plot <- cbind(alpha_div, ma$Estimate)
 
 #make sure they are factors
 ar.plot$Treatment <- as.factor(ar.plot$Treatment )
-ar.plot$Site <- as.factor(ar.plot$Site )
+ar.plot$Village <- as.factor(ar.plot$Village )
 
 #plot residuals
 par(mfrow=c(1,2))
 with(ar.plot, plot(Treatment, ma$Estimate))
-with(ar.plot, plot(Site, ma$Estimate))
+with(ar.plot, plot(Village, ma$Estimate))
 # you want these to be centrered on zero
 
 fig_s1b <- pp_check(ghats.alpha_rich) +
@@ -166,32 +157,33 @@ ghats_alpha_rich <-
 
 # beta data----
 
-# for n_samps, get 10 sites (alpha samples)
+# for n_samps, get 10 Site (alpha samples)
 
-# n_sites = 10
+# n_Site = 10
 # n_samps <- 200
 # gamma_metrics <- tibble()
-# for(i in 1:n_samps){
+# for (i in 1:n_samps) {
 #   print(i)
-#   # get these n_sites rows and calculate alpha S
+#   # get these n_Site rows and calculate alpha S
 #   alpha_sub_samp <- gamma_dat %>%
 #     # from each group
 #     group_by(Treatment) %>%
 #     # get 10 rows
-#     sample_n(n_sites, replace = F) %>%
+#     sample_n(n_Site, replace = F) %>%
 #     # unnest
 #     unnest() %>%
-#     # calculate PIE, S for each site
-#     group_by(Treatment, Transect) %>%
-#     mutate(alphaS = n_distinct(Sci_name),
-#            alpha_Spie = vegan::diversity(rel_weight, index = 'invsimpson')) %>%
+#     # calculate PIE, S for each Site
+#     group_by(Treatment, Site) %>%
+#     mutate(
+#       alphaS = n_distinct(Sci_name),
+#       alpha_Spie = vegan::diversity(rel_weight, index = 'invsimpson')
+#     ) %>%
 #     ungroup() %>%
 #     # get the minimum N and mean S for each treatment
 #     group_by(Treatment) %>%
 #     mutate(mean_alpha_S = mean(alphaS),
 #            mean_alpha_Spie = mean(alpha_Spie)) %>%
 #     ungroup()
-# 
 #   # aggregate same sub sample for gamma calculations
 #   sub_samp <- alpha_sub_samp %>%
 #     # aggregate data to gamma scale
@@ -200,33 +192,38 @@ ghats_alpha_rich <-
 #     ungroup() %>%
 #     # get minimum N for Sn
 #     group_by(Treatment) %>%
-#     mutate(trt_weight = sum(sp_trt_weight),
-#            gamma_rel_weight = (sp_trt_weight/trt_weight)) %>%
+#     mutate(
+#       trt_weight = sum(sp_trt_weight),
+#       gamma_rel_weight = (sp_trt_weight / trt_weight)
+#     ) %>%
 #     ungroup() %>%
 #     mutate(minrel = min(gamma_rel_weight))
-# 
-# 
 #   # calculate the metrics we want
 #   gamma_metrics <- gamma_metrics %>%
-#     bind_rows(sub_samp %>%
-#                 group_by(Treatment) %>%
-#                 summarise(S = n_distinct(Sci_name),
-#                           ENSPIE = vegan::diversity(gamma_rel_weight, index = 'invsimpson'))  %>%
-#                 # add counter for sample based rarefaction
-#                 left_join( alpha_sub_samp %>%
-#                              select(Treatment, mean_alpha_S, mean_alpha_Spie) %>%
-#                              distinct() %>%
-#                              group_by(Treatment) %>%
-#                              mutate(
-#                                alpha_S = mean_alpha_S,
-#                                alpha_Spie = mean_alpha_Spie,
-#                                resample = i) ) )
+#     bind_rows(
+#       sub_samp %>%
+#         group_by(Treatment) %>%
+#         summarise(
+#           S = n_distinct(Sci_name),
+#           ENSPIE = vegan::diversity(gamma_rel_weight, index = 'invsimpson')
+#         )  %>%
+#         # add counter for sample based rarefaction
+#         left_join(
+#           alpha_sub_samp %>%
+#             select(Treatment, mean_alpha_S, mean_alpha_Spie) %>%
+#             distinct() %>%
+#             group_by(Treatment) %>%
+#             mutate(
+#               alpha_S = mean_alpha_S,
+#               alpha_Spie = mean_alpha_Spie,
+#               resample = i
+#             )
+#         )
+#     )
 # }
-# 
 # save(gamma_metrics, file= 'gamma_metrics.Rdata')
 
 load('gamma_metrics.Rdata')
-
 gamma_boot_results <-
   gamma_metrics %>% # calculate beta-diversities (beta = gamma/alpha)
   mutate(beta_S = S / alpha_S,
