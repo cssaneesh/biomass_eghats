@@ -147,8 +147,6 @@ APA10,bgrnf,APA10bgrnf,Cyanthillium albicans,Yes,9,Cyanthillium albicans (DC.) H
 APA7,bgrnf,APA7bgrnf,Cyanthillium albicans,Yes,10,Cyanthillium albicans (DC.) H.Rob.,Asteraceae,Herb,Asters,14.02257643,78.38102775,Annual herb,Forb
 APC1,bgrnf,APC1bgrnf,Cyanthillium albicans,Yes,16,Cyanthillium albicans (DC.) H.Rob.,Asteraceae,Herb,Asters,13.84873331,78.42895372,Annual herb,Forb
 APA20,bgrnf,APA20bgrnf,Cyanthillium cinereum,Yes,16,Cyanthillium cinereum (L.) H.Rob.,Asteraceae,Herb,Asters,14.07855213,78.32909996,Annual/perennial herb,Forb
-APA7,bgrnf,APA7bgrnf,Cymbopogon sp.,Cymbopogon sp.,9,Cymbopogon sp.,Poaceae,Herb,Grass,14.02257643,78.38102775,Perennial graminoid,Cymbopogon
-APA8,bgrnf,APA8bgrnf,Cymbopogon sp.,Cymbopogon sp.,7,Cymbopogon sp.,Poaceae,Herb,Grass,14.02132073,78.3810486,Perennial graminoid,Cymbopogon
 APA10,bgpnf,APA10bgpnf,Cymbopogon sp.,Cymbopogon sp.,2750,Cymbopogon sp.,Poaceae,Herb,Grass,14.01931795,78.38124299,Perennial graminoid,Cymbopogon
 APA10,bgrnf,APA10bgrnf,Cymbopogon sp.,Cymbopogon sp.,120,Cymbopogon sp.,Poaceae,Herb,Grass,14.01957255,78.38249092,Perennial graminoid,Cymbopogon
 APA12,ab,APA12ab,Cymbopogon sp.,Cymbopogon sp.,1485,Cymbopogon sp.,Poaceae,Herb,Grass,14.0411993,78.3177903,Perennial graminoid,Cymbopogon
@@ -162,8 +160,8 @@ APA20,ab,APA20ab,Cymbopogon sp.,Cymbopogon sp.,1091,Cymbopogon sp.,Poaceae,Herb,
 APA20,bgrnf,APA20bgrnf,Cymbopogon sp.,Cymbopogon sp.,219,Cymbopogon sp.,Poaceae,Herb,Grass,14.07855213,78.32909996,Perennial graminoid,Cymbopogon
 APA21,bgpnf,APA21bgpnf,Cymbopogon sp.,Cymbopogon sp.,1122,Cymbopogon sp.,Poaceae,Herb,Grass,14.0091949,78.3198229,Perennial graminoid,Cymbopogon
 APA7,bgpnf,APA7bgpnf,Cymbopogon sp.,Cymbopogon sp.,613,Cymbopogon sp.,Poaceae,Herb,Grass,14.02114351,78.38002126,Perennial graminoid,Cymbopogon
-APA7,bgrnf,APA7bgrnf,Cymbopogon sp.,Cymbopogon sp.,41,Cymbopogon sp.,Poaceae,Herb,Grass,14.02257643,78.38102775,Perennial graminoid,Cymbopogon
-APA8,bgrnf,APA8bgrnf,Cymbopogon sp.,Cymbopogon sp.,266,Cymbopogon sp.,Poaceae,Herb,Grass,14.02132073,78.3810486,Perennial graminoid,Cymbopogon
+APA7,bgrnf,APA7bgrnf,Cymbopogon sp.,Cymbopogon sp.,50,Cymbopogon sp.,Poaceae,Herb,Grass,14.02257643,78.38102775,Perennial graminoid,Cymbopogon
+APA8,bgrnf,APA8bgrnf,Cymbopogon sp.,Cymbopogon sp.,273,Cymbopogon sp.,Poaceae,Herb,Grass,14.02132073,78.3810486,Perennial graminoid,Cymbopogon
 APC10,ab,APC10ab,Cymbopogon sp.,Cymbopogon sp.,510,Cymbopogon sp.,Poaceae,Herb,Grass,13.86199189,78.43342618,Perennial graminoid,Cymbopogon
 APC10,bgrnf,APC10bgrnf,Cymbopogon sp.,Cymbopogon sp.,115,Cymbopogon sp.,Poaceae,Herb,Grass,13.8647888,78.3988028,Perennial graminoid,Cymbopogon
 APC11,ab,APC11ab,Cymbopogon sp.,Cymbopogon sp.,1827,Cymbopogon sp.,Poaceae,Herb,Grass,13.8371911,78.4106671,Perennial graminoid,Cymbopogon

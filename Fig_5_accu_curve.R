@@ -100,29 +100,20 @@ df.line$Method <- factor(df.line$Method,
 # Rarefaction or Interpolation?
 
 # Plot----
-Site.TD.fig_op1 <- ggplot(Site.hill.TD ,
+treatment_colors <- c("Control" = "#3b5d4d", "CPFA" = "#c5af99","CAFA" = "#ffd365")
+
+fig_5 <- ggplot(Site.hill.TD ,
                               aes(x = nt, y = qD,   color = Treatment)) +
   facet_wrap( ~ Order.q) +
   geom_point(aes(),
              shape = 1,
-             size = 2,
+             size = 3,
              data = df.point) +
   geom_line(aes(linetype = Method), lwd = 0.75, data = df.line) +
   labs(
     x = "Number of sites",
-    y = "Taxonomic diversity",
-   # title = "Sample - based diversity accumulation ", 
-    #caption = "Control= Cymbopogon present and fire present
-#CPFA= Cymbopogon present and fire absent
-#CAFA= Cymbopogon absent and fire absent"
-  ) +
-  scale_color_manual(values = c(
-    "Control" = "#BB9689",
-    "CPFA" = "#836656",
-    "CAFA" = "#6C3859"
-  )) +
-  # scale_color_manual(values =  c("#A6BAd7", '#836656',"#6C3859"))  +
-  # scale_colour_grey()+
+    y = "Taxonomic diversity",) +
+  scale_color_manual(values = treatment_colors) +
   theme_bw(base_size = 12) +
   theme(legend.text = element_text(size = 8)) +
   guides(col = guide_legend(ncol = 15)) +
@@ -132,21 +123,16 @@ Site.TD.fig_op1 <- ggplot(Site.hill.TD ,
     panel.background = element_rect(fill = "white")
   )
 
-
+fig_5
 
 (
-  Site.TD.fig_op1 +
-    #   labs(caption = "Control= Cymbopogon present and fire present
-    # CPFA= Cymbopogon present and fire absent
-    # CAFA= Cymbopogon absent and fire absent")+
+  fig_5 +
     theme(plot.caption = element_text(
       size = 8, face = "italic",
       hjust = 0.0
-    )) +
-    theme(legend.position = 'bottom',) +
-    theme(
-      legend.position = c(0.95, .75),
-      legend.direction = "vertical"
+    )) +theme(
+      legend.position = c(1.3, .95),
+     legend.justification = c('right', 'top')
     ) +
     theme(legend.background = element_rect(fill = NA))
 )

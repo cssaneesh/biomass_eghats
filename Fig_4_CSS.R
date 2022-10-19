@@ -92,14 +92,15 @@ levels(alpha_div$Treatment)
 
 # ghats.alpha_ENSPIE <-
 #   brm(
-#     alpha_ENSPIE ~   Treatment + ( 1  | Site ) ,
+#     alpha_ENSPIE ~   Treatment + (1  | Site) ,
 #     family = 'lognormal',
 #     data = alpha_div,
 #     iter = 3000,
 #     warmup = 1000,
 #     cores = 4,
 #     chains = 4,
-#     control = list(adapt_delta = 0.99) )
+#     control = list(adapt_delta = 0.99)
+#   )
 # save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
 
 load('ghats.alpha_ENSPIE.Rdata')

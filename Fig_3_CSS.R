@@ -358,9 +358,9 @@ fig_alpha_rich <- ggplot() +
     panel.background = element_rect(fill = "white")
   ) + labs(subtitle = 'a)')
 
-fig_a <- fig_alpha_rich
+fig_3a <- fig_alpha_rich
 
-fig_a
+fig_3a
 
 # Beta
 beta_S_all <- ggplot() +
@@ -397,8 +397,8 @@ beta_S_all <- ggplot() +
     panel.background = element_rect(fill = "white")
   ) + labs(subtitle = 'b)')
 
-fig_b <- beta_S_all
-fig_b
+fig_3b <- beta_S_all
+fig_3b
 
 # Gamma
 gamma_S_all <- ggplot() +
@@ -429,10 +429,10 @@ gamma_S_all <- ggplot() +
   ) +
   theme(plot.caption = element_text(size = 8, face = "italic",
                                     hjust = 0)) + labs(subtitle = 'c)')
-fig_c <- gamma_S_all
-fig_c
+fig_3c <- gamma_S_all
+fig_3c
 
-(Richness <- fig_a + fig_b + fig_c)
+(Richness <- fig_3a + fig_3b + fig_3c)
 
 # To add images to x axis----
 # treats <- axis_canvas(Richness, axis = 'x') +

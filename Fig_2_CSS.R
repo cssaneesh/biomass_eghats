@@ -27,7 +27,7 @@ Site_dat <- raw_dat %>%
 
 # number of graminoids (annual/perennial) and forbs (annual/perennial)
 species_list <- Site_dat %>% 
-  select(Scientific_name, Functional_type, Functional_groups, Palatability) %>%
+  select(Scientific_name, Family, Functional_type, Functional_groups, Palatability) %>%
   mutate(
     Functional_type= case_when(
       Functional_type == "Annual undershrub"  ~ "Annual",
@@ -39,9 +39,9 @@ species_list <- Site_dat %>%
       Functional_type == "Perennial graminoid"   ~ "Perennial",
       Functional_type == "Perennial undershrub"  ~ "Perennial")) %>%
     mutate(Palatability= recode(Palatability, 'Cymbopogon sp.'= 'No')) %>%  
-  distinct(Functional_groups,Palatability, Functional_type, Scientific_name)
+  distinct(Functional_groups,Palatability, Functional_type, Scientific_name, Family)
 
-# write.csv(species_list, 'Species list- supplementary- 1.csv')
+# write.csv(species_list, 'Species list-Fam_ supplementary- 1.csv') # add 4 Cymb. grass manually.
 species_list %>%
   mutate(anu.peri = as.factor(Functional_groups)) %>%
   dplyr::count(Functional_groups, Functional_type, Palatability) 
@@ -190,17 +190,17 @@ fig_e <- (fig_e1 / fig_e2) # use patchwork to stick plots together
 fig_e
 
 # Analysis----
-# ghats.rel_biomass <-
-#   brm(
-#     relative_biomass ~   Treatment * Palatability  +
-#       ( 1 | Site ) ,
-#     family = student(),
-#     data = relative_weight,
-#     iter = 2000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4
-#   )
+ghats.rel_biomass <-
+  brm(
+    relative_biomass ~   Treatment * Palatability  +
+      ( 1 | Site ) ,
+    family = student(),
+    data = relative_weight,
+    iter = 2000,
+    warmup = 1000,
+    cores = 4,
+    chains = 4
+  )
 # save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
 load("ghats.rel_biomass.Rdata")
 
@@ -313,6 +313,8 @@ fig_rel_biomass <- ggplot() +
     panel.background = element_rect(fill = "white")
   )+
   theme(axis.ticks = element_blank())
+
+fig_rel_biomass
 
 ggsave('Fig_2.jpg',
        width = 10,

@@ -10,7 +10,6 @@ library(gt)
 library(webshot)
 
 # Data----
-# raw data
 raw_dat <- read.csv(
   "biomass_data.csv",
   header = T,
@@ -20,7 +19,7 @@ raw_dat <- read.csv(
 )
 
 # Data wrangling----
-transect_dat <- raw_dat %>%
+Site_dat <- raw_dat %>%
   mutate(
     Treatment = as.factor(Treatment),
     Life_form = as.factor(Life_form),
@@ -28,17 +27,16 @@ transect_dat <- raw_dat %>%
   )
 
 
-unique.sp.list <- transect_dat %>% select(Scientific_name) %>% unique()
+unique.sp.list <- Site_dat %>% select(Scientific_name) %>% unique()
 # write.csv(unique.sp.list, 'unique.sp.list.csv')
 
-palatability.count <- transect_dat %>% select(Scientific_name, Palatability) %>% 
+palatability.count <- Site_dat %>% select(Scientific_name, Palatability) %>% 
   distinct(Scientific_name, Palatability) %>% 
   mutate(Palatability=as.factor(Palatability)) %>% 
   dplyr::count(Palatability)
 
 # number of graminoids (annual/perennial) and forbs (annual/perennial)
-
-anu.peri <- transect_dat %>% 
+anu.peri <- Site_dat %>% 
   select(Scientific_name, Functional_type, Functional_groups) %>%
   mutate(
     Functional_type= case_when(
@@ -54,8 +52,8 @@ anu.peri <- transect_dat %>%
   mutate(anu.peri=as.factor(Functional_groups)) %>% 
   dplyr::count(Functional_groups,Functional_type)
 
-transect_prep <- transect_dat %>%
-  arrange(Transect, Treatment) %>%
+Site_prep <- Site_dat %>%
+  arrange(Site, Treatment) %>%
   mutate(
     Treatment = case_when(
       Treatment == "ab" ~ "Control",
@@ -66,9 +64,9 @@ transect_prep <- transect_dat %>%
     )
   )
 
-# create transect prep data
-transect_prep <- transect_dat %>%
-  arrange(Transect, Treatment) %>%
+# create Site prep data
+Site_prep <- Site_dat %>%
+  arrange(Site, Treatment) %>%
   mutate(
     Treatment = case_when(
       Treatment == "ab" ~ "Control",
@@ -79,25 +77,25 @@ transect_prep <- transect_dat %>%
     )
   )
 
-# what is the summed biomass per transect with cymbopogon?
-transect_sum <-
-  transect_prep %>% group_by(Transect, Treatment) %>%
-  summarise(transect_biomass = sum(Weight)) %>%
+# what is the summed biomass per Site with cymbopogon?
+Site_sum <-
+  Site_prep %>% group_by(Site, Treatment) %>%
+  summarise(Site_biomass = sum(Weight)) %>%
   ungroup()
 
-# Transect_calc
-transect_calc <- transect_prep %>% left_join(transect_sum) %>%
+# Site_calc
+Site_calc <- Site_prep %>% left_join(Site_sum) %>%
   mutate(
-    relative_biomass = (Weight / transect_biomass) ,
+    relative_biomass = (Weight / Site_biomass) ,
     relative_biomass_p =  round(((
-      Weight / transect_biomass
+      Weight / Site_biomass
     ) * 100) , 2)
   )
 
 # Absolute_biomass
-absolute_weight <- transect_calc %>%
-  select(Transect, Treatment, Weight, Palatability) %>%
-  group_by(Palatability, Treatment, Transect) %>%
+absolute_weight <- Site_calc %>%
+  select(Site, Treatment, Weight, Palatability) %>%
+  group_by(Palatability, Treatment, Site) %>%
   summarise(Weight = sum(Weight)) %>%
   mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
   mutate(Palatability = factor(Palatability)) %>%
@@ -146,8 +144,7 @@ fig_e1_ab <-
   ylim(-10, 800) +
   ylab("Biomass weight (g)") + theme(legend.direction = "none") +
   xlab("") +
-  labs(title = "Absolute biomass",
-       subtitle = 'a)') +
+  labs(title = "Absolute biomass") +
   scale_fill_manual(values = c("#f8bb49", '#a45200', "#4A2300")) +
   theme(plot.caption = element_text(size = 8, face = "italic",
                                     hjust = 0))
@@ -158,7 +155,7 @@ fig_e1_ab
 # ghats.ab_biomass <-
 #   brm(
 #     Weight ~   Treatment * Palatability  +
-#       ( 1 | Transect ) ,
+#       ( 1 | Site ) ,
 #     family = student(),
 #     data = absolute_weight,
 #     iter = 2000,
@@ -166,15 +163,15 @@ fig_e1_ab
 #     cores = 4,
 #     chains = 4
 #   )
-# 
 # save(ghats.ab_biomass, file = "ghats.ab_biomass.Rdata")
+
 load("ghats.ab_biomass.Rdata")
 
 color_scheme_set("darkgray")
 
 fig_s1ab <- pp_check(ghats.ab_biomass) +
   xlab("Functional group absolute biomass") + ylab("Density") +
-  labs(title = "Transect-level",
+  labs(title = "Site-level",
        subtitle = "a)") +
   theme_classic() + xlim(-20,150) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
@@ -196,7 +193,6 @@ ghats_ab_biomass_df <-
   as.data.frame(ghats_ab_biomass$`Treatment:Palatability`)# to make a df to report statistics results
 
 # View(ghats_ab_biomass_df)
-
 # Table_1 ----
 # Biomass
 table_1_ab <- ghats_ab_biomass_df %>%
@@ -281,7 +277,7 @@ fig_ab_biomass <- ggplot() +
   )
 
 fig_ab_biomass + plot_annotation(title = "Absolute biomass",
-                                  theme = theme(plot.title = element_text(size = 14, hjust = 0.5)))
+                                 theme = theme(plot.title = element_text(size = 14, hjust = 0.5)))
 
 # add treatment icons to x axis
 treats <- axis_canvas(fig_ab_biomass, axis = 'x') +

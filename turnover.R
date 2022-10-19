@@ -5,7 +5,7 @@ library(bayesplot)
 library(patchwork)
 library(cmdstanr)
 
-transect_dat <-
+Site_dat <-
   read.csv(
     "biomass_data.csv",
     header = T,
@@ -14,22 +14,22 @@ transect_dat <-
     na.strings = c("", " ", "NA", "NA ", "na", "NULL")
   )
 
-head(transect_dat)
+head(Site_dat)
 
-transect_weight <- transect_dat %>%
-  group_by(Site, Transect, Treatment) %>%
+Site_weight <- Site_dat %>%
+  group_by(Village, Site, Treatment) %>%
   summarise(Plot_Weight = sum(Weight))
 
 
-transect_calc <- transect_dat %>%
-  left_join(transect_weight) %>%
+Site_calc <- Site_dat %>%
+  left_join(Site_weight) %>%
   mutate(relative_weight = (Weight / Plot_Weight))
 
 
-head(transect_calc)
+head(Site_calc)
 
-transect_details <- transect_calc %>%
-  select(Transect, Treatment, Site) %>% distinct()  %>%
+Site_details <- Site_calc %>%
+  select(Site, Treatment, Village) %>% distinct()  %>%
   mutate(
     Treatment = case_when(
       Treatment == "ab" ~ "Control",
@@ -42,13 +42,13 @@ transect_details <- transect_calc %>%
   mutate(Treatment = factor(Treatment)) %>%
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))  %>%
   ungroup() %>%
-  arrange(Site, Treatment)
+  arrange(Village, Treatment)
 
-head(transect_details, 3)
+head(Site_details, 3)
 
-control_prep <- transect_calc %>% as_tibble() %>%
+control_prep <- Site_calc %>% as_tibble() %>%
   mutate(pres = 1) %>%
-  select(Transect, Treatment, Sci_name, pres) %>%
+  select(Site, Treatment, Sci_name, pres) %>%
   mutate(
     Treatment = case_when(
       Treatment == "ab" ~ "Control",
@@ -60,7 +60,7 @@ control_prep <- transect_calc %>% as_tibble() %>%
   ) %>%
   mutate(Treatment = factor(Treatment)) %>%
   filter(Treatment == "Control") %>%
-  select(-Transect) %>%
+  select(-Site) %>%
   distinct() %>%
   mutate(Sci_name_sp = paste0('sp_', Sci_name)) %>%
   select(-Sci_name) %>%
@@ -69,14 +69,14 @@ control_prep <- transect_calc %>% as_tibble() %>%
 
 head(control_prep)
 
-ctls <- transect_details %>% select(Transect) %>% distinct() %>%
+ctls <- Site_details %>% select(Site) %>% distinct() %>%
   bind_cols(control_prep)
 
 head(ctls, 3)
 
-species_prep <- transect_calc %>% as_tibble() %>%
+species_prep <- Site_calc %>% as_tibble() %>%
   mutate(pres = 1) %>%
-  select(Transect, Treatment, Sci_name, pres) %>%
+  select(Site, Treatment, Sci_name, pres) %>%
   mutate(
     Treatment = case_when(
       Treatment == "ab" ~ "Control",
@@ -95,9 +95,9 @@ View(species_prep)
 species_wide <- species_prep %>%
   mutate(Sci_name_sp = paste0('sp_', Sci_name)) %>%
   select(-Sci_name) %>%
-  group_by(Transect, Sci_name_sp) %>%
+  group_by(Site, Sci_name_sp) %>%
   spread(Sci_name_sp, pres, fill = 0) %>%
-  bind_rows(ctls) %>% arrange(Transect) %>%
+  bind_rows(ctls) %>% arrange(Site) %>%
   replace(is.na(.), 0) # %>% View()
 
 head(species_wide)
@@ -150,11 +150,11 @@ beta_pairs <- function(x) {
   return(out)
 }
 
-head(transect_details)
+head(Site_details)
 
 wide.df <- species_wide %>%
-  left_join(transect_details) %>%
-  group_by(Transect) %>%
+  left_join(Site_details) %>%
+  group_by(Site) %>%
   nest_legacy(starts_with('sp_'), Treatment)
 
 head(wide.df)
@@ -171,7 +171,7 @@ beta.df <- wide.df %>%
         c(Treatment),
         sep = '_',
         remove = F) %>%
-  select(-group) %>% left_join(transect_details)
+  select(-group) %>% left_join(Site_details)
 
 
 # write.csv(beta.df, "beta.csv")
@@ -191,11 +191,10 @@ ggplot() +
 
 head(beta.df)
 
-
 # models
  # ghats.turnover <-
  #  brm(
- #    jtu ~   Treatment + (1 | Site) ,
+ #    jtu ~   Treatment + (1 | Village) ,
  #    family = zero_one_inflated_beta(),
  #    data = beta.df,
  #    iter = 3000,
@@ -210,9 +209,9 @@ load('ghats.turnover.Rdata')
 
 summary(ghats.turnover)
 
-<<<<<<< HEAD
+
 # ghats.nest <- brm(
-#   jne ~  Treatment + (Treatment | Site / Transect) ,
+#   jne ~  Treatment + (Treatment | Village / Site) ,
 #   family = zero_inflated_beta(),
 #   data = beta.df,
 #   iter = 7000,
@@ -222,9 +221,9 @@ summary(ghats.turnover)
 #   control = list(adapt_delta = 0.99),
 #   backend = 'rstan'
 # )
-=======
+
 ghats.nest <- brm(
-  jne ~  Treatment + (1 | Site) ,
+  jne ~  Treatment + (1 | Village) ,
   family = zero_inflated_beta(),
   data = beta.df,
   iter = 3000,
@@ -233,7 +232,6 @@ ghats.nest <- brm(
   chains = 4,
   control = list(adapt_delta = 0.99)
 )
->>>>>>> d51818eb36df5b6b8c21ab67213596bd8486aca5
 
 save(ghats.nest , file = 'ghats.nest .Rdata')
 load('ghats.nest .Rdata')
@@ -313,12 +311,7 @@ fig_4a <- ggplot() +
 
 fig_4a
 
-
-
-
 summary(ghats.nest) # model summary
-
-
 
 fig_s4b <- pp_check(ghats.nest) +
   xlab("Nestedness") + ylab("Density") +
@@ -392,3 +385,4 @@ fig_4b
 
 
 (fig_4a |fig_4b)
+ggsave('fig_turnover.jpg', width = 10, height = 6, dpi = 300)
