@@ -190,17 +190,17 @@ fig_e <- (fig_e1 / fig_e2) # use patchwork to stick plots together
 fig_e
 
 # Analysis----
-ghats.rel_biomass <-
-  brm(
-    relative_biomass ~   Treatment * Palatability  +
-      ( 1 | Site ) ,
-    family = student(),
-    data = relative_weight,
-    iter = 2000,
-    warmup = 1000,
-    cores = 4,
-    chains = 4
-  )
+# ghats.rel_biomass <-
+#   brm(
+#     relative_biomass ~   Treatment * Palatability  +
+#       ( 1 | Site ) ,
+#     family = student(),
+#     data = relative_weight,
+#     iter = 2000,
+#     warmup = 1000,
+#     cores = 4,
+#     chains = 4
+#   )
 # save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
 load("ghats.rel_biomass.Rdata")
 
