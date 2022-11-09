@@ -363,8 +363,9 @@ fig_rel.change.biomass <-
     x = 1.01,
     y = 58,
     size = 3,
-    label = "Heteropogon contortus",
-    color = "black"
+    label = "H. contortus",
+    color = "black",
+    fontface = 'italic'
   ) +
   annotate(
     geom = 'segment',
@@ -379,8 +380,9 @@ fig_rel.change.biomass <-
     x = 0.74,
     y = -57,
     size = 3,
-    label = "Spermacoce pusilla",
-    color = "black"
+    label = "S. pusilla",
+    color = "black",
+    fontface = 'italic'
   ) +
   annotate(
     geom = 'segment',
@@ -395,8 +397,9 @@ fig_rel.change.biomass <-
     x = 1.13,
     y = 25,
     size = 3,
-    label = "Tephrosia villosa",
-    color = "black"
+    label = "T. villosa",
+    color = "black",
+    fontface = 'italic'
   ) +
   annotate(
     geom = 'segment',
@@ -411,8 +414,9 @@ fig_rel.change.biomass <-
     x = 1,
     y = -13,
     size = 3,
-    label = "Leucas zeylanica",
-    color = "black"
+    label = "L. zeylanica",
+    color = "black",
+    fontface = 'italic'
   ) +
   annotate(
     geom = 'segment',
@@ -427,8 +431,9 @@ fig_rel.change.biomass <-
     x = 1.8,
     y = 28,
     size = 3,
-    label = "Chrysopogon fulvus",
-    color = "black"
+    label = "C. fulvus",
+    color = "black",
+    fontface = 'italic'
   ) +
   annotate(
     geom = 'segment',
@@ -443,8 +448,9 @@ fig_rel.change.biomass <-
     x = 1.8,
     y = -37,
     size = 3,
-    label = "Chrysopogon fulvus",
-    color = "black"
+    label = "C. fulvus",
+    color = "black",
+    fontface = 'italic'
   ) +
   annotate(
     geom = 'segment',
@@ -459,8 +465,9 @@ fig_rel.change.biomass <-
     x = 1.93,
     y = 10,
     size = 3,
-    label = "Leucas zeylanica",
-    color = "black"
+    label = "L. zeylanica",
+    color = "black",
+    fontface = 'italic'
   ) +
   annotate(
     geom = 'segment',
@@ -475,8 +482,9 @@ fig_rel.change.biomass <-
     x = 2.02,
     y = -18,
     size = 3,
-    label = "Leucas zeylanica",
-    color = "black"
+    label = "L. zeylanica",
+    color = "black",
+    fontface = 'italic'
   ) +
   annotate(
     geom = 'segment',
@@ -522,4 +530,3 @@ test <- test+
   facet_wrap(~Treatment)
 plotly::ggplotly(test)
 
-view(rel.bio.change.treatment)

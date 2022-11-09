@@ -221,18 +221,86 @@ nmdsplot <- ggplot() +
     panel.grid.minor = element_blank(),
     #remove minor-grid labels
   ) +
-  theme(legend.position = 'right') +
-  geom_hline(yintercept = 0,
-             color = 'gray',
-             alpha = .5) +
-  geom_vline(xintercept = 0,
-             color = 'gray',
-             alpha = .5)
+  theme(legend.position = 'right')
 
-nmdsplot
+nmdsplot+
+  annotate(
+    geom = "text",
+    x = -1.03,
+    y = 0.5,
+    size = 3,
+    label = "Cymbopogon spp.",
+    color = "black",
+    fontface = 'italic'
+  )+ 
+  annotate(
+    geom = "text",
+    x = -0.4,
+    y = 1.1,
+    size = 3,
+    label = "A. nervosa",
+    color = "black",
+    fontface = 'italic'
+  )+ 
+  annotate(
+    geom = "text",
+    x = 0.16,
+    y = 1.5,
+    size = 3,
+    label = "A. nervosa",
+    color = "black",
+    fontface = 'italic'
+  )+ 
+  annotate(
+    geom = "text",
+    x = 0.6,
+    y = 1.65,
+    size = 3,
+    label = "P. wightiana",
+    color = "black",
+    fontface = 'italic'
+  )+ 
+  annotate(
+    geom = "text",
+    x = -0.3,
+    y = -0.85,
+    size = 3,
+    label = "A. mutica",
+    color = "black",
+    fontface = 'italic'
+  )+ 
+  annotate(
+    geom = "text",
+    x = 0.4,
+    y = -1.05,
+    size = 3,
+    label = "H. contortus",
+    color = "black",
+    fontface = 'italic'
+  )+ 
+  annotate(
+    geom = "text",
+    x = 0.9,
+    y = -1.04,
+    size = 3,
+    label = "H. contortus",
+    color = "black",
+    fontface = 'italic'
+  )+ 
+  annotate(
+    geom = "text",
+    x = 1.01,
+    y = 0.5,
+    size = 3,
+    label = "L. cristata",
+    color = "black",
+    fontface = 'italic'
+  )
 
 # Save image----
 ggsave('fig_6_nmds.jpg', width = 10, height = 6, dpi = 300) 
+
+
 
 
 top10_hist <- ggplot(top10_biomass, aes(relative_biomass, Sci_name, fill=Treatment))+
