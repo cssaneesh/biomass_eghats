@@ -529,32 +529,6 @@ table_re.change <- rel.ghats_biochange_df %>%
 table_re.change
 table_re.change %>% gtsave('table_3_biochange.png', expand = 5)
 
-
-# test to remove------
-
-test <- ggplot() +
-  geom_point(
-    data = rel.bio.change.treatment,
-    aes(
-      x = Treatment,
-      y = Rel.Biomass,
-      group = Palatability,
-      colour = 	Sci_name
-    ),
-    size = 1,
-    alpha = 0.9,
-    position = position_jitterdodge(
-      jitter.width = 0.09,
-      jitter.height = 0.45,
-      dodge.width = 0.75,
-      seed = NA
-    ) # jitter points are species
-  )
-
-test <- test+
-  facet_wrap(~Treatment)
-plotly::ggplotly(test)
-
 # list of species 
 rel.bio.change.treatment %>% drop_na() %>% 
   filter(Palatability=='Yes') %>% filter(Treatment=='CAFA') %>% View()

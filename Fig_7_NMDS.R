@@ -230,7 +230,7 @@ nmdsplot+
     y = 0.5,
     size = 3,
     label = "Cymbopogon spp.",
-    color = "black",
+    color = "red",
     fontface = 'italic'
   )+ 
   annotate(
