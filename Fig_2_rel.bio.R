@@ -25,6 +25,7 @@ Site_dat <- raw_dat %>%
     Functional_groups = as.factor(Functional_groups)
   )
 
+
 # number of graminoids (annual/perennial) and forbs (annual/perennial)
 species_list <- Site_dat %>% 
   select(Scientific_name, Family, Treatment, Functional_type, Functional_groups, Palatability) %>%
@@ -113,6 +114,7 @@ Site_prep <- Site_dat %>%
       Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
     )
   )
+
 
 # what is the summed biomass per Site with cymbopogon?
 Site_sum <-
