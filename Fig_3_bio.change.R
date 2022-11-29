@@ -86,6 +86,7 @@ ghats_change_biomass <-
     re_formula = NA,
     method = 'fitted'
   )  # conditional effects
+ghats_change_biomass
 
 ghats.biomass.change_df <-
   as.data.frame(ghats_change_biomass$`Treatment:Palatability`)

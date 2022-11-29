@@ -25,7 +25,6 @@ Site_dat <- raw_dat %>%
     Functional_groups = as.factor(Functional_groups)
   )
 
-
 # number of graminoids (annual/perennial) and forbs (annual/perennial)
 species_list <- Site_dat %>% 
   select(Scientific_name, Family, Treatment, Functional_type, Functional_groups, Palatability) %>%
@@ -249,8 +248,9 @@ fig_e
 # ghats.rel_biomass <-
 #   brm(
 #     relative_biomass ~   Treatment * Palatability  +
-#       ( 1 | Site ) ,
-#     family = student(),
+#       ( 1 | Site ),
+#     # family = student(),
+#     family = lognormal(),
 #     data = relative_weight,
 #     iter = 2000,
 #     warmup = 1000,
@@ -281,6 +281,8 @@ ghats_rel_biomass <-
     re_formula = NA,
     method = 'fitted'
   )  # conditional effects
+
+ghats_rel_biomass
 
 ghats_rel_biomass_df <-
   as.data.frame(ghats_rel_biomass$`Treatment:Palatability`)# to make a df to report statistics results
@@ -348,7 +350,7 @@ fig_rel_biomass <- ggplot() +
     size = 1.3,
     width = 0.1
   ) + labs(x = '', y = '') +
-  scale_color_manual(values =  c("#a7a7a7", '#ffd9b2', "#999af7"))+
+  scale_color_manual(values =  c("#1a6Ba8", '#b57d70', "#9a9a9a"))+
   theme_bw(base_size = 12) + theme(
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),

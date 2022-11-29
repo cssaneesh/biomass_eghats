@@ -155,6 +155,7 @@ ghats_alpha_rich <-
     method = 'fitted'
   )  # conditional effects
 
+ghats_alpha_rich
 # beta data----
 
 # for n_samps, get 10 Site (alpha samples)
