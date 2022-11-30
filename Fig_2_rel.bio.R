@@ -245,18 +245,19 @@ fig_e <- (fig_e1 / fig_e2) # use patchwork to stick plots together
 fig_e
 
 # Analysis----
-# ghats.rel_biomass <-
-#   brm(
-#     relative_biomass ~   Treatment * Palatability  +
-#       ( 1 | Site ),
-#     # family = student(),
-#     family = lognormal(),
-#     data = relative_weight,
-#     iter = 2000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4
-#   )
+ghats.rel_biomass <-
+  brm(
+    relative_biomass ~   Treatment * Palatability  +
+      ( 1 | Site ),
+     family = student(),
+    # family = lognormal(),
+    data = relative_weight,
+    iter = 2000,
+    warmup = 1000,
+    cores = 4,
+    chains = 4
+  )
+
 # save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
 load("ghats.rel_biomass.Rdata")
 
@@ -365,7 +366,7 @@ fig_rel_biomass <- ggplot() +
                                 0.5),
     strip.background = element_blank(),
     #legend.position = "bottom"
-  ) + labs(subtitle = '') + ylab("Relative biomass(g)") +
+  ) + labs(subtitle = '') + ylab("Relative biomass (g)") +
   theme(
     panel.grid.major = element_line(colour = "gray86", size = 0.1),
     panel.background = element_rect(fill = "white")
