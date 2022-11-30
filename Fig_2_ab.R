@@ -27,17 +27,12 @@ Site_dat <- raw_dat %>%
   )
 
 
-unique.sp.list <- Site_dat %>% select(Scientific_name) %>% unique()
-# write.csv(unique.sp.list, 'unique.sp.list.csv')
-
-palatability.count <- Site_dat %>% select(Scientific_name, Palatability) %>% 
-  distinct(Scientific_name, Palatability) %>% 
-  mutate(Palatability=as.factor(Palatability)) %>% 
-  dplyr::count(Palatability)
-
-# number of graminoids (annual/perennial) and forbs (annual/perennial)
-anu.peri <- Site_dat %>% 
-  select(Scientific_name, Functional_type, Functional_groups) %>%
+sp.list <-
+  Site_dat %>% select(Family,
+                      Scientific_name,
+                      Functional_type,
+                      Functional_groups,
+                      Palatability) %>%
   mutate(
     Functional_type= case_when(
       Functional_type == "Annual undershrub"  ~ "Annual",
@@ -47,10 +42,37 @@ anu.peri <- Site_dat %>%
       Functional_type == "Annual/perennial herb"  ~ "Annual",
       Functional_type == "Perennial herb"   ~ "Perennial",
       Functional_type == "Perennial graminoid"   ~ "Perennial",
-      Functional_type == "Perennial undershrub"  ~ "Perennial")) %>%
-  distinct(Functional_groups, Functional_type, Scientific_name) %>% 
-  mutate(anu.peri=as.factor(Functional_groups)) %>% 
-  dplyr::count(Functional_groups,Functional_type)
+      Functional_type == "Perennial undershrub"  ~ "Perennial")) %>% 
+  mutate(
+    Scientific_name = recode(Scientific_name, 'Cymbopogon sp.' = 'Cymbopogon caesius (Hook. & Arn.) Stapf')
+  ) %>%
+  unique()
+
+cymbopogons <- data.frame(
+  Family = c('Poaceae', 'Poaceae'),
+  Scientific_name = c(
+    'Cymbopogon jwarancusa (Jones) Schult',
+    'Cymbopogon martinii (Roxb.) J. F. Watson'
+  ),
+  Functional_type = c('Perennial', 'Perennial'),
+  Functional_groups = c('Graminoid', 'Graminoid'),
+  Palatability = c('No', 'No')
+)
+
+unique.sp.list <- bind_rows(sp.list, cymbopogons) %>% 
+  mutate(Palatability= recode(Palatability, 'Cymbopogon sp.'= 'No')) %>% 
+  mutate(Functional_groups= recode(Functional_groups, 'Cymbopogon'= 'Graminoid'))
+
+write.csv(unique.sp.list, 'sp.list_supp-1.csv')
+
+# number of graminoids (annual/perennial) and forbs (annual/perennial)
+anu.peri <- unique.sp.list %>%
+  distinct(Functional_groups,
+           Functional_type,
+           Scientific_name,
+           Palatability) %>%
+  mutate(anu.peri = as.factor(Functional_groups)) %>%
+  dplyr::count(Functional_groups, Functional_type, Palatability, name = 'Species')
 
 Site_prep <- Site_dat %>%
   arrange(Site, Treatment) %>%
