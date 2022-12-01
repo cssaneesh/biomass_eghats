@@ -244,21 +244,25 @@ fig_e <- (fig_e1 / fig_e2) # use patchwork to stick plots together
 
 fig_e
 
-# Analysis----
-ghats.rel_biomass <-
-  brm(
-    relative_biomass ~   Treatment * Palatability  +
-      ( 1 | Site ),
-     family = student(),
-    # family = lognormal(),
-    data = relative_weight,
-    iter = 2000,
-    warmup = 1000,
-    cores = 4,
-    chains = 4
-  )
+head(relative_weight)
 
+# Analysis----
+# ghats.rel_biomass <-
+#   brm(
+#     relative_biomass ~   Treatment * Palatability  +
+#       ( 1 | Site ),
+#     family = gaussian(),
+#      # family = student(),
+#     # family = lognormal(),
+#     data = relative_weight,
+#     iter = 2000,
+#     warmup = 1000,
+#     cores = 4,
+#     chains = 4
+#   )
+# 
 # save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
+
 load("ghats.rel_biomass.Rdata")
 
 color_scheme_set("darkgray")
@@ -348,7 +352,7 @@ fig_rel_biomass <- ggplot() +
       colour = Palatability
     ),
     position = position_dodge(width = 0.75),
-    size = 1.3,
+    linewidth = 1.3,
     width = 0.1
   ) + labs(x = '', y = '') +
   scale_color_manual(values =  c("#1a6Ba8", '#b57d70', "#9a9a9a"))+

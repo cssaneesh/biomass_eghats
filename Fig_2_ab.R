@@ -63,7 +63,7 @@ unique.sp.list <- bind_rows(sp.list, cymbopogons) %>%
   mutate(Palatability= recode(Palatability, 'Cymbopogon sp.'= 'No')) %>% 
   mutate(Functional_groups= recode(Functional_groups, 'Cymbopogon'= 'Graminoid'))
 
-write.csv(unique.sp.list, 'sp.list_supp-1.csv')
+# write.csv(unique.sp.list, 'sp.list_supp-1.csv')
 
 # number of graminoids (annual/perennial) and forbs (annual/perennial)
 anu.peri <- unique.sp.list %>%
@@ -73,6 +73,7 @@ anu.peri <- unique.sp.list %>%
            Palatability) %>%
   mutate(anu.peri = as.factor(Functional_groups)) %>%
   dplyr::count(Functional_groups, Functional_type, Palatability, name = 'Species')
+anu.peri
 
 Site_prep <- Site_dat %>%
   arrange(Site, Treatment) %>%

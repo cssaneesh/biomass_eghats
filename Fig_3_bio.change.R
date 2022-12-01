@@ -51,7 +51,7 @@ bio.change <- bio.change.nest %>%
 head(bio.change, 3)
 
 bio.change.treatment <- bio.change %>% select(-c(CAFA, CPFA, Control)) %>%
-    filter(!is.na(B.m.CAFA)|!is.na(B.m.CPFA)) %>% 
+  filter(!is.na(B.m.CAFA)|!is.na(B.m.CPFA)) %>% 
   gather(Treatment, Biomass, B.m.CAFA:B.m.CPFA)
 
 head(bio.change.treatment)  
@@ -71,6 +71,7 @@ bio.change.treatment %>% select(Village) %>%
 #     cores = 4,
 #     chains = 4
 #   )
+
 # save(ghats.biomass.change, file = "ghats.biomass.change.Rdata")
 
 load("ghats.biomass.change.Rdata")
@@ -91,6 +92,7 @@ ghats_change_biomass
 ghats.biomass.change_df <-
   as.data.frame(ghats_change_biomass$`Treatment:Palatability`)
 
+ghats.biomass.change_df
 #View(ghats.biomass.change_df)
 
 # ghats.biomass.change_df
@@ -135,11 +137,11 @@ fig_change.biomass <- ggplot() +
       ymax = upper__, # highest value from of the model output
       group = Palatability),
     position = position_dodge(width = 0.75),
-    size = 0.4,
+    linewidth = 0.4,
     width = 0.09,
     alpha= 0.6
   ) + labs(x = '', y = '') +
- scale_color_manual(values =  c("#a7a7a7", '#ffd9b2', "#999af7"))+
+  scale_color_manual(values =  c("#a7a7a7", '#ffd9b2', "#999af7"))+
   theme_bw(base_size = 12) + theme(
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
@@ -169,7 +171,7 @@ fig_change.biomass+
            y=1000, 
            size= 3,
            label="Apluda mutica",
-                             color="black")+
+           color="black")+
   annotate(
     geom = 'segment',
     x=1.24, xend= 1.07,
@@ -184,7 +186,7 @@ fig_change.biomass+
     geom = 'segment',
     x=1.24, xend= 1.07,
     y= -300, yend= -470)
-  
+
 
 # library(plotly)
 # ggplotly(fig_change.biomass)
@@ -245,7 +247,7 @@ rel.bio.change.treatment <- rel.bio.change %>% select(-c(CAFA, Control, CPFA)) %
   filter(!is.na(B.m.CAFA)|!is.na(B.m.CPFA)) %>% 
   gather(Treatment, Rel.Biomass, B.m.CAFA:B.m.CPFA) %>% 
   mutate(Treatment=recode(Treatment, 'B.m.CAFA'= 'CAFA',
-         'B.m.CPFA'='CPFA'))
+                          'B.m.CPFA'='CPFA'))
 
 head(rel.bio.change.treatment)  
 
@@ -261,6 +263,7 @@ head(rel.bio.change.treatment)
 #     cores = 4,
 #     chains = 4
 #   )
+# 
 # save(rel.ghats.biomass.change, file = "rel.ghats.biomass.change.Rdata")
 
 load("rel.ghats.biomass.change.Rdata")
@@ -330,7 +333,7 @@ fig_rel.change.biomass <- ggplot() +
       #colour = Palatability
     ),
     position = position_dodge(width = 0.75),
-    size = 1,
+    linewidth = 1,
     width = 0.1,
     alpha= 0.5
   ) + labs(x = '', y = '') +
