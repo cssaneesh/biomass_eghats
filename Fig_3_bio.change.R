@@ -141,7 +141,7 @@ fig_change.biomass <- ggplot() +
     width = 0.09,
     alpha= 0.6
   ) + labs(x = '', y = '') +
-  scale_color_manual(values =  c("#a7a7a7", '#ffd9b2', "#999af7"))+
+  scale_color_manual(values =  c("#1a6Ba8", '#b57d70', "#9a9a9a"))+
   theme_bw(base_size = 12) + theme(
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
@@ -337,7 +337,7 @@ fig_rel.change.biomass <- ggplot() +
     width = 0.1,
     alpha= 0.5
   ) + labs(x = '', y = '') +
-  scale_color_manual(values =  c("#a7a7a7", '#ffd9b2', "#999af7"))+
+  scale_color_manual(values =  c("#1a6Ba8", '#b57d70', "#9a9a9a"))+
   theme_bw(base_size = 12) + theme(
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
@@ -384,7 +384,7 @@ fig_rel.change.biomass <-
   ) + # cafa 7.47 yes
   annotate(
     geom = "text",
-    x = 0.74,
+    x = 0.80,
     y = -57,
     size = 3,
     label = "S. pusilla",
