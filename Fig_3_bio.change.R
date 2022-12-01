@@ -303,7 +303,7 @@ fig_rel.change.biomass <- ggplot() +
       colour = 	Palatability
     ),
     size = 1,
-    alpha = 0.9,
+    alpha = 0.7,
     position = position_jitterdodge(
       jitter.width = 0.09,
       jitter.height = 0.45,
@@ -317,9 +317,9 @@ fig_rel.change.biomass <- ggplot() +
       x = Treatment,
       y = estimate__, # mean value from of the model output
       group = Palatability,
-      #colour = Palatability
+      colour = Palatability
     ),
-    size = 2,
+    size = 3,
     alpha= 0.6,
     position = position_dodge(width = 0.75,)
   ) +
@@ -333,9 +333,9 @@ fig_rel.change.biomass <- ggplot() +
       #colour = Palatability
     ),
     position = position_dodge(width = 0.75),
-    linewidth = 1,
+    linewidth = 0.8,
     width = 0.1,
-    alpha= 0.5
+    alpha= 0.8
   ) + labs(x = '', y = '') +
   scale_color_manual(values =  c("#1a6Ba8", '#b57d70', "#9a9a9a"))+
   theme_bw(base_size = 12) + theme(

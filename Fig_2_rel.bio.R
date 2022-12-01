@@ -340,6 +340,7 @@ fig_rel_biomass <- ggplot() +
       colour = Palatability
     ),
     size = 3,
+    alpha= 0.6,
     position = position_dodge(width = 0.75,)
   ) +
   geom_errorbar(
@@ -349,11 +350,12 @@ fig_rel_biomass <- ggplot() +
       ymin = lower__,
       ymax = upper__,
       group = Palatability,
-      colour = Palatability
+      # colour = Palatability
     ),
     position = position_dodge(width = 0.75),
-    linewidth = 1.3,
-    width = 0.1
+    linewidth = 0.8,
+    width = 0.1,
+    alpha= 0.8
   ) + labs(x = '', y = '') +
   scale_color_manual(values =  c("#1a6Ba8", '#b57d70', "#9a9a9a"))+
   theme_bw(base_size = 12) + theme(
