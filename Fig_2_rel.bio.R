@@ -6,7 +6,7 @@ library(bayesplot)
 library(cmdstanr)
 library(cowplot)
 library(gt)
-library(webshot)
+library(webshot2)
 
 # Data----
 # raw data

@@ -1,8 +1,8 @@
 Village,Treatment,Site,Sci_name,Palatability,Weight,Scientific_name,Family,Life_form,General_terms,x,y,Functional_type,Functional_groups
 APA1,bgrnf,APA1bgrnf,Acalypha alnifolia,No,4,Acalypha scabrosa Sw.,Euphorbiaceae,Herb,Milkweeds,13.84898235,78.4284124,Annual undershrub,Forb
 APC1,bgrnf,APC1bgrnf,Acalypha alnifolia,No,20,Acalypha scabrosa Sw.,Euphorbiaceae,Herb,Milkweeds,13.84873331,78.42895372,Annual undershrub,Forb
-APA17,bgrnf,APA17bgrnf,Hybanthus enneaspermus,Yes,5,Afrohybanthus enneaspermus (L.) Flicker,Violaceae,Herb,Violet family,14.1183527,78.3349066,Perennial herb,Forb
-APC10,bgrnf,APC10bgrnf,Hybanthus enneaspermus,Yes,5,Afrohybanthus enneaspermus (L.) Flicker,Violaceae,Herb,Violet family,13.8647888,78.3988028,Perennial herb,Forb
+APA17,bgrnf,APA17bgrnf,Hybanthus enneaspermus,Yes,5,Hybanthus enneaspermus (L.) F. Muell.,Violaceae,Herb,Violet family,14.1183527,78.3349066,Perennial herb,Forb
+APC10,bgrnf,APC10bgrnf,Hybanthus enneaspermus,Yes,5,Hybanthus enneaspermus (L.) F. Muell.,Violaceae,Herb,Violet family,13.8647888,78.3988028,Perennial herb,Forb
 APC3,bgrnf,APC3bgrnf,Ageratum conyzoides,No,170,Ageratum conyzoides L.,Asteraceae,Herb,Asters,13.82903847,78.41240476,Annual herb,Forb
 APA12,bgrnf,APA12bgrnf,Alysicarpus monilifer,Yes,8,Alysicarpus monilifer (L.) DC.,Fabaceae,Herb,Legumes,14.0406286,78.3174365,Annual herb,Forb
 APA21,bgrnf,APA21bgrnf,Alysicarpus monilifer,Yes,17,Alysicarpus monilifer (L.) DC.,Fabaceae,Herb,Legumes,14.0087733,78.3203361,Annual herb,Forb

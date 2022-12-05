@@ -247,22 +247,23 @@ rel.bio.change.treatment <- rel.bio.change %>% select(-c(CAFA, Control, CPFA)) %
   filter(!is.na(B.m.CAFA)|!is.na(B.m.CPFA)) %>% 
   gather(Treatment, Rel.Biomass, B.m.CAFA:B.m.CPFA) %>% 
   mutate(Treatment=recode(Treatment, 'B.m.CAFA'= 'CAFA',
-                          'B.m.CPFA'='CPFA'))
+                          'B.m.CPFA'='CPFA')) %>%
+  mutate(Treatment = fct_relevel(Treatment, c("CPFA", "CAFA")))
 
 head(rel.bio.change.treatment)  
 
 # Analysis----
-# rel.ghats.biomass.change <-
-#   brm(
-#     Rel.Biomass ~   Treatment * Palatability+
-#       ( 1 | Village/Sci_name ) ,
-#     family = student(),
-#     data = rel.bio.change.treatment,
-#     iter = 2000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4
-#   )
+rel.ghats.biomass.change <-
+  brm(
+    Rel.Biomass ~   Treatment * Palatability+
+      ( 1 | Village/Sci_name ) ,
+    family = student(),
+    data = rel.bio.change.treatment,
+    iter = 2000,
+    warmup = 1000,
+    cores = 4,
+    chains = 4
+  )
 # 
 # save(rel.ghats.biomass.change, file = "rel.ghats.biomass.change.Rdata")
 
@@ -367,75 +368,7 @@ fig_rel.change.biomass <-
   fig_rel.change.biomass +
   annotate(
     geom = "text",
-    x = 1.01,
-    y = 58,
-    size = 3,
-    label = "H. contortus",
-    color = "black",
-    fontface = 'italic'
-  ) +
-  annotate(
-    geom = 'segment',
-    x = 0.79,
-    xend = 0.95,
-    y = 68,
-    yend = 60,
-    size= 0.3
-  ) + # cafa 7.47 yes
-  annotate(
-    geom = "text",
-    x = 0.80,
-    y = -57,
-    size = 3,
-    label = "S. pusilla",
-    color = "black",
-    fontface = 'italic'
-  ) +
-  annotate(
-    geom = 'segment',
-    x = 0.77,
-    xend = 0.79,
-    y = -52,
-    yend = -55,
-    size= 0.3
-  ) + # cafa -5.03 yes
-  annotate(
-    geom = "text",
-    x = 1.13,
-    y = 25,
-    size = 3,
-    label = "T. villosa",
-    color = "black",
-    fontface = 'italic'
-  ) +
-  annotate(
-    geom = 'segment',
-    x = 1.03,
-    xend = 1.1,
-    y = 18.1,
-    yend = 22,
-    size= 0.3
-  ) + # cafa no 1.74
-  annotate(
-    geom = "text",
-    x = 1,
-    y = -13,
-    size = 3,
-    label = "L. zeylanica",
-    color = "black",
-    fontface = 'italic'
-  ) +
-  annotate(
-    geom = 'segment',
-    x = 0.99,
-    xend = 0.97,
-    y = -9,
-    yend = -11,
-    size= 0.3
-  ) + # cafa no -7.72
-  annotate(
-    geom = "text",
-    x = 1.8,
+    x = 0.8,
     y = 28,
     size = 3,
     label = "C. fulvus",
@@ -444,15 +377,15 @@ fig_rel.change.biomass <-
   ) +
   annotate(
     geom = 'segment',
-    x = 1.75,
-    xend = 1.78,
+    x = 0.76,
+    xend = 0.78,
     y = 20,
     yend = 24.5,
     size= 0.3
   ) + # cpfa 1.81 yes
   annotate(
     geom = "text",
-    x = 1.8,
+    x = 0.8,
     y = -37,
     size = 3,
     label = "C. fulvus",
@@ -461,15 +394,15 @@ fig_rel.change.biomass <-
   ) +
   annotate(
     geom = 'segment',
-    x = 1.76,
-    xend = 1.78,
+    x =0.77,
+    xend = 0.81,
     y = -29,
-    yend = -35,
+    yend = -32,
     size= 0.3
   ) + # cpfa -2.71 yes
   annotate(
     geom = "text",
-    x = 1.93,
+    x = 0.93,
     y = 10,
     size = 3,
     label = "L. zeylanica",
@@ -478,15 +411,15 @@ fig_rel.change.biomass <-
   ) +
   annotate(
     geom = 'segment',
-    x = 1.98,
-    xend = 1.95,
+    x = .98,
+    xend = .95,
     y = 3,
     yend = 7,
     size= 0.3
-  ) + # cpfa no 1.53
+  )+ # cpfa no 1.53
   annotate(
     geom = "text",
-    x = 2.02,
+    x = 1,
     y = -18,
     size = 3,
     label = "L. zeylanica",
@@ -495,12 +428,81 @@ fig_rel.change.biomass <-
   ) +
   annotate(
     geom = 'segment',
-    x = 2.014,
-    xend = 2.02,
+    x = 1.01,
+    xend = 1,
     y = -10,
     yend = -15,
     size= 0.3
-  )# cpfa no -7.72
+  )+ # cpfa no -7.72
+  annotate(
+    geom = "text",
+    x = 1.65,
+    y = 58,
+    size = 3,
+    label = "H. contortus",
+    color = "black",
+    fontface = 'italic'
+  ) +
+  annotate(
+    geom = 'segment',
+    x = 1.74,
+    xend = 1.65,
+    y = 68,
+    yend = 60,
+    size= 0.3
+  ) + # cafa 7.47 yes
+  annotate(
+    geom = "text",
+    x = 1.65,
+    y = -57,
+    size = 3,
+    label = "S. pusilla",
+    color = "black",
+    fontface = 'italic'
+  ) +
+  annotate(
+    geom = 'segment',
+    x = 1.73,
+    xend = 1.67,
+    y = -52,
+    yend = -55,
+    size= 0.3
+  ) + # cafa -5.03 yes
+  annotate(
+    geom = "text",
+    x = 2.03,
+    y = 25.5,
+    size = 3,
+    label = "T. villosa",
+    color = "black",
+    fontface = 'italic'
+  ) +
+  annotate(
+    geom = 'segment',
+    x = 2.01,
+    xend = 2.03,
+    y = 19,
+    yend = 22,
+    size= 0.3
+  ) + # cafa no 1.74
+  annotate(
+    geom = "text",
+    x = 2.01,
+    y = -14,
+    size = 3,
+    label = "L. zeylanica",
+    color = "black",
+    fontface = 'italic'
+  ) +
+  annotate(
+    geom = 'segment',
+    x = 2.01,
+    xend = 2.03,
+    y = -9,
+    yend = -11,
+    size= 0.3
+  ) # cafa no -7.72
+  
 
 fig_rel.change.biomass
 

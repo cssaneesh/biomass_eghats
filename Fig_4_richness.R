@@ -96,6 +96,7 @@ gamma_dat <- alpha_dat_prep %>%
   nest(c(Sci_name, rel_weight, weight, plot_weight)) %>%
   ungroup()
 
+View(alpha_div)
 # Analysis----
 # Alpha_div
 
