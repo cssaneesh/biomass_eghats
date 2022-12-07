@@ -293,6 +293,7 @@ ghats_rel_biomass_df <-
   as.data.frame(ghats_rel_biomass$`Treatment:Palatability`)# to make a df to report statistics results
 
 # View(ghats_rel_biomass_df)
+write.csv(ghats_rel_biomass_df, 'ghats_rel_biomass_df.csv')
 
 # Table_1 ----
 # Biomass

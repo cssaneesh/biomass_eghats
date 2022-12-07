@@ -137,6 +137,11 @@ distances_groups <- data[match(labels(distances),
 # beta dispersion
 distances_betadispersion <- betadisper(distances, 
                                        distances_groups)
+
+distance <- data.frame(dist=distances_betadispersion$distances, group=distances_betadispersion$group)
+
+boxplot(dist~group, data= distance)
+
 anova(distances_betadispersion) # not met, p < 0.05
 
 # test homogenous dispersion/Permutation test for F
