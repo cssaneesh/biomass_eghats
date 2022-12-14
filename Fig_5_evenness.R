@@ -104,7 +104,7 @@ alpha_div <- alpha_div %>%
 # save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
 
 load('ghats.alpha_ENSPIE.Rdata')
-summary(ghats.alpha_ENSPIE) # summary of alpha richness model
+summary(ghats.alpha_ENSPIE) # summary of alpha ENSPIE model
 
 color_scheme_set("darkgray")
 # caterpillars/chains
@@ -323,7 +323,7 @@ fig_alpha_ENSPIE <- ggplot() +
                                 "CAFA" = "#ffd365"))+
   labs(subtitle = 'a)')+
   #ylab(expression(paste(italic(alpha), '-', ENS[PIE])))+
-  ylab(expression(paste(italic(alpha), '-', 'Simpson diversity')))+
+  ylab(expression(paste(italic(alpha), '-', 'inverse Simpson`s diversity')))+
   theme_bw(base_size = 12) +
   theme(legend.position = 'none', 
         panel.grid.minor = element_blank(),
@@ -350,7 +350,7 @@ beta_S_PIE_all <- ggplot() +
                                 "CAFA" = "#ffd365"))+
 labs(subtitle = 'b)', x = '',
        #y = expression(paste(italic(beta), '-', ENS[PIE]))) 
-     y = expression(paste(italic(beta), '-', 'Simpson diversity')))+
+     y = expression(paste(italic(beta), '-', 'inverse Simpson`s diversity')))+
   theme_bw(base_size = 12) +
   theme(legend.position = 'none', 
         panel.grid.minor = element_blank(),
@@ -376,7 +376,7 @@ gamma_S_PIE_all <- ggplot() +
                                 "CAFA" = "#ffd365"))+
  labs(subtitle = 'c)', x = '',
        #y = expression(paste(italic(gamma),'-', ENS[PIE]))) 
-      y = expression(paste(italic(gamma),'-', 'Simpson diversity')))+
+      y = expression(paste(italic(gamma),'-', 'inverse Simpson`s diversity')))+
   theme_bw() +
   theme(legend.position = 'none', 
         panel.grid.minor = element_blank(),
@@ -407,3 +407,49 @@ fig_5c <- gamma_S_PIE_all
 
 # Save image (Evenness)
 ggsave('fig_5_evenness.jpg', width = 10, height = 6, dpi = 300) 
+
+
+
+
+# test----
+
+ggplot() +
+  geom_point(
+    data = alpha_div,
+    aes(x = Treatment, y = alpha_ENSPIE, colour = 	'#A6BAd7'),
+    size = 1,
+    alpha = 0.7,
+    position = position_jitter(width = 0.05, height = 0.45)
+  ) +
+  geom_point(
+    data = ghats_alpha_ENSPIE$Treatment,
+    aes(x = Treatment, y = estimate__, colour = Treatment),
+    size = 3
+  ) +
+  geom_errorbar(
+    data = ghats_alpha_ENSPIE$Treatment,
+    aes(
+      x = Treatment,
+      ymin = lower__,
+      ymax = upper__,
+      colour = Treatment
+    ),
+    size = 1,
+    width = 0.1
+  ) + labs(x = '', y = '') +
+  scale_color_manual(values = c("#A6BAd7",
+                                "Control" = "#3b5d4d",
+                                "CPFA" = "#c5af99",
+                                "CAFA" = "#ffd365"))+
+  labs(subtitle = 'a)')+
+  #ylab(expression(paste(italic(alpha), '-', ENS[PIE])))+
+  ylab(expression(paste(italic(alpha), '-', 'inverse Simpson diversity')))+
+  theme_bw(base_size = 12) +
+  theme(legend.position = 'none', 
+        panel.grid.minor = element_blank(),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        plot.tag.position = c(0.3, 0.8))+
+  theme(panel.grid.major = element_line(colour = "gray86", size = 0.1),
+        panel.background = element_rect(fill = "white"))+
+  geom_hline(aes(yintercept= 2.77), col= 'red', linetype= 'dashed')
