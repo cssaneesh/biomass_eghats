@@ -127,15 +127,20 @@ with(ar.plot, plot(Treatment, ma$Estimate))
 with(ar.plot, plot(Village, ma$Estimate))
 # you want these to be centrered on zero
 
-fig_s1c <- pp_check(ghats.alpha_ENSPIE) +
-    xlab( expression(paste(ENS[PIE])) ) + ylab("") + 
+fig_s6 <- pp_check(ghats.alpha_ENSPIE) +
+    xlab('Inverse Simpson’s') + ylab("") + 
   ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
-  labs(subtitle = "c)") +
+  #labs(subtitle = "c)") +
   theme_classic() + xlim(-2,10) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "none")# predicted vs. observed values
 
-fig_s1c
+fig_s6
+
+ggsave('sup_Fig_6.jpg',
+       width = 10,
+       height = 6,
+       dpi = 300)
 
 ghats_alpha_ENSPIE <-
   conditional_effects(

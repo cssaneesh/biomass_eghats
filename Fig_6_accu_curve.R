@@ -143,10 +143,12 @@ ggsave('fig_6_acu_curve.jpg',
 
 TD_treat_out$DataInfo # S.obs= Observed species richness will be the same, this is the q=0 in the plot
 TD_treat_out$AsyEst
-iNextEststimates <- as.data.frame(TD_treat_out$AsyEst)
+iNextEststimates <- as.data.frame(TD_treat_out$AsyEst) %>% rename(Treatment = Assemblage) %>% mutate(Treatment= as.factor(Treatment))%>% mutate(Treatment= fct_relevel(Treatment, c('Control', 'CPFA', 'CAFA'))) %>% arrange(Treatment) 
+
+iNextEststimates %>% mutate(Treatment= fct_relevel(Treatment, c('Control', 'CPFA', 'CAFA'))) %>% arrange(Treatment)
 
 # iNext table
-table_6_iNext <- iNextEststimates %>% select(Assemblage, Diversity, Observed, Estimator) %>%
+table_6_iNext <- iNextEststimates %>% select(Treatment, Diversity, Observed, Estimator) %>%
   filter(Diversity!="Shannon diversity") %>% 
   mutate_if(is.numeric, round, 2) %>% 
   gt()%>% 

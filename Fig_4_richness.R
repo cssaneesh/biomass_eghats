@@ -138,7 +138,7 @@ with(ar.plot, plot(Treatment, ma$Estimate))
 with(ar.plot, plot(Village, ma$Estimate))
 # you want these to be centrered on zero
 
-fig_s1b <- pp_check(ghats.alpha_rich) +
+fig_s5 <- pp_check(ghats.alpha_rich) +
     xlab( "Species richness") + ylab("Density") + 
   ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
   labs(subtitle = "b)") +
@@ -146,7 +146,12 @@ fig_s1b <- pp_check(ghats.alpha_rich) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "bottom")# predicted vs. observed values
 
-fig_s1b
+fig_s5
+
+ggsave('sup_Fig_5.jpg',
+       width = 10,
+       height = 6,
+       dpi = 300)
 
 ghats_alpha_rich <-
   conditional_effects(
@@ -155,6 +160,8 @@ ghats_alpha_rich <-
     re_formula = NA,
     method = 'fitted'
   )  # conditional effects
+
+
 
 ghats_alpha_rich
 # beta data----
@@ -226,6 +233,8 @@ ghats_alpha_rich
 # save(gamma_metrics, file= 'gamma_metrics.Rdata')
 
 load('gamma_metrics.Rdata')
+
+
 gamma_boot_results <-
   gamma_metrics %>% # calculate beta-diversities (beta = gamma/alpha)
   mutate(beta_S = S / alpha_S,

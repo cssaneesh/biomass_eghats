@@ -108,7 +108,7 @@ table_1_ab <- ghats_ab_biomass_df %>%
   opt_table_outline(style = "solid", width = px(2))
 
 table_1_ab
-# table_1_ab %>% gtsave('Table_1_ab.png', expand = 5) # expand to set white space
+# table_1_ab %>% gtsave('Table_2_ab_biomass.png', expand = 5) # expand to set white space
 
 # Plot----
 fig_ab_biomass <- ggplot() +

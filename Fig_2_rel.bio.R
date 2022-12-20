@@ -151,52 +151,6 @@ relative_weight <-
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
 
 # Exploratory plots----
-# Absolute weight
-fig_e1 <-
-  ggplot(data = absolute_weight) +
-  geom_hline(yintercept = 0, linetype = 2) +
-  geom_point(
-    aes(
-      x = Treatment,
-      y = Weight,
-      group = Palatability,
-      fill = Palatability
-    ),
-    size = 0.75,
-    position = position_jitterdodge(
-      jitter.width = 0.05,
-      jitter.height = 0,
-      dodge.width = 0.75,
-      seed = NA
-    )
-  ) +
-  geom_boxplot(aes(x = Treatment,
-                   y = Weight,
-                   fill = Palatability),
-               position = position_dodge(width = .80)) +
-  theme_bw(base_size = 18) +
-  theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    plot.margin = margin(
-      t = 0.2,
-      r = 0.2,
-      b = 0.2,
-      l = 0.2,
-      unit = "cm"
-    ),
-    plot.title = element_text(size = 18, hjust = 0.5),
-    strip.background = element_blank(),
-    legend.position = "none"
-  ) +
-  ylim(-10, 800) +
-  ylab("Biomass weight (g)") + theme(legend.direction = "none") +
-  xlab("") +
-  labs(title = "Absolute biomass",
-       subtitle = 'a)') +
-  scale_fill_manual(values = c("#f8bb49", '#a45200', "#4A2300")) +
-  theme(plot.caption = element_text(size = 8, face = "italic",
-                                    hjust = 0))
 
 # relative biomass
 fig_e2 <-
@@ -240,9 +194,7 @@ CAFA= Cymbopogon absent and fire absent"
                                     hjust = 0)) + theme(plot.title = element_text(hjust = 0.5,
                                                                                   vjust = 0))
 
-fig_e <- (fig_e1 / fig_e2) # use patchwork to stick plots together
-
-fig_e
+fig_e2
 
 head(relative_weight)
 
@@ -268,14 +220,21 @@ load("ghats.rel_biomass.Rdata")
 color_scheme_set("darkgray")
 
 fig_s1a <- pp_check(ghats.rel_biomass) +
-  xlab("Functional group Relative biomass") + ylab("Density") +
+  xlab("Relative biomass") + ylab("Density") +
   labs(title = "Site-level",
-    subtitle = "a)") +
+    #subtitle = "a)"
+    ) +
   theme_classic() + xlim(-20,150) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "none")# predicted vs. observed values
 
 fig_s1a
+
+ggsave('sup_Fig_3.jpg',
+       width = 10,
+       height = 6,
+       dpi = 300)
+
 
 summary(ghats.rel_biomass)
 

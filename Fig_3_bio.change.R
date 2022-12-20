@@ -77,7 +77,23 @@ bio.change.treatment %>% select(Village) %>%
 load("ghats.biomass.change.Rdata")
 
 summary(ghats.biomass.change)
-pp_check(ghats.biomass.change)
+
+fig_s4 <- pp_check(ghats.biomass.change)+
+  xlab("Relative biomass change") + ylab("Density") +
+  labs(title = "Site-level",
+       #subtitle = "a)"
+  ) +
+  theme_classic() + xlim(-40,150) +
+  theme(plot.title = element_text(size = 18, hjust = 0.5),
+        legend.position = "none")# predicted vs. observed values
+
+fig_s4
+
+ggsave('sup_Fig_4.jpg',
+       width = 10,
+       height = 6,
+       dpi = 300)
+
 plot(ghats.biomass.change)
 
 ghats_change_biomass <-
@@ -253,18 +269,18 @@ rel.bio.change.treatment <- rel.bio.change %>% select(-c(CAFA, Control, CPFA)) %
 head(rel.bio.change.treatment)  
 
 # Analysis----
-rel.ghats.biomass.change <-
-  brm(
-    Rel.Biomass ~   Treatment * Palatability+
-      ( 1 | Village/Sci_name ) ,
-    family = student(),
-    data = rel.bio.change.treatment,
-    iter = 2000,
-    warmup = 1000,
-    cores = 4,
-    chains = 4
-  )
-# 
+# rel.ghats.biomass.change <-
+#   brm(
+#     Rel.Biomass ~   Treatment * Palatability+
+#       ( 1 | Village/Sci_name ) ,
+#     family = student(),
+#     data = rel.bio.change.treatment,
+#     iter = 3000,
+#     warmup = 1000,
+#     cores = 4,
+#     chains = 4
+#   )
+
 # save(rel.ghats.biomass.change, file = "rel.ghats.biomass.change.Rdata")
 
 load("rel.ghats.biomass.change.Rdata")
