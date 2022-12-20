@@ -199,20 +199,21 @@ fig_e2
 head(relative_weight)
 
 # Analysis----
-# ghats.rel_biomass <-
-#   brm(
-#     relative_biomass ~   Treatment * Palatability  +
-#       ( 1 | Site ),
-#     family = gaussian(),
-#      # family = student(),
-#     # family = lognormal(),
-#     data = relative_weight,
-#     iter = 2000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4
-#   )
-# 
+ghats.rel_biomass <-
+  brm(
+    relative_biomass ~   Treatment * Palatability  +
+      ( 1 | Site ),
+    #family = gaussian(),
+      family = student(),
+    # family = lognormal(),
+    data = relative_weight,
+    iter = 10000,
+    warmup = 1000,
+    cores = 4,
+    chains = 4,
+    control = list(adapt_delta = 0.99 , max_treedepth = 12 )
+  )
+
 # save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
 
 load("ghats.rel_biomass.Rdata")

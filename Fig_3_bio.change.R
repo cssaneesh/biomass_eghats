@@ -60,17 +60,18 @@ bio.change.treatment %>% select(Village) %>%
   distinct() # 14 villages
 
 # Analysis----
-# ghats.biomass.change <-
-#   brm(
-#     Biomass ~   Treatment * Palatability+
-#       ( 1 | Village/Sci_name ) ,
-#     family = student(),
-#     data = bio.change.treatment,
-#     iter = 2000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4
-#   )
+ghats.biomass.change <-
+  brm(
+    Biomass ~   Treatment * Palatability+
+      ( 1 | Village/Sci_name ) ,
+    family = student(),
+    data = bio.change.treatment,
+    iter = 10000,
+    warmup = 1000,
+    cores = 4,
+    chains = 4,
+    control = list(adapt_delta = 0.99, max_treedepth = 12 )
+  )
 
 # save(ghats.biomass.change, file = "ghats.biomass.change.Rdata")
 

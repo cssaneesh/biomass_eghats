@@ -101,17 +101,17 @@ View(alpha_div)
 # Alpha_div
 
 # ghats.alpha_rich----
-# ghats.alpha_rich <-
-#   brm(
-#     alpha_rich ~  Treatment + ( 1 | Site ) ,
-#     family = poisson(),
-#     data = alpha_div,
-#     iter = 3000,
-#     warmup = 1000,
-#     cores = 4,
-#     chains = 4,
-#     control = list(adapt_delta = 0.9)
-#   )
+ghats.alpha_rich <-
+  brm(
+    alpha_rich ~  Treatment + ( 1 | Site ) ,
+    family = poisson(),
+    data = alpha_div,
+    iter = 3000,
+    warmup = 1000,
+    cores = 4,
+    chains = 4,
+    control = list(adapt_delta = 0.9)
+  )
 # save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
 
 load('ghats.alpha_rich.Rdata')
