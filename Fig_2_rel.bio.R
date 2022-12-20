@@ -219,7 +219,7 @@ load("ghats.rel_biomass.Rdata")
 
 color_scheme_set("darkgray")
 
-fig_s1a <- pp_check(ghats.rel_biomass) +
+fig_s3 <- pp_check(ghats.rel_biomass) +
   xlab("Relative biomass") + ylab("Density") +
   labs(title = "Site-level",
     #subtitle = "a)"
@@ -228,7 +228,7 @@ fig_s1a <- pp_check(ghats.rel_biomass) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "none")# predicted vs. observed values
 
-fig_s1a
+fig_s3
 
 ggsave('sup_Fig_3.jpg',
        width = 10,
