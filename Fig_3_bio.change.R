@@ -59,19 +59,19 @@ head(bio.change.treatment)
 bio.change.treatment %>% select(Village) %>% 
   distinct() # 14 villages
 
-# Analysis----
-ghats.biomass.change <-
-  brm(
-    Biomass ~   Treatment * Palatability+
-      ( 1 | Village/Sci_name ) ,
-    family = student(),
-    data = bio.change.treatment,
-    iter = 10000,
-    warmup = 1000,
-    cores = 4,
-    chains = 4,
-    control = list(adapt_delta = 0.99, max_treedepth = 12 )
-  )
+# # Analysis----
+# ghats.biomass.change <-
+#   brm(
+#     Biomass ~   Treatment * Palatability+
+#       ( 1 | Village/Sci_name ) ,
+#     family = student(),
+#     data = bio.change.treatment,
+#     iter = 10000,
+#     warmup = 1000,
+#     cores = 4,
+#     chains = 4,
+#     control = list(adapt_delta = 0.99, max_treedepth = 12 )
+#   )
 
 # save(ghats.biomass.change, file = "ghats.biomass.change.Rdata")
 
@@ -79,21 +79,21 @@ load("ghats.biomass.change.Rdata")
 
 summary(ghats.biomass.change)
 
-fig_s4 <- pp_check(ghats.biomass.change)+
-  xlab("Relative biomass change") + ylab("Density") +
-  labs(title = "Site-level",
-       #subtitle = "a)"
-  ) +
-  theme_classic() + xlim(-40,150) +
-  theme(plot.title = element_text(size = 18, hjust = 0.5),
-        legend.position = "none")# predicted vs. observed values
-
-fig_s4
-
-ggsave('sup_Fig_4.jpg',
-       width = 10,
-       height = 6,
-       dpi = 300)
+# fig_s4 <- pp_check(ghats.biomass.change)+
+#   xlab("Relative biomass change") + ylab("Density") +
+#   labs(title = "Site-level",
+#        #subtitle = "a)"
+#   ) +
+#   theme_classic() + xlim(-40,150) +
+#   theme(plot.title = element_text(size = 18, hjust = 0.5),
+#         legend.position = "none")# predicted vs. observed values
+# 
+# fig_s4
+# 
+# ggsave('sup_Fig_4.jpg',
+#        width = 10,
+#        height = 6,
+#        dpi = 300)
 
 plot(ghats.biomass.change)
 
@@ -276,10 +276,11 @@ head(rel.bio.change.treatment)
 #       ( 1 | Village/Sci_name ) ,
 #     family = student(),
 #     data = rel.bio.change.treatment,
-#     iter = 3000,
+#     iter = 10000,
 #     warmup = 1000,
 #     cores = 4,
-#     chains = 4
+#     chains = 4,
+#     control = list(adapt_delta = 0.99, max_treedepth = 12 )
 #   )
 
 # save(rel.ghats.biomass.change, file = "rel.ghats.biomass.change.Rdata")
@@ -287,7 +288,26 @@ head(rel.bio.change.treatment)
 load("rel.ghats.biomass.change.Rdata")
 
 summary(rel.ghats.biomass.change)
-pp_check(rel.ghats.biomass.change)
+
+
+
+fig_s4 <- pp_check(rel.ghats.biomass.change)+
+  xlab("Relative biomass change") + ylab("Density") +
+  labs(title = "Site-level",
+       #subtitle = "a)"
+  ) +
+  theme_classic() + xlim(-10,10) +
+  theme(plot.title = element_text(size = 18, hjust = 0.5),
+        legend.position = "none")# predicted vs. observed values
+
+fig_s4
+
+ggsave('sup_Fig_4.jpg',
+       width = 10,
+       height = 6,
+       dpi = 300)
+
+
 plot(rel.ghats.biomass.change)
 
 rel.ghats_change_biomass <-
@@ -530,7 +550,6 @@ ggsave('Fig_3_biochng.jpg',
 
 
 # plotly::ggplotly(fig_rel.change.biomass)
-
 
 rel.ghats_biochange_df <- as.data.frame(rel.ghats_change_biomass$`Treatment:Palatability`)
 # View(rel.ghats_biochange_df)

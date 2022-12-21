@@ -101,17 +101,17 @@ View(alpha_div)
 # Alpha_div
 
 # ghats.alpha_rich----
-ghats.alpha_rich <-
-  brm(
-    alpha_rich ~  Treatment + ( 1 | Site ),
-    family = poisson(),
-    data = alpha_div,
-    iter = 5000,
-    warmup = 1000,
-    cores = 4,
-    chains = 4,
-    control = list(adapt_delta = 0.99)
-  )
+# ghats.alpha_rich <-
+#   brm(
+#     alpha_rich ~  Treatment + ( 1 | Site ),
+#     family = poisson(),
+#     data = alpha_div,
+#     iter = 5000,
+#     warmup = 1000,
+#     cores = 4,
+#     chains = 4,
+#     control = list(adapt_delta = 0.99)
+#   )
 
 # save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
 
@@ -291,6 +291,7 @@ table_4_alpha <-
   tab_options(column_labels.font.size = 11,
               table.font.size = 10,
               column_labels.font.weight = "bold") %>% 
+  tab_header(subtitle = '', 'a)') %>% 
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
@@ -306,7 +307,8 @@ table_4_beta <-
   gt()%>% 
   tab_options(column_labels.font.size = 11,
               table.font.size = 10,
-              column_labels.font.weight = "bold") %>% 
+              column_labels.font.weight = "bold")%>% 
+  tab_header(subtitle = '', 'b)') %>% 
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
@@ -322,11 +324,14 @@ table_4_gamma <-
   gt()%>% 
   tab_options(column_labels.font.size = 11,
               table.font.size = 10,
-              column_labels.font.weight = "bold") %>% 
+              column_labels.font.weight = "bold")%>% 
+  tab_header(subtitle = '', 'c)') %>% 
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2)) 
 
 table_4_gamma %>% gtsave('Table_4 (gamma).png', expand = 5) # expand to set white space
+
+
 
 # Plot----
 # alpha richness
@@ -398,7 +403,7 @@ beta_S_all <- ggplot() +
   scale_color_manual(values =  c("#3b5d4d", '#c5af99', "#ffd365")) +
   labs(title = " ",
        x = ' ',
-       y = expression(paste(italic(beta), "- species richness (S)"))) +
+       y = expression(paste(italic(beta), "- species diversity (S)"))) +
   theme_bw(base_size = 12) +
   theme(
     legend.position = 'none',

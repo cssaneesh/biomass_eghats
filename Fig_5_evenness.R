@@ -90,19 +90,19 @@ alpha_div <- alpha_div %>%
 # Analysis-----
 # ghats.alpha_ENSPIE----
 
-ghats.alpha_ENSPIE <-
-  brm(
-    alpha_ENSPIE ~   Treatment #+ ( 1 | Site) 
-    ,
-    #family=gaussian(),
-    family = 'lognormal',
-    data = alpha_div,
-    iter = 10000,
-    warmup = 1000,
-    cores = 4,
-    chains = 4,
-  # control = list(adapt_delta = 0.99)
-  )
+# ghats.alpha_ENSPIE <-
+#   brm(
+#     alpha_ENSPIE ~   Treatment #+ ( 1 | Site) 
+#     ,
+#     #family=gaussian(),
+#     family = 'lognormal',
+#     data = alpha_div,
+#     iter = 10000,
+#     warmup = 1000,
+#     cores = 4,
+#     chains = 4,
+#   # control = list(adapt_delta = 0.99)
+#   )
 
 # save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
 
@@ -272,6 +272,7 @@ table_5_ens_alpha <- ghats_alpha_ENSPIE_df %>% select(Treatment, estimate__, low
   tab_options(column_labels.font.size = 11,
               table.font.size = 10,
               column_labels.font.weight = "bold") %>% 
+  tab_header(subtitle = '', 'a)')%>% 
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
@@ -286,6 +287,7 @@ table_5_ens_beta <- gamma_boot_results %>%
   tab_options(column_labels.font.size = 11,
               table.font.size = 10,
               column_labels.font.weight = "bold") %>% 
+  tab_header(subtitle = '', 'b)') %>% 
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
@@ -299,11 +301,13 @@ table_5_ens_gamma <- gamma_boot_results %>%
   gt()%>% 
   tab_options(column_labels.font.size = 11,
               table.font.size = 10,
-              column_labels.font.weight = "bold") %>% 
+              column_labels.font.weight = "bold")%>% 
+  tab_header(subtitle = '', 'c)') %>% 
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
 table_5_ens_gamma %>% gtsave('Table_5 (Simpson div_gamma).png', expand = 5) # expand to set white space
+
 # Plot----
 fig_alpha_ENSPIE <- ggplot() +
   geom_point(
