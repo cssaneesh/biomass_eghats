@@ -103,11 +103,10 @@ View(alpha_div)
 # ghats.alpha_rich----
 ghats.alpha_rich <-
   brm(
-    alpha_rich ~  Treatment + ( 1 | Site ) 
-    ,
+    alpha_rich ~  Treatment + ( 1 | Site ),
     family = poisson(),
     data = alpha_div,
-    iter = 10000,
+    iter = 5000,
     warmup = 1000,
     cores = 4,
     chains = 4,

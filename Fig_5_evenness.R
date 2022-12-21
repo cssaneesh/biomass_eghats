@@ -94,15 +94,14 @@ ghats.alpha_ENSPIE <-
   brm(
     alpha_ENSPIE ~   Treatment #+ ( 1 | Site) 
     ,
-    #family = student(),
-    #family = poisson(),
+    #family=gaussian(),
     family = 'lognormal',
     data = alpha_div,
     iter = 10000,
     warmup = 1000,
     cores = 4,
     chains = 4,
-   #control = list(adapt_delta = 0.99, max_treedepth = 12  )
+  # control = list(adapt_delta = 0.99)
   )
 
 # save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
