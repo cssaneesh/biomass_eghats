@@ -92,21 +92,43 @@ alpha_div <- alpha_div %>%
 
 ghats.alpha_ENSPIE <-
   brm(
-    alpha_ENSPIE ~   Treatment + (1  | Site) ,
+    alpha_ENSPIE ~   Treatment #+ ( 1 | Site) 
+    ,
+    #family = student(),
+    #family = poisson(),
     family = 'lognormal',
     data = alpha_div,
-    iter = 3000,
+    iter = 10000,
     warmup = 1000,
     cores = 4,
     chains = 4,
-    control = list(adapt_delta = 0.99)
+   #control = list(adapt_delta = 0.99, max_treedepth = 12  )
   )
+
 # save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
 
 load('ghats.alpha_ENSPIE.Rdata')
+
 summary(ghats.alpha_ENSPIE) # summary of alpha ENSPIE model
 
 color_scheme_set("darkgray")
+
+fig_s6 <- pp_check(ghats.alpha_ENSPIE) +
+  xlab('Inverse Simpson’s') + ylab("") + 
+  ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
+  #labs(subtitle = "c)") +
+  theme_classic() + xlim(-2,10) +
+  theme(plot.title = element_text(size = 18, hjust = 0.5),
+        legend.position = "none")# predicted vs. observed values
+
+fig_s6
+
+ggsave('sup_Fig_6.jpg',
+       width = 10,
+       height = 6,
+       dpi = 300)
+
+
 # caterpillars/chains
 plot(ghats.alpha_ENSPIE)
 # you want these 'caterpillars to be 'hairy' (very evenly squiggly)
@@ -127,20 +149,6 @@ with(ar.plot, plot(Treatment, ma$Estimate))
 with(ar.plot, plot(Village, ma$Estimate))
 # you want these to be centrered on zero
 
-fig_s6 <- pp_check(ghats.alpha_ENSPIE) +
-    xlab('Inverse Simpson’s') + ylab("") + 
-  ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
-  #labs(subtitle = "c)") +
-  theme_classic() + xlim(-2,10) +
-  theme(plot.title = element_text(size = 18, hjust = 0.5),
-        legend.position = "none")# predicted vs. observed values
-
-fig_s6
-
-ggsave('sup_Fig_6.jpg',
-       width = 10,
-       height = 6,
-       dpi = 300)
 
 ghats_alpha_ENSPIE <-
   conditional_effects(

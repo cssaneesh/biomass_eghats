@@ -103,21 +103,39 @@ View(alpha_div)
 # ghats.alpha_rich----
 ghats.alpha_rich <-
   brm(
-    alpha_rich ~  Treatment + ( 1 | Site ) ,
+    alpha_rich ~  Treatment + ( 1 | Site ) 
+    ,
     family = poisson(),
     data = alpha_div,
-    iter = 3000,
+    iter = 10000,
     warmup = 1000,
     cores = 4,
     chains = 4,
-    control = list(adapt_delta = 0.9)
+    control = list(adapt_delta = 0.99)
   )
+
 # save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
 
 load('ghats.alpha_rich.Rdata')
+
 summary(ghats.alpha_rich) # summary of alpha richness model
 
 color_scheme_set("darkgray")
+fig_s5 <- pp_check(ghats.alpha_rich) +
+  xlab( "Species richness") + ylab("Density") + 
+  ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
+  labs(subtitle = "b)") +
+  theme_classic() + xlim(-5,25)+
+  theme(plot.title = element_text(size = 18, hjust = 0.5),
+        legend.position = "bottom")# predicted vs. observed values
+
+fig_s5
+
+ggsave('sup_Fig_5.jpg',
+       width = 10,
+       height = 6,
+       dpi = 300)
+
 # caterpillars/chains
 plot(ghats.alpha_rich)
 # you want these 'caterpillars to be 'hairy' (very evenly squiggly)
@@ -138,20 +156,7 @@ with(ar.plot, plot(Treatment, ma$Estimate))
 with(ar.plot, plot(Village, ma$Estimate))
 # you want these to be centrered on zero
 
-fig_s5 <- pp_check(ghats.alpha_rich) +
-    xlab( "Species richness") + ylab("Density") + 
-  ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
-  labs(subtitle = "b)") +
-  theme_classic() + xlim(-5,25)+
-  theme(plot.title = element_text(size = 18, hjust = 0.5),
-        legend.position = "bottom")# predicted vs. observed values
 
-fig_s5
-
-ggsave('sup_Fig_5.jpg',
-       width = 10,
-       height = 6,
-       dpi = 300)
 
 ghats_alpha_rich <-
   conditional_effects(
