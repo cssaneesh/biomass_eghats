@@ -425,47 +425,32 @@ fig_5c <- gamma_S_PIE_all
 ggsave('fig_5_evenness.jpg', width = 10, height = 6, dpi = 300) 
 
 
+# evenness table----
+alpha_evn <- ghats_alpha_ENSPIE_df %>% select(Treatment, estimate__, lower__, upper__) %>% 
+  rename(Estimate=estimate__, Lower=lower__, Upper= upper__) %>% 
+  mutate_if(is.numeric, round, 2) %>% mutate('Scale'= rep('Alpha', 3))
+
+beta_evn <- gamma_boot_results %>% 
+  select(Treatment, beta_S_PIE_mean, beta_S_PIE_Q5, beta_S_PIE_Q95) %>% 
+  rename(Estimate= beta_S_PIE_mean, Lower= beta_S_PIE_Q5, Upper= beta_S_PIE_Q95) %>% 
+  mutate_if(is.numeric, round, 2) %>% mutate('Scale'= rep('Beta', 3))
+
+gamma_evn <- gamma_boot_results %>% 
+  select(Treatment, ENSPIE_mean, ENSPIE_Q5, ENSPIE_Q95) %>% 
+  rename(Estimate= ENSPIE_mean, Lower= ENSPIE_Q5, Upper= ENSPIE_Q95) %>% 
+  mutate_if(is.numeric, round, 2) %>% mutate('Scale'= rep('Gamma', 3))
+
+evenness <- bind_rows(alpha_evn, beta_evn, gamma_evn) %>% 
+  select(Treatment, Scale, Estimate, Lower, Upper) %>% 
+  mutate(Scale= fct_relevel(Scale, c('Alpha', 'Beta', 'Gamma'))) %>% 
+  arrange(Scale) %>% 
+  gt()%>% 
+  tab_options(column_labels.font.size = 11,
+              table.font.size = 10,
+              column_labels.font.weight = "bold")%>% 
+  tab_header(subtitle = '', 'Evenness') %>% 
+  opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
+  opt_table_outline(style = "solid", width = px(2)) 
 
 
-# test----
-
-ggplot() +
-  geom_point(
-    data = alpha_div,
-    aes(x = Treatment, y = alpha_ENSPIE, colour = 	'#A6BAd7'),
-    size = 1,
-    alpha = 0.7,
-    position = position_jitter(width = 0.05, height = 0.45)
-  ) +
-  geom_point(
-    data = ghats_alpha_ENSPIE$Treatment,
-    aes(x = Treatment, y = estimate__, colour = Treatment),
-    size = 3
-  ) +
-  geom_errorbar(
-    data = ghats_alpha_ENSPIE$Treatment,
-    aes(
-      x = Treatment,
-      ymin = lower__,
-      ymax = upper__,
-      colour = Treatment
-    ),
-    size = 1,
-    width = 0.1
-  ) + labs(x = '', y = '') +
-  scale_color_manual(values = c("#A6BAd7",
-                                "Control" = "#3b5d4d",
-                                "CPFA" = "#c5af99",
-                                "CAFA" = "#ffd365"))+
-  labs(subtitle = 'a)')+
-  #ylab(expression(paste(italic(alpha), '-', ENS[PIE])))+
-  ylab(expression(paste(italic(alpha), '-', 'inverse Simpson diversity')))+
-  theme_bw(base_size = 12) +
-  theme(legend.position = 'none', 
-        panel.grid.minor = element_blank(),
-        axis.text = element_text(size = 12),
-        axis.title = element_text(size = 12),
-        plot.tag.position = c(0.3, 0.8))+
-  theme(panel.grid.major = element_line(colour = "gray86", size = 0.1),
-        panel.background = element_rect(fill = "white"))+
-  geom_hline(aes(yintercept= 2.77), col= 'red', linetype= 'dashed')
+evenness %>% gtsave('Sup.Table6_evenness.png', expand = 5)

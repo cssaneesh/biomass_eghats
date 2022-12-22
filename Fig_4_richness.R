@@ -477,3 +477,45 @@ ggsave('fig_4_richness.jpg',
        width = 10,
        height = 6,
        dpi = 300)
+
+
+
+# Richness table-----
+
+alpha <- ghats_alpha_rich_df %>% select(Treatment, estimate__, lower__, upper__) %>%
+  rename(Estimate = estimate__,
+         Lower = lower__,
+         Upper = upper__) %>%
+  dplyr::mutate_if(is.numeric, round, 2) %>% mutate('Scale'= rep('Alpha', 3))
+
+beta <- gamma_boot_results %>% select(Treatment, beta_S_mean , beta_S_Q5, beta_S_Q95) %>%
+  rename(Estimate = beta_S_mean,
+         Lower = beta_S_Q5,
+         Upper = beta_S_Q95) %>%
+  mutate_if(is.numeric, round, 2) %>% mutate('Scale'= rep('Beta', 3))
+
+beta
+
+gamma <- gamma_boot_results %>% select(Treatment, S_mean , S_Q5, S_Q95) %>%
+  rename(Estimate = S_mean,
+         Lower = S_Q5,
+         Upper = S_Q95) %>%
+  mutate_if(is.numeric, round, 2) %>% mutate('Scale'= rep('Gamma', 3))
+
+gamma
+
+richness <- bind_rows(alpha, beta, gamma) %>% 
+  select(Treatment, Scale, Estimate, Lower, Upper) %>% 
+  mutate(Scale= fct_relevel(Scale, c('Alpha', 'Beta', 'Gamma'))) %>% 
+  arrange(Scale) %>% 
+  gt()%>% 
+  tab_options(column_labels.font.size = 11,
+              table.font.size = 10,
+              column_labels.font.weight = "bold")%>% 
+  tab_header(subtitle = '', 'Richness') %>% 
+  opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
+  opt_table_outline(style = "solid", width = px(2)) 
+
+
+richness %>% gtsave('Sup.Table5_richness.png', expand = 5)
+
