@@ -257,7 +257,7 @@ write.csv(ghats_rel_biomass_df, 'ghats_rel_biomass_df.csv')
 
 # Table_1 ----
 # Biomass
-table_2 <- ghats_rel_biomass_df %>%
+TableS3 <- ghats_rel_biomass_df %>%
   select(Treatment, Palatability, estimate__, lower__, upper__) %>%
   rename(Estimate = estimate__,
          Lower = lower__,
@@ -267,11 +267,12 @@ table_2 <- ghats_rel_biomass_df %>%
   tab_options(column_labels.font.size = 11,
               table.font.size = 10,
               column_labels.font.weight = "bold") %>% 
+  tab_header(subtitle = '', 'Relative biomass') %>% 
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
-table_2
-table_2 %>% gtsave('Table_2_rel_bio.png', expand = 5) # expand to set white space
+TableS3
+TableS3 %>% gtsave('Table_S3_rel_bio.png', expand = 5) # expand to set white space
 
 # Plot----
 fig_rel_biomass <- ggplot() +

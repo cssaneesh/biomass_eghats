@@ -232,6 +232,7 @@ gamma_dat <- alpha_dat_prep %>%
 # save(gamma_metrics, file= 'gamma_metrics.Rdata')
 
 load('gamma_metrics.Rdata')
+
 gamma_boot_results <- gamma_metrics %>% # calculate beta-diversities (beta = gamma/alpha) 
   mutate(beta_S = S/alpha_S,
          beta_S_PIE = ENSPIE/alpha_Spie ) %>% 
@@ -440,7 +441,7 @@ gamma_evn <- gamma_boot_results %>%
   rename(Estimate= ENSPIE_mean, Lower= ENSPIE_Q5, Upper= ENSPIE_Q95) %>% 
   mutate_if(is.numeric, round, 2) %>% mutate('Scale'= rep('Gamma', 3))
 
-evenness <- bind_rows(alpha_evn, beta_evn, gamma_evn) %>% 
+TableS6 <- bind_rows(alpha_evn, beta_evn, gamma_evn) %>% 
   select(Treatment, Scale, Estimate, Lower, Upper) %>% 
   mutate(Scale= fct_relevel(Scale, c('Alpha', 'Beta', 'Gamma'))) %>% 
   arrange(Scale) %>% 
@@ -452,5 +453,6 @@ evenness <- bind_rows(alpha_evn, beta_evn, gamma_evn) %>%
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2)) 
 
+TableS6
 
-evenness %>% gtsave('Sup.Table6_evenness.png', expand = 5)
+TableS6 %>% gtsave('TableS6_evenness.png', expand = 5)

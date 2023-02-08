@@ -7,7 +7,8 @@ library(cmdstanr)
 library(cowplot)
 library(vegan)
 library(gt)
-library(webshot)
+library(webshot2)
+
 # Data----
 raw_dat <- read.csv(
   "biomass_data.csv",
@@ -154,8 +155,6 @@ par(mfrow=c(1,2))
 with(ar.plot, plot(Treatment, ma$Estimate))
 with(ar.plot, plot(Village, ma$Estimate))
 # you want these to be centrered on zero
-
-
 
 ghats_alpha_rich <-
   conditional_effects(
@@ -504,7 +503,7 @@ gamma <- gamma_boot_results %>% select(Treatment, S_mean , S_Q5, S_Q95) %>%
 
 gamma
 
-richness <- bind_rows(alpha, beta, gamma) %>% 
+TableS5 <- bind_rows(alpha, beta, gamma) %>% 
   select(Treatment, Scale, Estimate, Lower, Upper) %>% 
   mutate(Scale= fct_relevel(Scale, c('Alpha', 'Beta', 'Gamma'))) %>% 
   arrange(Scale) %>% 
@@ -516,6 +515,7 @@ richness <- bind_rows(alpha, beta, gamma) %>%
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2)) 
 
+TableS5
 
-richness %>% gtsave('Sup.Table5_richness.png', expand = 5)
+TableS5 %>% gtsave('TableS5_richness.png', expand = 5)
 

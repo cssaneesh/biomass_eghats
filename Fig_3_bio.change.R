@@ -558,13 +558,14 @@ table_re.change <- rel.ghats_biochange_df %>%
   select(Treatment, Palatability, estimate__, lower__, upper__) %>% 
   rename(Estimate= estimate__, 
          Lower= lower__,
-         Upper= upper__) %>% 
+         Upper = upper__) %>% 
   mutate(Estimate = round(Estimate, 2)) %>% 
-  mutate(Lower = round(Lower, 2)) %>%
+  mutate(Lpwer = round(Lower, 2)) %>%
   mutate(Upper = round(Upper, 2)) %>%
   gt() %>% tab_options(column_labels.font.size = 11,
                        table.font.size = 10,
                        column_labels.font.weight = "bold") %>% 
+  tab_header(subtitle = '', 'Relative biomass change') %>% 
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 

@@ -94,7 +94,7 @@ ghats_ab_biomass_df <-
 # View(ghats_ab_biomass_df)
 # Table_1 ----
 # Biomass
-table_1_ab <- ghats_ab_biomass_df %>%
+TableS2 <- ghats_ab_biomass_df %>%
   select(Treatment, Palatability, estimate__, lower__, upper__) %>%
   rename(Estimate = estimate__,
          Lower = lower__,
@@ -104,11 +104,12 @@ table_1_ab <- ghats_ab_biomass_df %>%
   tab_options(column_labels.font.size = 11,
               table.font.size = 10,
               column_labels.font.weight = "bold") %>% 
+  tab_header(subtitle = '', 'Absolute biomass') %>% 
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
-table_1_ab
-# table_1_ab %>% gtsave('Table_2_ab_biomass.png', expand = 5) # expand to set white space
+TableS2
+TableS2 %>% gtsave('Table_S2_ab_biomass.png', expand = 5) # expand to set white space
 
 # Plot----
 fig_ab_biomass <- ggplot() +

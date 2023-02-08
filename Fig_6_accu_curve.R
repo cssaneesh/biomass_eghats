@@ -148,15 +148,18 @@ iNextEststimates <- as.data.frame(TD_treat_out$AsyEst) %>% rename(Treatment = As
 iNextEststimates %>% mutate(Treatment= fct_relevel(Treatment, c('Control', 'CPFA', 'CAFA'))) %>% arrange(Treatment)
 
 # iNext table
-table_6_iNext <- iNextEststimates %>% select(Treatment, Diversity, Observed, Estimator) %>%
+TableS7 <- iNextEststimates %>% select(Treatment, Diversity, Observed, Estimator) %>%
   filter(Diversity!="Shannon diversity") %>% 
   mutate_if(is.numeric, round, 2) %>% 
   gt()%>% 
   tab_options(column_labels.font.size = 11,
               table.font.size = 10,
               column_labels.font.weight = "bold") %>% 
+  tab_header(subtitle = '', 'Accumulation of species richness and evenness') %>% 
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
-table_6_iNext %>% gtsave('Table_6 (iNext_AsyEst).png', expand = 5) # expand to set white space
+TableS7
+
+TableS7 %>% gtsave('TableS7 (iNext_AsyEst).png', expand = 5) # expand to set white space
 
