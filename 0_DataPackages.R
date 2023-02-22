@@ -77,8 +77,8 @@ absolute_weight <- Site_calc %>%
 
 # Relative_biomass
 relative_weight <-
-  Site_calc %>% select(Village, Site, Sci_name,Treatment, Palatability, relative_biomass) %>%
-  group_by(Village, Treatment, Sci_name,Site, Palatability) %>%
+  Site_calc %>% select(Village, Site, Treatment, Palatability, relative_biomass) %>%
+  group_by(Village, Treatment, Site, Palatability) %>%
   summarise(relative_biomass = sum(relative_biomass) * 100) %>%
   mutate(Treatment = factor(Treatment)) %>%
   mutate(Palatability = factor(Palatability)) %>%
