@@ -1,70 +1,76 @@
-Family,Scientific_name,Functional_type,Functional_groups,Palatability,Telugu name,"Shepherd 
-score", Livestock,Plant part,Stage
-Euphorbiaceae,Acalypha scabrosa Sw.,Annual,Forb,No,"Murupinda, Kuppinta",4,,,
-Asteraceae,Ageratum conyzoides L.,Annual,Forb,No,"Poka banti, Banti",4,,,
-Fabaceae,Alysicarpus monilifer (L.) DC.,Annual,Forb,Yes,"Adavi pesulu, Chappakatetega",2,Sheep and cattle,Above ground part,All year round
-Acanthaceae,Andrographis echioides (L.) Nees,Annual,Forb,Yes,Bhoodaraaaku,2,Goat,Young leaves and tender shoot,When young
-Poaceae,Apluda mutica L.,Perennial,Graminoid,Yes,Errakaasi,1,"Sheep, Goat and Cattle",Above ground part,Most prefered when young but eaten even dry
-Poaceae,Apocopis mangalorensis (Hochst. ex Steud.) Henrard,Annual,Graminoid,Yes,Kondagaddi,1,"Sheep, Goat and Cattle",Above ground part,
-Poaceae,Aristida adscensionis L.,Annual,Graminoid,Yes,Sannaoopa,3,Sheep,Above ground part till flowering,"Preferred when young (July-September), awns are too sharp, less digestible after September"
-Poaceae,Aristida funiculata Trin. & Rupr.,Annual,Graminoid,Yes,Sannaoopa,3,Sheep,Above ground part till flowering,"Preferred when young (July-September), awns are too sharp, less digestible after September"
-Poaceae,Aristida hystrix L.f.,Perennial,Graminoid,Yes,Chepattinagadi/Chimpergadi,1,Sheep and Goat,Above ground part,"Preferred when young, eaten dry when other fodder is not available"
-Poaceae,Aristida redacta Stapf,Annual,Graminoid,Yes,Parakkaoosa,2,Sheep,Above ground part till flowering,"Preferred when young (July-September), awns are too sharp, less digestible after September"
-Poaceae,Aristida setacea Retz.,Annual,Graminoid,Yes,Parakkaoosa,2,Sheep,Above ground part till flowering,"Preferred when young, eaten dry when other fodder is not available"
-Poaceae,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,Annual,Graminoid,Yes,Bandassamegaddi,2, Sheep and cattle,Above ground part,All year round
-Nyctaginaceae,Boerhavia diffusa L.,Perennial,Forb,No,Sannaakku tella poovu,4,,,
-Poaceae,Bothriochloa pertusa (L.) A.Camus,Perennial,Graminoid,Yes,Chenugaddi,1,"Sheep, Goat and Cattle",Above ground part,All year round
-Cyperaceae,Bulbostylis barbata (Rottb.) C.B.Clarke,Annual,Graminoid,Yes,Ghanda,2, Sheep and cattle,Above ground part,July-October
-Fabaceae,Cajanus scarabaeoides (L.) Thouars,Annual,Forb,Yes,"Adavi uluva, Ariuluva",1,"Sheep, Goat and Cattle",Above ground part,All year round
-Amaranthaceae,Celosia argentea L.,Annual,Forb,Yes,Gurugu,1,"Sheep, Goat and Cattle",Above ground part,All year round
-Fabaceae,Chamaecrista absus (L.) H.S.Irwin & Barneby,Annual,Forb,Yes,"Uluvachettu, Chanupala",1,"Sheep, Goat and Cattle",Above ground part,All year round
-Fabaceae,Chamaecrista pumila (Lam.) V.Singh,Annual,Forb,Yes,"Chantauluva, Eradhaneyalu",1,"Sheep, Goat and Cattle",Above ground part,All year round
-Poaceae,Chrysopogon fulvus (Spreng.) Chiov.,Perennial,Graminoid,Yes,"Oopa, Sannaoopa",1,"Sheep, Goat and Cattle",Above ground part,All year round
-Fabaceae,Crotalaria evolvuloides Wight,Perennial,Forb,Yes,Alumu,2,Sheep and cattle,Above ground part,July-October
-Fabaceae,Crotalaria hebecarpa (DC.) Rudd,Annual,Forb,Yes,"Alumu, Bonta alumu, Teega alumu",1,"Sheep, Goat and Cattle",Above ground part,All year round
-Commelinaceae,Cyanotis tuberosa (Roxb.) Schult. & Schult.f.,Perennial,Forb,No,Ariyaragadda,4,,,
-Asteraceae,Cyanthillium albicans (DC.) H.Rob.,Annual,Forb,Yes,Jomdegadde,1,"Sheep, Goat and Cattle",Above ground part,All year round (along wet areas)
-Asteraceae,Cyanthillium cinereum (L.) H.Rob.,Annual,Forb,Yes,Jomdegadde,1,"Sheep, Goat and Cattle",Above ground part,All year round (along wet areas)
-Poaceae,Cymbopogon caesius (Hook. & Arn.) Stapf,Perennial,Graminoid,No,Boda,3,Sheep and Goat,Tender leaves,10-15 days after fire in March/April or depending on fire. Thereafter lemon taste/strog flavour develops and less digestible.
-Poaceae,Cymbopogon jwarancusa (Jones) Schult,Perennial,Graminoid,No,Boda,3,Sheep and Goat,Tender leaves,10-15 days after fire in March/April or depending on fire. Thereafter lemon taste/strog flavour develops and less digestible.
-Poaceae,Cymbopogon martinii (Roxb.) J. F. Watson,Perennial,Graminoid,No,Boda,3,Sheep and Goat,Tender leaves,10-15 days after fire in March/April or depending on fire. Thereafter lemon taste/strog flavour develops and less digestible.
-Poaceae,Eragrostiella bifaria (Vahl) Bor,Perennial,Graminoid,Yes,Sannaaakugaddi,1,Sheep and Goat,Above ground part,"Preferred when young, eaten dry when other fodder is not available"
-Poaceae,Eragrostis tenella (L.) P.Beauv. ex Roem. & Schult.,Annual,Graminoid,Yes,Sannaaakugaddi,1,"Sheep, Goat and Cattle",Above ground part,"Preferred when young, eaten dry when other fodder is not available"
-Euphorbiaceae,Euphorbia deccanensis V.S.Raju,Annual,Forb,Yes,Teegaaku,1,"Sheep, Goat and Cattle",Above ground part,All year round
-Euphorbiaceae,Euphorbia rosea Retz.,Annual,Forb,Yes,"Guduru alumu, Pala aaku, Teega alumu, Thema alumu",1,"Sheep, Goat and Cattle",Above ground part,All year round
-Convolvulaceae,Evolvulus alsinoides (L.) L.,Perennial,Forb,Yes,"Vishnukranti alumu, Neelampoolu teega, Teega alumu",1,"Sheep, Goat and Cattle",Above ground part,All year round
-Poaceae,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,Perennial,Graminoid,Yes,Ooppa,2,Sheep and cattle,"Most prefered when blade and clum are young, not after seed setting","From July to October, after that sharp seeds develop and less palatable"
-Malvaceae,Hibiscus lobatus (Murray) Kuntze,Annual,Forb,No,Naara,4,,,
-Violaceae,Hybanthus enneaspermus (L.) F. Muell.,Perennial,Forb,Yes,"Errapoovluaaku, Nela cobra",2,Sheep,Leaves and tender shoots,July-October
-Fabaceae,Indigofera glabra L.,Annual,Forb,Yes,"Adavipeshara, Errapulu alumu",1,Sheep and Goat,Leaves and tender shoots,
-Fabaceae,Indigofera linifolia (L.f.) Retz.,Annual,Forb,Yes,"Adavipeshara, Errapulu alumu",1,Sheep and Goat,Leaves and tender shoots,
-Acanthaceae,Justicia vahliana Schult.,Annual,Forb,Yes,Katteaaku,1,"Sheep, Goat and Cattle",Above ground part,All year round
-Acanthaceae,Lepidagathis cristata Willd.,Perennial,Forb,Yes,Nakkapentigadda,2,Sheep,Leaves and tender shoots,"July to February, then throns grow"
-Lamiaceae,Leucas aspera (Willd.) Link,Annual,Forb,No,Thumme,4,,,
-Lamiaceae,Leucas zeylanica (L.) W.T.Aiton,Annual,Forb,No,Thumme,4,,,
-Rubiaceae,Mitracarpus hirtus (L.) DC.,Annual,Forb,Yes,"Adavimadanakatti, Chenumadanakatti",2, Sheep and Goat,Leaves and tender shoots,July to October
-Rubiaceae,Oldenlandia umbellata L.,Annual,Forb,Yes,"Aridhaniyalu, Erredhaniyalu",2, Goat and cattle,Leaves,When young (June/July to November)
-Orobanchaceae,Parasopubia delphiniifolia (L.) H.-P.Hofm. & Eb.Fisch.,Annual,Forb,Yes,Uthugadde,2,Goat and cattle,Leaves and tender shoots,"June to August, then develops a taste that goats don't like"
-Phyllanthaceae,Phyllanthus virgatus G.Forst.,Annual,Forb,Yes,Uchi usiri,1,Sheep and Goat,Leaves and tender shoots,June to January/February then dries
-Caryophyllaceae,Polycarpaea corymbosa (L.) Lam.,Annual,Forb,Yes,Rajumagaddi,2,Goat,Leaves and tender shoots,When young (July-October)
-Polygalaceae,Polygala javana DC.,Annual,Forb,Yes,Nela janumu,2,Goat,Leaves,When young (July-October)
-Asteraceae,Pulicaria wightiana (DC.) C.B.Clarke,Annual,Forb,Yes,Bairenipoolu,1,"Sheep, Goat and Cattle",Leaves and tender shoots,June to January/February then dries
-Fabaceae,Rhynchosia rufescens DC.,Perennial,Forb,Yes,"Erreuluvaaaku, Veruluvaaku",1,"Sheep, Goat and Cattle","Leaves, young shoots and dried plant are eaten",All year round
-Fabaceae,Rhynchosia suaveolens (L.f.) DC.,Perennial,Forb,Yes,"Erreuluvaaaku, Veruluvaaku",1,"Sheep, Goat and Cattle","Leaves, young shoots and dried plant are eaten",All year round
-Acanthaceae,Rostellularia obtusa Nees,Annual,Forb,Yes,,1,"Sheep, Goat and Cattle","Leaves, young shoots and dried plant are eaten",All year round
-Poaceae,Sehima nervosa (Rottler) Stapf,Annual,Graminoid,Yes,Kondagaddi,1,"Sheep, Goat and Cattle",Above ground part,All year round
-Pedaliaceae,Sesamum prostratum Retz.,Annual,Forb,Yes,Teegaalumu,2, Sheep and Goat,Leaves,When young (July to December)
-Rubiaceae,Spermacoce hispida L.,Annual,Forb,Yes,"Chenumadanakatti, Adavimadanakatti",2, Sheep and Goat,Above ground part,When young (June to November)
-Rubiaceae,Spermacoce pusilla Wall.,Annual,Forb,Yes,"Chenumadanakatti, Adavimadanakatti",2, Sheep and Goat,Above ground part,When young (June to November)
-Asteraceae,Sphaeranthus indicus L.,Annual,Forb,No,Boddasoramu,4,,,
-Fabaceae,Stylosanthes scabra Vogel,Perennial,Forb,Yes,,1,"Sheep, Goat and Cattle",Leaves and shoots,All year round
-Fabaceae,Tephrosia strigosa (Dalzell) Santapau & Maheshw.,Annual,Forb,Yes,Teegavempili,2,Goat and cattle,Leaves and tender shoots,July to September
-Fabaceae,Tephrosia villosa (L.) Pers.,Annual,Forb,No,Yempili,4,,,
-Asteraceae,Tricholepis radicans (Roxb.) Wight,Annual,Forb,Yes,,2,Sheep and cattle,Leaves,When young (July to September/October)
-Amaranthaceae,Trichuriella monsoniae (L.f.) Bennet,Perennial,Forb,Yes,,2,Sheep and cattle,Leaves and shoots,When young (July to September/October)
-Asteraceae,Tridax procumbens L.,Perennial,Forb,Yes,"Balappakku, Paalakku",1,"Sheep, Goat and Cattle",Above ground part,June to January/February then dries
-Asteraceae,Vicoa indica (L.) DC.,Perennial,Forb,Yes,,2, Sheep and Goat,Leaves and tender shoots,When young (June/July to November/December)
-Fabaceae,Vigna aconitifolia (Jacq.) Maréchal,Annual,Forb,Yes,Alasanduluteega,1,"Sheep, Goat and Cattle",Above ground part,June to January/February then dries
-Fabaceae,Vigna trilobata (L.) Verdc.,Annual,Forb,Yes,Alasanduluteega,1,"Sheep, Goat and Cattle",Above ground part,June to January/February then dries
-Malvaceae,Waltheria indica L.,Perennial,Forb,Yes,"Yarrakateaaku, Nallabenda",1,"Sheep, Goat and Cattle",Leaves and shoots,June to January/February then dries
-Convolvulaceae,Xenostegia tridentata (L.) D.F.Austin & Staples,Annual,Forb,Yes,,1,"Sheep, Goat and Cattle",Above ground part,All year round
+Family,Scientific name,FT,FG,P,Telugu name, L,Plant part,Stage,"Number 
+of 
+months",Score
+Euphorbiaceae,Acalypha scabrosa Sw.,A,F,N,"Murupinda, Kuppinta",,,,,4
+Asteraceae,Ageratum conyzoides L.,A,F,N,"Poka banti, Banti",,,,,4
+Fabaceae,Alysicarpus monilifer (L.) DC.,A,F,Y,"Adavi pesulu, Chappakatetega","S, G, C",Above ground part,All stages (Young and dry),12,1
+Acanthaceae,Andrographis echioides (L.) Nees,A,F,Y,Bhoodaraaaku,G,Young leaves and tender shoot,When young (June to September),4,2
+Poaceae,Apluda mutica L.,P,G,Y,Errakaasi,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Poaceae,Apocopis mangalorensis (Hochst. ex Steud.) Henrard,A,G,Y,Kondagaddi,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Poaceae,Aristida adscensionis L.,A,G,Y,Sannaoopa,S,Above ground part,Preferred only when young (July-August),2,3
+Poaceae,Aristida funiculata Trin. & Rupr.,A,G,Y,Sannaoopa,S,Above ground part,Preferred only when young (July-August),2,3
+Poaceae,Aristida hystrix L.f.,P,G,Y,Chepattinagadi/Chimpergadi,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Poaceae,Aristida redacta Stapf,A,G,Y,Parakkaoosa,S,Above ground part till flowering,"Preferred when young (July-September), awns are too sharp, less digestible after September",4,2
+Poaceae,Aristida setacea Retz.,A,G,Y,Parakkaoosa,S,Above ground part till flowering,"Preferred when young, eaten dry when other fodder is not available",4,2
+Poaceae,Arundinella nervosa (Roxb.) Nees ex Hook. & Arn.,A,G,Y,Bandassamegaddi,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Nyctaginaceae,Boerhavia diffusa L.,P,F,N,Sannaakku tella poovu,,,,,4
+Poaceae,Bothriochloa pertusa (L.) A.Camus,P,G,Y,Chenugaddi,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Cyperaceae,Bulbostylis barbata (Rottb.) C.B.Clarke,A,G,Y,Ghanda,"S, C",Above ground part,July to October,4,2
+Fabaceae,Cajanus scarabaeoides (L.) Thouars,A,F,Y,"Adavi uluva, Ariuluva","S, G, C",Above ground part,All stages (Young and dry),12,1
+Amaranthaceae,Celosia argentea L.,A,F,Y,Gurugu,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Fabaceae,Chamaecrista absus (L.) H.S.Irwin & Barneby,A,F,Y,"Uluvachettu, Chanupala","S, G, C",Above ground part,All stages (Young and dry),12,1
+Fabaceae,Chamaecrista pumila (Lam.) V.Singh,A,F,Y,"Chantauluva, Eradhaneyalu","S, G, C",Above ground part,All stages (Young and dry),12,1
+Poaceae,Chrysopogon fulvus (Spreng.) Chiov.,P,G,Y,"Oopa, Sannaoopa","S, G, C",Above ground part,All stages (Young and dry),12,1
+Fabaceae,Crotalaria evolvuloides Wight,P,F,Y,Alumu,"S, C",Above ground part,July to October,3,2
+Fabaceae,Crotalaria hebecarpa (DC.) Rudd,A,F,Y,"Alumu, Bonta alumu, Teega alumu","S, G, C",Above ground part,All stages (Young and dry),12,1
+Commelinaceae,Cyanotis tuberosa (Roxb.) Schult. & Schult.f.,P,F,N,Ariyaragadda,,,,,4
+Asteraceae,Cyanthillium albicans (DC.) H.Rob.,A,F,Y,Jomdegadde,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Asteraceae,Cyanthillium cinereum (L.) H.Rob.,A,F,Y,Jomdegadde,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Poaceae,Cymbopogon caesius (Hook. & Arn.) Stapf,P,G,N,Boda,"S, G",Tender leaves,"March/April 10-15 days after fire or depending on the fire, after which lime taste/strong flavors develop and digestibility decreases.",0.5,3
+Poaceae,Cymbopogon jwarancusa (Jones) Schult,P,G,N,Boda,"S, G",Tender leaves,"March/April 10-15 days after fire or depending on the fire, after which lime taste/strong flavors develop and digestibility decreases.",0.5,3
+Poaceae,Cymbopogon martinii (Roxb.) J. F. Watson,P,G,N,Boda,"S, G",Tender leaves,"March/April 10-15 days after fire or depending on the fire, after which lime taste/strong flavors develop and digestibility decreases.",0.5,3
+Poaceae,Eragrostiella bifaria (Vahl) Bor,P,G,Y,Sannaaakugaddi,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Poaceae,Eragrostis tenella (L.) P.Beauv. ex Roem. & Schult.,A,G,Y,Sannaaakugaddi,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Euphorbiaceae,Euphorbia deccanensis V.S.Raju,A,F,Y,Teegaaku,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Euphorbiaceae,Euphorbia rosea Retz.,A,F,Y,"Guduru alumu, Pala aaku, Teega alumu, Thema alumu","S, G, C",Above ground part,All stages (Young and dry),12,1
+Convolvulaceae,Evolvulus alsinoides (L.) L.,P,F,Y,"Vishnukranti alumu, Neelampoolu teega, Teega alumu","S, G, C",Above ground part,All stages (Young and dry),12,1
+Poaceae,Heteropogon contortus (L.) P.Beauv. ex Roem. & Schult.,P,G,Y,Ooppa,"S, C","Most prefered when blade and clum are young, not after seed setting","July to October, after that sharp seeds develop and less palatable",4,2
+Malvaceae,Hibiscus lobatus (Murray) Kuntze,A,F,N,Naara,,,,,4
+Violaceae,Hybanthus enneaspermus (L.) F. Muell.,P,F,Y,"Errapoovluaaku, Nela cobra",S,Leaves and tender shoots,July to October,4,2
+Fabaceae,Indigofera glabra L.,A,F,Y,"Adavipeshara, Errapulu alumu","S, G, C",Leaves and tender shoots,All stages (Young and dry),12,1
+Fabaceae,Indigofera linifolia (L.f.) Retz.,A,F,Y,"Adavipeshara, Errapulu alumu","S, G, C",Leaves and tender shoots,All stages (Young and dry),12,1
+Acanthaceae,Justicia vahliana Schult.,A,F,Y,Katteaaku,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Acanthaceae,Lepidagathis cristata Willd.,P,F,Y,Nakkapentigadda,S,Leaves and tender shoots,"July to February, then the thorns harden",8,2
+Lamiaceae,Leucas aspera (Willd.) Link,A,F,N,Thumme,,,,,4
+Lamiaceae,Leucas zeylanica (L.) W.T.Aiton,A,F,N,Thumme,,,,,4
+Rubiaceae,Mitracarpus hirtus (L.) DC.,A,F,Y,"Adavimadanakatti, Chenumadanakatti","S, G",Leaves and tender shoots,July to October,4,2
+Rubiaceae,Oldenlandia umbellata L.,A,F,Y,"Aridhaniyalu, Erredhaniyalu","G, C",Leaves,When young (June/July to November),6,2
+Orobanchaceae,Parasopubia delphiniifolia (L.) H.-P.Hofm. & Eb.Fisch.,A,F,Y,Uthugadde,"G, C",Leaves and tender shoots,"June to August, then develops a taste that goats don't like",3,2
+Phyllanthaceae,Phyllanthus virgatus G.Forst.,A,F,Y,Uchi usiri,"S, G, C",Leaves and tender shoots,June to January/February then dries up and disappears,8,1
+Caryophyllaceae,Polycarpaea corymbosa (L.) Lam.,A,F,Y,Rajumagaddi,G,Leaves and tender shoots,When young (July-October),4,2
+Polygalaceae,Polygala javana DC.,A,F,Y,Nela janumu,G,Leaves,When young (July-October),4,2
+Asteraceae,Pulicaria wightiana (DC.) C.B.Clarke,A,F,Y,Bairenipoolu,"S, G, C",Leaves and tender shoots,June to January/February then dries up and disappears,8,1
+Fabaceae,Rhynchosia rufescens DC.,P,F,Y,"Erreuluvaaaku, Veruluvaaku","S, G, C","Leaves, young shoots and dried plant are eaten",All stages (Young and dry),12,1
+Fabaceae,Rhynchosia suaveolens (L.f.) DC.,P,F,Y,"Erreuluvaaaku, Veruluvaaku","S, G, C","Leaves, young shoots and dried plant are eaten",All stages (Young and dry),12,1
+Acanthaceae,Rostellularia obtusa Nees,A,F,Y,,"S, G, C","Leaves, young shoots and dried plant are eaten",All stages (Young and dry),12,1
+Poaceae,Sehima nervosa (Rottler) Stapf,A,G,Y,Kondagaddi,"S, G, C",Above ground part,All stages (Young and dry),12,1
+Pedaliaceae,Sesamum prostratum Retz.,A,F,Y,Teegaalumu,"S, G",Leaves,When young (July to December),6,2
+Rubiaceae,Spermacoce hispida L.,A,F,Y,"Chenumadanakatti, Adavimadanakatti","S, G",Above ground part,When young (June to November),6,2
+Rubiaceae,Spermacoce pusilla Wall.,A,F,Y,"Chenumadanakatti, Adavimadanakatti","S, G",Above ground part,When young (June to November),6,2
+Asteraceae,Sphaeranthus indicus L.,A,F,N,Boddasoramu,,,,,4
+Fabaceae,Stylosanthes scabra Vogel,P,F,Y,,"S, G, C",Leaves and shoots,All stages (Young and dry),12,1
+Fabaceae,Tephrosia strigosa (Dalzell) Santapau & Maheshw.,A,F,Y,Teegavempili,"G, C",Leaves and tender shoots,July to September,3,2
+Fabaceae,Tephrosia villosa (L.) Pers.,A,F,N,Yempili,,,,,4
+Asteraceae,Tricholepis radicans (Roxb.) Wight,A,F,Y,,"S, C",Leaves,When young (July to September/October),4,2
+Amaranthaceae,Trichuriella monsoniae (L.f.) Bennet,P,F,Y,,"S, C",Leaves and shoots,When young (July to September/October),4,2
+Asteraceae,Tridax procumbens L.,P,F,Y,"Balappakku, Paalakku","S, G, C",Above ground part,June to January/February then dries up and disappears,8,1
+Asteraceae,Vicoa indica (L.) DC.,P,F,Y,,"S, G",Leaves and tender shoots,When young (June/July to November/December),7,2
+Fabaceae,Vigna aconitifolia (Jacq.) Maréchal,A,F,Y,Alasanduluteega,"S, G, C",Above ground part,June to January/February then dries up and disappears,8,1
+Fabaceae,Vigna trilobata (L.) Verdc.,A,F,Y,Alasanduluteega,"S, G, C",Above ground part,June to January/February then dries up and disappears,8,1
+Malvaceae,Waltheria indica L.,P,F,Y,"Yarrakateaaku, Nallabenda","S, G, C",Leaves and shoots,June to January/February then dries up and disappears,8,1
+Convolvulaceae,Xenostegia tridentata (L.) D.F.Austin & Staples,A,F,Y,,"S, G, C",Above ground part,All stages (Young and dry),12,1
+,"FT= Functional type (A= Annual, P= Perennial)
+FG= Functional group (F= Forb, G= Graminoid)
+P= Palatability (Y= Palatable, N= Unpalatable)
+L= Livestock (S= Sheep, G= Goat, C= Cattle)
+",,,,,,,,,

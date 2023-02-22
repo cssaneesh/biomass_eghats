@@ -1,67 +1,5 @@
-# Packages----
-library(tidyverse)
-library(patchwork)
-library(brms)
-library(bayesplot)
-library(cmdstanr)
-library(cowplot)
-library(vegan)
-library(gt)
-library(webshot2)
-
-# Data----
-raw_dat <- read.csv(
-  "biomass_data.csv",
-  header = T,
-  fill = TRUE,
-  sep = ",",
-  na.strings = c("", " ", "NA", "NA ", "na", "NULL")
-)
-
-# Data wrangling----
-Site_dat <- raw_dat %>%
-  mutate(
-    Treatment = as.factor(Treatment),
-    Life_form = as.factor(Life_form),
-    Functional_groups = as.factor(Functional_groups)
-  )
-
-Site_prep <- Site_dat %>%
-  arrange(Site, Treatment) %>%
-  mutate(
-    Treatment = case_when(
-      Treatment == "ab" ~ "Control",
-      # Cymbopogon present fire present
-      Treatment == "bgpnf" ~ "CPFA",
-      # Cymbopogon present fire absent
-      Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
-    )
-  )
-
-# what is the summed biomass per Site without cymbopogon?
-Site_sum_no_cym <- Site_prep %>%
-  filter(!Sci_name == "Cymbopogon sp.") %>%
-  group_by(Site, Treatment) %>%
-  summarise(Site_biomass_no_cym = sum(Weight)) %>%
-  ungroup()
-
-# what is the summed biomass per Site with cymbopogon?
-Site_sum_w_cym <-
-  Site_prep %>% group_by(Site, Treatment) %>%
-  summarise(Site_biomass = sum(Weight)) %>%
-  ungroup()
-
-Site_sum <-
-  Site_sum_w_cym %>% left_join(Site_sum_no_cym)
-
-# Site_calc
-Site_calc <- Site_prep %>% left_join(Site_sum) %>%
-  mutate(
-    relative_biomass = (Weight / Site_biomass) ,
-    relative_biomass_p = ((Weight / Site_biomass) * 100),
-    relative_biomass_nc = (Weight / Site_biomass_no_cym) ,
-    relative_biomass_nc_p = ((Weight / Site_biomass) * 100)
-  )
+# Data and packages-----
+source('1_DataPackages.R')
 
 # for alpha
 alpha_div <-
@@ -94,10 +32,10 @@ alpha_dat_prep <- alpha_dat %>%
 gamma_dat <- alpha_dat_prep %>%
   # collate relative weight of each species at each location (these are alpha-scale samples)
   group_by(Treatment, Site) %>%
-  nest(c(Sci_name, rel_weight, weight, plot_weight)) %>%
+  nest(data=c(Sci_name, rel_weight, weight, plot_weight)) %>%
   ungroup()
 
-View(alpha_div)
+# View(alpha_div)
 # Analysis----
 # Alpha_div
 

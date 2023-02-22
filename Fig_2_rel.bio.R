@@ -1,154 +1,4 @@
-# Packages----
-library(tidyverse)
-library(patchwork)
-library(brms)
-library(bayesplot)
-library(cmdstanr)
-library(cowplot)
-library(gt)
-library(webshot2)
-
-# Data----
-# raw data
-raw_dat <- read.csv(
-  "biomass_data.csv",
-  header = T,
-  fill = TRUE,
-  sep = ",",
-  na.strings = c("", " ", "NA", "NA ", "na", "NULL")
-)
-# Data wrangling----
-Site_dat <- raw_dat %>%
-  mutate(
-    Treatment = as.factor(Treatment),
-    Life_form = as.factor(Life_form),
-    Functional_groups = as.factor(Functional_groups)
-  )
-
-# number of graminoids (annual/perennial) and forbs (annual/perennial)
-species_list <- Site_dat %>% 
-  select(Scientific_name, Family, Treatment, Functional_type, Functional_groups, Palatability) %>%
-  mutate(
-    Functional_type= case_when(
-      Functional_type == "Annual undershrub"  ~ "Annual",
-      Functional_type == "Annual herb"   ~ "Annual",
-      Functional_type == "Annual graminoid"  ~ "Annual",
-      Functional_type == "Annual/perennial graminoid "  ~ "Annual",
-      Functional_type == "Annual/perennial herb"  ~ "Annual",
-      Functional_type == "Perennial herb"   ~ "Perennial",
-      Functional_type == "Perennial graminoid"   ~ "Perennial",
-      Functional_type == "Perennial undershrub"  ~ "Perennial")) %>%
-    mutate(Palatability= recode(Palatability, 'Cymbopogon sp.'= 'No')) %>%  
-  distinct(Functional_groups, Treatment, Palatability, Functional_type, Scientific_name, Family)
-
-# write.csv(species_list, 'Species list-Fam_ supplementary- 1.csv') # add 4 Cymb. grass manually.
-species_list %>%
-  mutate(anu.peri = as.factor(Functional_groups)) %>%
-  dplyr::count(Functional_groups, Functional_type, Palatability) 
-# 56 palatable 13 non palatable- including 4 Cymbopogons as No palatable.
-
-cafa <- species_list %>%
-  filter(Treatment=='bgrnf') %>% 
-  mutate(anu.peri = as.factor(Functional_groups)) %>%
-  dplyr::count(Functional_type, Functional_groups,Palatability) %>% 
-  mutate(Treatment= as.factor('CAFA'))
-
-cpfa <- species_list %>%
-  filter(Treatment=='bgpnf') %>% 
-  mutate(anu.peri = as.factor(Functional_groups)) %>%
-  dplyr::count(Functional_type, Functional_groups,Palatability ) %>% 
-  mutate(Treatment= as.factor('CPFA'))
-
-cpfp <- species_list %>%
-  filter(Treatment=='ab') %>% 
-  mutate(anu.peri = as.factor(Functional_groups)) %>%
-  dplyr::count(Functional_type, Functional_groups,Palatability ) %>% 
-  mutate(Treatment= as.factor('CPFP'))
-
-
-allsites <- bind_rows(cafa, cpfa, cpfp) %>% 
-  mutate(Functional_groups=recode(Functional_groups,'Cymbopogon'='Graminoid'))
-
-sup_fig_2 <- ggplot(allsites, aes(Functional_type,n, fill= Functional_groups))+
-  geom_col()+
-  facet_wrap(~Treatment)+
-  labs(y= 'Number of species', x= 'Functional type') +
-  scale_fill_manual (values =  c('#bfbfbf', "#5a9bd5"))+
-  theme_bw(base_size = 12) + theme(
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(),
-    plot.margin = margin(
-      t = 0.2,
-      r = 0.2,
-      b = 0.2,
-      l = 0.2,
-      unit = "cm"
-    ),
-    plot.title = element_text(size = 14, hjust =
-                                0.5),
-    strip.background = element_blank(),
-    #legend.position = "bottom"
-  ) +
-  theme(
-    panel.grid.major = element_line(colour = "gray86", size = 0.1),
-    panel.background = element_rect(fill = "white")
-  )
-
-ggsave('sup_fig_2 .jpg',
-      width = 10,
-      height = 6,
-      dpi = 300)
-
-
-
-# create Site prep data
-Site_prep <- Site_dat %>%
-  arrange(Site, Treatment) %>%
-  mutate(
-    Treatment = case_when(
-      Treatment == "ab" ~ "Control",
-      # Cymbopogon present fire present
-      Treatment == "bgpnf" ~ "CPFA",
-      # Cymbopogon present fire absent
-      Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
-    )
-  )
-
-
-# what is the summed biomass per Site with cymbopogon?
-Site_sum <-
-  Site_prep %>% group_by(Site, Treatment) %>%
-  summarise(Site_biomass = sum(Weight)) %>%
-  ungroup()
-
-# Site_calc
-Site_calc <- Site_prep %>% left_join(Site_sum) %>%
-  mutate(
-    relative_biomass = (Weight / Site_biomass) ,
-    relative_biomass_p =  round(((
-      Weight / Site_biomass
-    ) * 100) , 2)
-  )
-
-# Absolute_biomass
-absolute_weight <- Site_calc %>%
-  select(Site, Treatment, Weight, Palatability) %>%
-  group_by(Palatability, Treatment, Site) %>%
-  summarise(Weight = sum(Weight)) %>%
-  mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
-  mutate(Palatability = factor(Palatability)) %>%
-  mutate(Palatability = fct_relevel(Palatability, c('Yes', 'No', 'Cymbopogon sp.'))) %>%
-  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
-
-# Relative_biomass
-relative_weight <-
-  Site_calc %>% select(Village, Site, Treatment, Palatability, relative_biomass) %>%
-  group_by(Village, Treatment, Site, Palatability) %>%
-  summarise(relative_biomass = sum(relative_biomass) * 100) %>%
-  mutate(Treatment = factor(Treatment)) %>%
-  mutate(Palatability = factor(Palatability)) %>%
-  mutate(Palatability = fct_relevel(Palatability, c('Yes', 'No', 'Cymbopogon sp.'))) %>%
-  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
+source('1_DataPackages.R')
 
 # Exploratory plots----
 
@@ -231,10 +81,10 @@ fig_s3 <- pp_check(ghats.rel_biomass) +
 
 fig_s3
 
-ggsave('sup_Fig_3.jpg',
-       width = 10,
-       height = 6,
-       dpi = 300)
+# ggsave('sup_Fig_3.jpg',
+#        width = 10,
+#        height = 6,
+#        dpi = 300)
 
 
 summary(ghats.rel_biomass)
@@ -253,7 +103,7 @@ ghats_rel_biomass_df <-
   as.data.frame(ghats_rel_biomass$`Treatment:Palatability`)# to make a df to report statistics results
 
 # View(ghats_rel_biomass_df)
-write.csv(ghats_rel_biomass_df, 'ghats_rel_biomass_df.csv')
+# write.csv(ghats_rel_biomass_df, 'ghats_rel_biomass_df.csv')
 
 # Table_1 ----
 # Biomass

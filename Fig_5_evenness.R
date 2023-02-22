@@ -1,29 +1,5 @@
-# Packages----
-library(tidyverse)
-library(patchwork)
-library(brms)
-library(bayesplot)
-library(cmdstanr)
-library(cowplot)
-library(gt)
-library(webshot)
-# Data----
-# raw data
-raw_dat <- read.csv(
-  "biomass_data.csv",
-  header = T,
-  fill = TRUE,
-  sep = ",",
-  na.strings = c("", " ", "NA", "NA ", "na", "NULL")
-)
-
-# Data wrangling----
-Site_dat <- raw_dat %>%
-  mutate(
-    Treatment = as.factor(Treatment),
-    Life_form = as.factor(Life_form),
-    Functional_groups = as.factor(Functional_groups)
-  )
+# Data and packages-----
+source('1_DataPackages.R')
 
 alpha_dat <-  Site_dat %>% 
   group_by(Site, Village, Treatment, Sci_name) %>%
@@ -41,8 +17,10 @@ Site_prep <- Site_dat %>%
   arrange(Site, Treatment) %>%
   mutate(
     Treatment = case_when(
-      Treatment == "ab" ~ "Control", # Cymbopogon present fire present
-      Treatment == "bgpnf" ~ "CPFA", # Cymbopogon present fire absent
+      Treatment == "ab" ~ "Control",
+      # Cymbopogon present fire present
+      Treatment == "bgpnf" ~ "CPFA",
+      # Cymbopogon present fire absent
       Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
     )
   )
@@ -122,10 +100,10 @@ fig_s6 <- pp_check(ghats.alpha_ENSPIE) +
 
 fig_s6
 
-ggsave('sup_Fig_6.jpg',
-       width = 10,
-       height = 6,
-       dpi = 300)
+# ggsave('sup_Fig_6.jpg',
+#        width = 10,
+#        height = 6,
+#        dpi = 300)
 
 
 # caterpillars/chains
@@ -162,7 +140,7 @@ ghats_alpha_ENSPIE <-
 gamma_dat <- alpha_dat_prep %>% 
   # collate relative weight of each species at each location (these are alpha-scale samples)
   group_by(Treatment, Site) %>% 
-  nest(c(Sci_name, rel_weight, weight, plot_weight)) %>% 
+  nest(data=c(Sci_name, rel_weight, weight, plot_weight)) %>% 
   ungroup()
 
 # for n_samps, get 10 sites (alpha samples)

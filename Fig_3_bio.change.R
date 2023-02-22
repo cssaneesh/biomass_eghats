@@ -1,36 +1,6 @@
-# Packages----
-library(tidyverse)
-library(brms)
-library(gt)
 
-# Data----
-raw_dat <- read.csv(
-  "biomass_data.csv",
-  header = T,
-  fill = TRUE,
-  sep = ",",
-  na.strings = c("", " ", "NA", "NA ", "na", "NULL")
-)
-
-Site_dat <- raw_dat %>%
-  mutate(
-    Treatment = as.factor(Treatment),
-    Life_form = as.factor(Life_form),
-    Functional_groups = as.factor(Functional_groups)
-  )
-
-# create Site prep data
-Site_prep <- Site_dat %>%
-  arrange(Site, Treatment) %>%
-  mutate(
-    Treatment = case_when(
-      Treatment == "ab" ~ "Control",
-      # Cymbopogon present fire present
-      Treatment == "bgpnf" ~ "CPFA",
-      # Cymbopogon present fire absent
-      Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
-    )
-  )
+# Load packages and data----
+source('1_DataPackages.R')
 
 # Absolute weight----
 bio.change_prep <- Site_prep %>% select(Village, Treatment, Sci_name, Palatability, Weight) %>%
@@ -175,7 +145,7 @@ fig_change.biomass <- ggplot() +
     #legend.position = "bottom"
   ) + labs(subtitle = '') + ylab("Biomass change (g)") +
   theme(
-    panel.grid.major = element_line(colour = "gray86", size = 0.1),
+    panel.grid.major = element_line(colour = "gray86", linewidth = 0.1),
     panel.background = element_rect(fill = "white")
   )+
   theme(axis.ticks = element_blank())+
@@ -204,34 +174,11 @@ fig_change.biomass+
     x=1.24, xend= 1.07,
     y= -300, yend= -470)
 
-
-# library(plotly)
 # ggplotly(fig_change.biomass)
 
 # Relative weight----
 # what is the summed biomass per Site with cymbopogon?
-Site_sum <-
-  Site_prep %>% group_by(Site, Treatment) %>%
-  summarise(Site_biomass = sum(Weight)) %>%
-  ungroup()
-# Site_calc
-Site_calc <- Site_prep %>% left_join(Site_sum) %>%
-  mutate(
-    relative_biomass = (Weight / Site_biomass) ,
-    relative_biomass_p =  round(((
-      Weight / Site_biomass
-    ) * 100) , 2)
-  )
 
-# Absolute_biomass
-absolute_weight <- Site_calc %>%
-  select(Site, Treatment, Weight, Palatability) %>%
-  group_by(Palatability, Treatment, Site) %>%
-  summarise(Weight = sum(Weight)) %>%
-  mutate(Treatment = factor(Treatment)) %>% # to order treatments in the plot
-  mutate(Palatability = factor(Palatability)) %>%
-  mutate(Palatability = fct_relevel(Palatability, c('Yes', 'No', 'Cymbopogon sp.'))) %>%
-  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
 
 # Relative_biomass
 relative_weight <-
@@ -302,10 +249,10 @@ fig_s4 <- pp_check(rel.ghats.biomass.change)+
 
 fig_s4
 
-ggsave('sup_Fig_4.jpg',
-       width = 10,
-       height = 6,
-       dpi = 300)
+# ggsave('sup_Fig_4.jpg',
+#        width = 10,
+#        height = 6,
+#        dpi = 300)
 
 
 plot(rel.ghats.biomass.change)
@@ -392,7 +339,7 @@ fig_rel.change.biomass <- ggplot() +
     #legend.position = "bottom"
   ) + labs(subtitle = '') + ylab("Relative biomass change (g)") +
   theme(
-    panel.grid.major = element_line(colour = "gray86", size = 0.1),
+    panel.grid.major = element_line(colour = "gray86", linewidth  = 0.1),
     panel.background = element_rect(fill = "white")
   )+
   theme(axis.ticks = element_blank())+
@@ -418,7 +365,7 @@ fig_rel.change.biomass <-
     xend = 0.78,
     y = 20,
     yend = 24.5,
-    size= 0.3
+    linewidth = 0.3
   ) + # cpfa 1.81 yes
   annotate(
     geom = "text",
@@ -435,7 +382,7 @@ fig_rel.change.biomass <-
     xend = 0.81,
     y = -29,
     yend = -32,
-    size= 0.3
+    linewidth = 0.3
   ) + # cpfa -2.71 yes
   annotate(
     geom = "text",
@@ -452,7 +399,7 @@ fig_rel.change.biomass <-
     xend = .95,
     y = 3,
     yend = 7,
-    size= 0.3
+    linewidth = 0.3
   )+ # cpfa no 1.53
   annotate(
     geom = "text",
@@ -469,7 +416,7 @@ fig_rel.change.biomass <-
     xend = 1,
     y = -10,
     yend = -15,
-    size= 0.3
+    linewidth = 0.3
   )+ # cpfa no -7.72
   annotate(
     geom = "text",
@@ -486,7 +433,7 @@ fig_rel.change.biomass <-
     xend = 1.65,
     y = 68,
     yend = 60,
-    size= 0.3
+    linewidth = 0.3
   ) + # cafa 7.47 yes
   annotate(
     geom = "text",
@@ -503,7 +450,7 @@ fig_rel.change.biomass <-
     xend = 1.67,
     y = -52,
     yend = -55,
-    size= 0.3
+    linewidth = 0.3
   ) + # cafa -5.03 yes
   annotate(
     geom = "text",
@@ -520,7 +467,7 @@ fig_rel.change.biomass <-
     xend = 2.03,
     y = 19,
     yend = 22,
-    size= 0.3
+    linewidth = 0.3
   ) + # cafa no 1.74
   annotate(
     geom = "text",
@@ -537,16 +484,16 @@ fig_rel.change.biomass <-
     xend = 2.03,
     y = -9,
     yend = -11,
-    size= 0.3
+    linewidth = 0.3
   ) # cafa no -7.72
   
 
 fig_rel.change.biomass
 
-ggsave('Fig_3_biochng.jpg',
-       width = 10,
-       height = 6,
-       dpi = 300)
+# ggsave('Fig_3_biochng.jpg',
+#        width = 10,
+#        height = 6,
+#        dpi = 300)
 
 
 # plotly::ggplotly(fig_rel.change.biomass)
@@ -554,7 +501,7 @@ ggsave('Fig_3_biochng.jpg',
 rel.ghats_biochange_df <- as.data.frame(rel.ghats_change_biomass$`Treatment:Palatability`)
 # View(rel.ghats_biochange_df)
 
-table_re.change <- rel.ghats_biochange_df %>% 
+TableS4 <- rel.ghats_biochange_df %>% 
   select(Treatment, Palatability, estimate__, lower__, upper__) %>% 
   rename(Estimate= estimate__, 
          Lower= lower__,
@@ -569,8 +516,8 @@ table_re.change <- rel.ghats_biochange_df %>%
   opt_table_font(default_fonts()) %>%  # Fonts: Roboto Mono,IBM Plex Mono, Red Hat Mono
   opt_table_outline(style = "solid", width = px(2))
 
-table_re.change
-table_re.change %>% gtsave('table_3_biochange.png', expand = 5)
+TableS4
+TableS4 %>% gtsave('Table_S4_biochange.png', expand = 5)
 
 # list of species 
 rel.bio.change.treatment %>% drop_na() %>% 
