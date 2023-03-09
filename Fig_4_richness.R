@@ -28,6 +28,12 @@ alpha_dat_prep <- alpha_dat %>%
   left_join(plot_dat) %>%
   mutate(rel_weight = (weight / plot_weight))
 
+
+# check if we have a balanced site
+alpha_div %>% 
+  group_by(Treatment) %>% 
+  summarise(N_sites= n_distinct(Site))# no we don't have equal number of sites
+
 # the solution, bootstrap resampling: prepare the data for bootstrap resampling of Sites
 gamma_dat <- alpha_dat_prep %>%
   # collate relative weight of each species at each location (these are alpha-scale samples)
@@ -76,7 +82,7 @@ ggsave('sup_Fig_5.jpg',
 
 # caterpillars/chains
 plot(ghats.alpha_rich)
-# you want these 'caterpillars to be 'hairy' (very evenly squiggly)
+# we want these 'caterpillars to be 'hairy' (very evenly squiggly)
 
 # check model residuals
 head(alpha_div)
@@ -84,7 +90,7 @@ ma <- residuals(ghats.alpha_rich)
 ma <- as.data.frame(ma)
 ar.plot <- cbind(alpha_div, ma$Estimate)
 
-#make sure they are factors
+# make sure Treatment and Village are factors
 ar.plot$Treatment <- as.factor(ar.plot$Treatment )
 ar.plot$Village <- as.factor(ar.plot$Village )
 
@@ -102,9 +108,8 @@ ghats_alpha_rich <-
     method = 'fitted'
   )  # conditional effects
 
-
-
 ghats_alpha_rich
+
 # beta data----
 
 # for n_samps, get 10 Site (alpha samples)
@@ -135,19 +140,19 @@ ghats_alpha_rich
 #            mean_alpha_Spie = mean(alpha_Spie)) %>%
 #     ungroup()
 #   # aggregate same sub sample for gamma calculations
-#   sub_samp <- alpha_sub_samp %>%
-#     # aggregate data to gamma scale
-#     group_by(Treatment, Sci_name) %>%
-#     summarise(sp_trt_weight = sum(weight)) %>%
-#     ungroup() %>%
-#     # get minimum N for Sn
-#     group_by(Treatment) %>%
-#     mutate(
-#       trt_weight = sum(sp_trt_weight),
-#       gamma_rel_weight = (sp_trt_weight / trt_weight)
-#     ) %>%
-#     ungroup() %>%
-#     mutate(minrel = min(gamma_rel_weight))
+  sub_samp <- alpha_sub_samp %>%
+    # aggregate data to gamma scale
+    group_by(Treatment, Sci_name) %>%
+    summarise(sp_trt_weight = sum(weight)) %>%
+    ungroup() %>%
+    # get minimum N for Sn
+    group_by(Treatment) %>%
+    mutate(
+      trt_weight = sum(sp_trt_weight),
+      gamma_rel_weight = (sp_trt_weight / trt_weight)
+    ) %>%
+    ungroup() %>%
+    mutate(minrel = min(gamma_rel_weight))
 #   # calculate the metrics we want
 #   gamma_metrics <- gamma_metrics %>%
 #     bind_rows(

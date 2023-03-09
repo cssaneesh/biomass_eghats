@@ -1,5 +1,5 @@
 # Packages----
-
+rm(list = ls())
 library(bayesplot)
 library(brms)
 library(cmdstanr)
@@ -11,7 +11,7 @@ library(vegan)
 library(webshot2)
 
 # Data----
-raw_dat <- read.csv(
+data <- read.csv(
   "biomass_data.csv",
   header = T,
   fill = TRUE,
@@ -20,7 +20,7 @@ raw_dat <- read.csv(
 )
 
 # Data wrangling----
-Site_dat <- raw_dat %>%
+data <- data %>%
   mutate(
     Treatment = as.factor(Treatment),
     Life_form = as.factor(Life_form),
@@ -28,7 +28,7 @@ Site_dat <- raw_dat %>%
   )
 
 # create Site prep data
-Site_prep <- Site_dat %>%
+Site_prep <- data %>%
   arrange(Site, Treatment) %>%
   mutate(
     Treatment = case_when(
@@ -36,7 +36,7 @@ Site_prep <- Site_dat %>%
       # Cymbopogon present fire present
       Treatment == "bgpnf" ~ "CPFA",
       # Cymbopogon present fire absent
-      Treatment == "bgrnf" ~ "CAFA" # Cymbopogon absent fire absent
+      Treatment == "bgrnf" ~ "CAFA"  # Cymbopogon absent fire absent
     )
   )
 
@@ -53,6 +53,7 @@ Site_sum_w_cym <-
   summarise(Site_biomass = sum(Weight)) %>%
   ungroup()
 
+# biomass of non cymbopogons and cymbopogons
 Site_sum <-
   Site_sum_w_cym %>% left_join(Site_sum_no_cym)
 
@@ -64,6 +65,7 @@ Site_calc <- Site_prep %>% left_join(Site_sum) %>%
     relative_biomass_nc = (Weight / Site_biomass_no_cym) ,
     relative_biomass_nc_p = ((Weight / Site_biomass) * 100)
   )
+
 # Absolute_biomass
 absolute_weight <- Site_calc %>%
   select(Site, Treatment, Weight, Palatability) %>%
