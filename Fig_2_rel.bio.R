@@ -189,12 +189,15 @@ fig_rel_biomass <- ggplot() +
     panel.grid.major = element_line(colour = "gray86", linewidth = 0.1),
     panel.background = element_rect(fill = "white")
   )+
-  theme(axis.ticks = element_blank())
+  theme(axis.ticks = element_blank())+
+  theme(legend.position = ' ')
 
-fig_rel_biomass <-  fig_rel_biomass #+
-  #theme(legend.position = 'bottom')
-
-save(fig_rel_biomass, file= 'fig_rel_biomass.Rdata')
+# save(fig_rel_biomass, file= 'fig_rel_biomass.Rdata')
+# 
+# legend_rel_biomass <-  fig_rel_biomass +
+#   theme(legend.position = 'bottom')
+# 
+# save(legend_rel_biomass, file= 'legend_rel_biomass.Rdata')
 
 # ggsave('Fig_2.jpg',
 #        width = 10,
