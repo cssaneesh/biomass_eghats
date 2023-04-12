@@ -16,7 +16,7 @@ alpha_div <-
 # write.csv( alpha_div, "alpha_div.csv")
 
 # for beta
-alpha_dat <-  Site_dat %>%
+alpha_dat <-  data %>%
   group_by(Site, Village, Treatment, Sci_name) %>%
   summarise(weight = sum(Weight)) %>% arrange(Site, Sci_name)
 
@@ -108,7 +108,7 @@ ghats_alpha_rich <-
     method = 'fitted'
   )  # conditional effects
 
-ghats_alpha_rich
+ghats_alpha_rich # conditional effects
 
 # beta data----
 
@@ -298,7 +298,7 @@ fig_alpha_rich <- ggplot() +
       ymax = upper__,
       colour = Treatment
     ),
-    size = 1.3,
+    linewidth = 1.3,
     width = 0.1
   ) + labs(x = '', y = '') +
   scale_color_manual(values = c(

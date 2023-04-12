@@ -485,15 +485,45 @@ fig_rel.change.biomass <-
     y = -9,
     yend = -11,
     linewidth = 0.3
-  ) # cafa no -7.72
-  
+  )+ # cafa no -7.72
+  theme(legend.position = '')
 
-fig_rel.change.biomass
+# fig_rel.change.biomass
+# save(fig_rel.change.biomass, file= 'fig_rel.change.biomass.Rdata')
+
+# fig 2& 3-----
+load('fig_rel.change.biomass.Rdata')
+load('fig_rel_biomass.Rdata')
+load('legend_rel_biomass.Rdata')
+
+
+library("gridExtra")
+
+# Create user-defined function, which extracts legends from ggplots
+extract_legend <- function(my_ggp) {
+  step1 <- ggplot_gtable(ggplot_build(my_ggp))
+  step2 <- which(sapply(step1$grobs, function(x) x$name) == "guide-box")
+  step3 <- step1$grobs[[step2]]
+  return(step3)
+}
+
+# Apply user-defined function to extract legend
+shared_legend <- extract_legend(legend_rel_biomass)
+
+# Draw plots with shared legend
+fig_23 <- grid.arrange(arrangeGrob(fig_rel_biomass, fig_rel.change.biomass, ncol = 2),
+             shared_legend, nrow = 2, heights = c(10, 1))
 
 # ggsave('Fig_3_biochng.jpg',
 #        width = 10,
 #        height = 6,
 #        dpi = 300)
+
+ggsave('Fig_2_biomassAndchng.jpg', fig_23, 
+       width = 10,
+       height = 6,
+       dpi = 300)
+       
 
 
 # plotly::ggplotly(fig_rel.change.biomass)

@@ -186,14 +186,17 @@ fig_rel_biomass <- ggplot() +
     #legend.position = "bottom"
   ) + labs(subtitle = '') + ylab("Relative biomass (g)") +
   theme(
-    panel.grid.major = element_line(colour = "gray86", size = 0.1),
+    panel.grid.major = element_line(colour = "gray86", linewidth = 0.1),
     panel.background = element_rect(fill = "white")
   )+
   theme(axis.ticks = element_blank())
 
-fig_rel_biomass
+fig_rel_biomass <-  fig_rel_biomass #+
+  #theme(legend.position = 'bottom')
 
-ggsave('Fig_2.jpg',
-       width = 10,
-       height = 6,
-       dpi = 300)
+save(fig_rel_biomass, file= 'fig_rel_biomass.Rdata')
+
+# ggsave('Fig_2.jpg',
+#        width = 10,
+#        height = 6,
+#        dpi = 300)

@@ -9,6 +9,7 @@ library(patchwork)
 library(tidyverse)
 library(vegan)
 library(webshot2)
+library(gridExtra)
 
 # Data----
 data <- read.csv(
