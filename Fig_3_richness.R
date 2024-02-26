@@ -65,7 +65,8 @@ load('ghats.alpha_rich.Rdata')
 summary(ghats.alpha_rich) # summary of alpha richness model
 
 color_scheme_set("darkgray")
-fig_s5 <- pp_check(ghats.alpha_rich) +
+
+fig_s4 <- pp_check(ghats.alpha_rich) +
   xlab( "Species richness") + ylab("Density") + 
   ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
   labs(subtitle = "b)") +
@@ -73,9 +74,9 @@ fig_s5 <- pp_check(ghats.alpha_rich) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "bottom")# predicted vs. observed values
 
-fig_s5
+fig_s4
 
-ggsave('sup_Fig_5.jpg',
+ggsave('Figure S4.jpg',
        width = 10,
        height = 6,
        dpi = 300)

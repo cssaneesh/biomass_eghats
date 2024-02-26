@@ -69,27 +69,6 @@ relative_weight <-
   mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA"))) %>% 
   arrange(Site) %>% ungroup()
 
-# df of top 10 species----
-species_biomass <- Site_calc %>%
-  select(Treatment, Weight, Sci_name) %>%
-  group_by(Sci_name, Treatment,) %>%
-  summarise(Weight = sum(Weight)) %>%
-  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
-
-treatment_total <-
-  species_biomass %>% 
-  group_by(Treatment) %>% 
-  summarise(group_biomass= sum(Weight))
-
-top10_biomass <- left_join(x= species_biomass, 
-                           y = treatment_total, 
-                           "Treatment") %>% 
-  mutate(Treatment= as.factor(Treatment)) %>% 
-  mutate(relative_biomass= (Weight/group_biomass)*100) %>% 
-  group_by(Treatment) %>% top_n(10) %>%
-  arrange(Treatment, relative_biomass) %>%
-  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
-
 # Making nmds metrics
 eghats_details <- relative_weight %>% select(Village, Treatment, Site) %>% distinct()
 
@@ -152,7 +131,7 @@ pmod <- permutest(distances_betadispersion, permutations = 99, pairwise = TRUE)
 plot(mod.HSD)
 
 # Village scores for ggplot
-data.scores <- as.data.frame(scores(eghats.mds)$sites)  #Using the scores function from vegan to extract the Village scores and convert to a data.frame
+data.scores <- as.data.frame(scores(eghats.mds, 'sites'))  #Using the scores function from vegan to extract the Village scores and convert to a data.frame
 data.scores$Site <- rownames(data.scores)  # create a column of Village names, from the rownames of data.scores
 
 eghats.scores <- data.scores %>% 
@@ -307,6 +286,29 @@ nmdsplot+
 
 # Save image----
 ggsave('fig_7_nmds.jpg', width = 10, height = 6, dpi = 300) 
+
+
+# top 10
+# df of top 10 species----
+species_biomass <- Site_calc %>%
+  select(Treatment, Weight, Sci_name) %>%
+  group_by(Sci_name, Treatment,) %>%
+  summarise(Weight = sum(Weight)) %>%
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
+
+treatment_total <-
+  species_biomass %>% 
+  group_by(Treatment) %>% 
+  summarise(group_biomass= sum(Weight))
+
+top10_biomass <- left_join(x= species_biomass, 
+                           y = treatment_total, 
+                           "Treatment") %>% 
+  mutate(Treatment= as.factor(Treatment)) %>% 
+  mutate(relative_biomass= (Weight/group_biomass)*100) %>% 
+  group_by(Treatment) %>% top_n(10) %>%
+  arrange(Treatment, relative_biomass) %>%
+  mutate(Treatment = fct_relevel(Treatment, c("Control", "CPFA", "CAFA")))
 
 top10_hist <- ggplot(top10_biomass, aes(relative_biomass, Sci_name, fill=Treatment))+
   geom_histogram(stat = 'identity')+

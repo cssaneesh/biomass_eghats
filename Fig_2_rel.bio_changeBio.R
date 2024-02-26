@@ -68,7 +68,7 @@ load("ghats.rel_biomass.Rdata")
 
 color_scheme_set("darkgray")
 
-fig_s3 <- pp_check(ghats.rel_biomass) +
+fig_s2 <- pp_check(ghats.rel_biomass) +
   xlab("Relative biomass") + ylab("Density") +
   labs(title = "Site-level",
     #subtitle = "a)"
@@ -77,9 +77,9 @@ fig_s3 <- pp_check(ghats.rel_biomass) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "none")# predicted vs. observed values
 
-fig_s3
+fig_s2
 
-# ggsave('sup_Fig_3.jpg',
+# ggsave('Figure S2.jpg',
 #        width = 10,
 #        height = 6,
 #        dpi = 300)
@@ -182,7 +182,7 @@ fig_rel_biomass <- ggplot() +
                                 0.5),
     strip.background = element_blank(),
     #legend.position = "bottom"
-  ) + labs(subtitle = '') + ylab("Relative biomass (g)") +
+  ) + labs(subtitle = '') + ylab("Relative biomass") +
   theme(
     panel.grid.major = element_line(colour = "gray86", linewidth = 0.1),
     panel.background = element_rect(fill = "white")
@@ -250,7 +250,7 @@ load("ghats.biomass.change.Rdata")
 
 summary(ghats.biomass.change)
 
-# fig_s4 <- pp_check(ghats.biomass.change)+
+# fig_sx <- pp_check(ghats.biomass.change)+
 #   xlab("Relative biomass change") + ylab("Density") +
 #   labs(title = "Site-level",
 #        #subtitle = "a)"
@@ -259,9 +259,9 @@ summary(ghats.biomass.change)
 #   theme(plot.title = element_text(size = 18, hjust = 0.5),
 #         legend.position = "none")# predicted vs. observed values
 # 
-# fig_s4
+# fig_sx
 # 
-# ggsave('sup_Fig_4.jpg',
+# ggsave('Figure Sx.jpg',
 #        width = 10,
 #        height = 6,
 #        dpi = 300)
@@ -439,18 +439,18 @@ summary(rel.ghats.biomass.change)
 
 
 
-fig_s4 <- pp_check(rel.ghats.biomass.change)+
-  xlab("Relative biomass change") + ylab("Density") +
-  labs(title = "Site-level",
-       #subtitle = "a)"
-  ) +
-  theme_classic() + xlim(-10,10) +
-  theme(plot.title = element_text(size = 18, hjust = 0.5),
-        legend.position = "none")# predicted vs. observed values
-
-fig_s4
-
-# ggsave('sup_Fig_4.jpg',
+# fig_s3 <- pp_check(rel.ghats.biomass.change)+
+#   xlab("Relative biomass change") + ylab("Density") +
+#   labs(title = "Site-level",
+#        #subtitle = "a)"
+#   ) +
+#   theme_classic() + xlim(-10,10) +
+#   theme(plot.title = element_text(size = 18, hjust = 0.5),
+#         legend.position = "none")# predicted vs. observed values
+# 
+# fig_s3
+# 
+# ggsave('Figure S3.jpg',
 #        width = 10,
 #        height = 6,
 #        dpi = 300)
@@ -538,7 +538,7 @@ fig_rel.change.biomass <- ggplot() +
                                 0.5),
     strip.background = element_blank(),
     #legend.position = "bottom"
-  ) + labs(subtitle = '') + ylab("Relative biomass change (g)") +
+  ) + labs(subtitle = '') + ylab("Relative biomass change") +
   theme(
     panel.grid.major = element_line(colour = "gray86", linewidth  = 0.1),
     panel.background = element_rect(fill = "white")
@@ -713,15 +713,15 @@ shared_legend <- extract_legend(legend_rel_biomass)
 fig_2 <- grid.arrange(arrangeGrob(fig_rel_biomass, fig_rel.change.biomass, ncol = 2),
                        shared_legend, nrow = 2, heights = c(10, 1))
 
-# ggsave('Fig_3_biochng.jpg',
+# ggsave('Fig_x_biochng.jpg',
 #        width = 10,
 #        height = 6,
 #        dpi = 300)
 
-ggsave('Fig_2_biomassAndchng.jpg', fig_23, 
-       width = 10,
-       height = 6,
-       dpi = 300)
+# ggsave('Fig_2_biomassAndchng.jpg', fig_2, 
+#        width = 10,
+#        height = 6,
+#        dpi = 300)
 
 
 

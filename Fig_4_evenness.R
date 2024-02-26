@@ -78,7 +78,7 @@ summary(ghats.alpha_ENSPIE) # summary of alpha ENSPIE model
 
 color_scheme_set("darkgray")
 
-fig_s6 <- pp_check(ghats.alpha_ENSPIE) +
+fig_s5 <- pp_check(ghats.alpha_ENSPIE) +
   xlab('Inverse Simpson’s') + ylab("") + 
   ggtitle((expression(paste(italic(alpha), '-scale', sep = ''))))+
   #labs(subtitle = "c)") +
@@ -86,9 +86,9 @@ fig_s6 <- pp_check(ghats.alpha_ENSPIE) +
   theme(plot.title = element_text(size = 18, hjust = 0.5),
         legend.position = "none")# predicted vs. observed values
 
-fig_s6
+fig_s5
 
-# ggsave('sup_Fig_6.jpg',
+# ggsave('Figure S5.jpg',
 #        width = 10,
 #        height = 6,
 #        dpi = 300)

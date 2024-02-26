@@ -10,6 +10,7 @@ library(tidyverse)
 library(vegan)
 library(webshot2)
 library(gridExtra)
+library(rWCVP)
 
 # Data----
 data <- read.csv(
@@ -171,3 +172,18 @@ ggsave('families.jpg',
 
 
 
+# get a list of Cymbopogons in India
+# get_wgsrpd3_codes("India") # areas in India
+# 
+# # filter species= Cymbopogon from Poaceae
+# checklist_poaceae_ind <- wcvp_checklist("Poaceae",
+#                                         # outputs for focal taxa
+#                                         taxon_rank = "family",
+#                                         area_codes = c("IND",
+#                                                        'WHM',
+#                                                        'ASS') # a desired area in India
+# )
+# 
+# checklist_poaceae_ind %>%
+#   filter(str_detect(accepted_name, 'Cymbopogon')) %>% View()# filter species= Cymbopogon
+# distinct(accepted_name)
