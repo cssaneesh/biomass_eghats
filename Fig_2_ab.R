@@ -62,9 +62,9 @@ fig_e1_ab
 #     cores = 4,
 #     chains = 4
 #   )
-# save(ghats.ab_biomass, file = "ghats.ab_biomass.Rdata")
+# save(ghats.ab_biomass, file = "output/ghats.ab_biomass.Rdata")
 
-load("ghats.ab_biomass.Rdata")
+load("output/ghats.ab_biomass.Rdata")
 
 color_scheme_set("darkgray")
 

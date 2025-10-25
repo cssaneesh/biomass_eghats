@@ -62,9 +62,9 @@ head(relative_weight)
 #     control = list(adapt_delta = 0.99 , max_treedepth = 12 )
 #   )
 
-# save(ghats.rel_biomass, file = "ghats.rel_biomass.Rdata")
+# save(ghats.rel_biomass, file = "output/ghats.rel_biomass.Rdata")
 
-load("ghats.rel_biomass.Rdata")
+load("output/ghats.rel_biomass.Rdata")
 
 color_scheme_set("darkgray")
 
@@ -190,12 +190,12 @@ fig_rel_biomass <- ggplot() +
   theme(axis.ticks = element_blank())+
   theme(legend.position = ' ')
 
-# save(fig_rel_biomass, file= 'fig_rel_biomass.Rdata')
+# save(fig_rel_biomass, file= 'output/fig_rel_biomass.Rdata')
 # 
 # legend_rel_biomass <-  fig_rel_biomass +
 #   theme(legend.position = 'bottom')
 # 
-# save(legend_rel_biomass, file= 'legend_rel_biomass.Rdata')
+# save(legend_rel_biomass, file= 'output/legend_rel_biomass.Rdata')
 
 # ggsave('Fig_2.jpg',
 #        width = 10,
@@ -244,9 +244,9 @@ bio.change.treatment %>% select(Village) %>%
 #     control = list(adapt_delta = 0.99, max_treedepth = 12 )
 #   )
 
-# save(ghats.biomass.change, file = "ghats.biomass.change.Rdata")
+# save(ghats.biomass.change, file = "output/ghats.biomass.change.Rdata")
 
-load("ghats.biomass.change.Rdata")
+load("output/ghats.biomass.change.Rdata")
 
 summary(ghats.biomass.change)
 
@@ -431,9 +431,9 @@ head(rel.bio.change.treatment)
 #     control = list(adapt_delta = 0.99, max_treedepth = 12 )
 #   )
 
-# save(rel.ghats.biomass.change, file = "rel.ghats.biomass.change.Rdata")
+# save(rel.ghats.biomass.change, file = "output/rel.ghats.biomass.change.Rdata")
 
-load("rel.ghats.biomass.change.Rdata")
+load("output/rel.ghats.biomass.change.Rdata")
 
 summary(rel.ghats.biomass.change)
 
@@ -690,12 +690,12 @@ fig_rel.change.biomass <-
   theme(legend.position = '')
 
 # fig_rel.change.biomass
-# save(fig_rel.change.biomass, file= 'fig_rel.change.biomass.Rdata')
+# save(fig_rel.change.biomass, file= 'output/fig_rel.change.biomass.Rdata')
 
 # fig 2& 3-----
-load('fig_rel.change.biomass.Rdata')
-load('fig_rel_biomass.Rdata')
-load('legend_rel_biomass.Rdata')
+load('output/fig_rel.change.biomass.Rdata')
+load('output/fig_rel_biomass.Rdata')
+load('output/legend_rel_biomass.Rdata')
 
 # library("gridExtra")
 # Create user-defined function, which extracts legends from ggplots

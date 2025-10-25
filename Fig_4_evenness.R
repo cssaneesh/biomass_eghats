@@ -70,9 +70,9 @@ alpha_div <- alpha_div %>%
 #   # control = list(adapt_delta = 0.99)
 #   )
 
-# save(ghats.alpha_ENSPIE, file = 'ghats.alpha_ENSPIE.Rdata')
+# save(ghats.alpha_ENSPIE, file = 'output/ghats.alpha_ENSPIE.Rdata')
 
-load('ghats.alpha_ENSPIE.Rdata')
+load('output/ghats.alpha_ENSPIE.Rdata')
 
 summary(ghats.alpha_ENSPIE) # summary of alpha ENSPIE model
 
@@ -195,9 +195,9 @@ gamma_dat <- alpha_dat_prep %>%
 #         )
 #     )
 # }
-# save(gamma_metrics, file= 'gamma_metrics.Rdata')
+# save(gamma_metrics, file= 'output/gamma_metrics.Rdata')
 
-load('gamma_metrics.Rdata')
+load('output/gamma_metrics.Rdata')
 
 gamma_boot_results <- gamma_metrics %>% # calculate beta-diversities (beta = gamma/alpha) 
   mutate(beta_S = S/alpha_S,

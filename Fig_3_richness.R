@@ -58,9 +58,9 @@ gamma_dat <- alpha_dat_prep %>%
 #     control = list(adapt_delta = 0.99)
 #   )
 
-# save(ghats.alpha_rich, file = 'ghats.alpha_rich.Rdata')
+# save(ghats.alpha_rich, file = 'output/ghats.alpha_rich.Rdata')
 
-load('ghats.alpha_rich.Rdata')
+load('output/ghats.alpha_rich.Rdata')
 
 summary(ghats.alpha_rich) # summary of alpha richness model
 
@@ -177,9 +177,9 @@ ghats_alpha_rich # conditional effects
 #         )
 #     )
 # }
-# save(gamma_metrics, file= 'gamma_metrics.Rdata')
+# save(gamma_metrics, file= 'output/gamma_metrics.Rdata')
 
-load('gamma_metrics.Rdata')
+load('output/gamma_metrics.Rdata')
 
 
 gamma_boot_results <-

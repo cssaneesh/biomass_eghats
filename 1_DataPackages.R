@@ -7,10 +7,10 @@ library(cowplot)
 library(gt)
 library(patchwork)
 library(tidyverse)
-library(vegan)
+library(vegan) #install.packages('vegan')
 library(webshot2)
 library(gridExtra)
-library(rWCVP)
+library(rWCVP) #install.packages('rWCVP')
 
 # Data----
 data <- read.csv(
@@ -129,8 +129,41 @@ afri %>% mutate(
   years= ncol(afri),
   afri= years/rowSums(.))
 
+
+names(fire_his)
+
+fire_his <- fire_his %>% mutate(Fire = ifelse(Fire == "Yes", 1, 0))
+
+fire_return_intervals <- fire_his %>%
+  filter(Fire == 1) %>%                 # Only keep rows where a fire occurred
+  group_by(Habitation) %>%                    # Group by each Habitation
+  arrange(Habitation, Year) %>%               # Arrange by Habitation and Year
+  mutate(return_interval = Year - lag(Year)) %>%  # Calculate year differences (fire intervals)
+  summarize(
+    avg_return_interval = mean(return_interval, na.rm = TRUE),  # Average return interval
+    min_return_interval = min(return_interval, na.rm = TRUE),   # Minimum return interval
+    max_return_interval = max(return_interval, na.rm = TRUE),   # Maximum return interval
+    n_fires = n()                                               # Number of fire events
+  ) %>%
+  filter(n_fires > 1)   # Only keep hills with more than one fire event
+
+fire_return_intervals
+
+landscape_fri <- fire_return_intervals %>%
+  summarize(
+    a_fri = mean(avg_return_interval, na.rm = TRUE),
+    mi_fri = min(min_return_interval, na.rm = TRUE),
+    mx_afri = max(max_return_interval, na.rm = TRUE)
+  )
+
+landscape_fri
+
+"Based on monitoring of 18 hills over a 3-year period (2017-2019), the average fire 
+return interval for the landscape is 0.106 years. The minimum fire return 
+interval observed is 0 years, and the maximum fire return interval is 1 years."
+
 # Family figure----
-data <- data.frame(
+data_fam <- data.frame(
   category=c("Poaceae",
              'Fabaceae', 
              "Asteraceae", 
@@ -141,17 +174,17 @@ data <- data.frame(
   count=c(18,15,8,4,4,3,17 )
 )
 
-data$fraction = data$count / sum(data$count)
-data$ymax = cumsum(data$fraction)
-data$ymin = c(0, head(data$ymax, n=-1))
+data_fam$fraction = data_fam$count / sum(data_fam$count)
+data_fam$ymax = cumsum(data_fam$fraction)
+data_fam$ymin = c(0, head(data_fam$ymax, n=-1))
 
 # Compute label position
-data$labelPosition <- (data$ymax + data$ymin) / 2
+data_fam$labelPosition <- (data_fam$ymax + data_fam$ymin) / 2
 
 # Compute a good label
-data$label <- paste0(data$category, "\n Species: ", data$count)
+data_fam$label <- paste0(data_fam$category, "\n Species: ", data_fam$count)
 
-families.pie <- ggplot(data, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=category)) +
+families.pie <- ggplot(data_fam, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=category)) +
   geom_rect(col='darkgrey', linetype= 'dotted')+
   scale_fill_brewer(palette=4) +
   coord_polar(theta="y") +
